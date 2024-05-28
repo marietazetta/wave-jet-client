@@ -5,7 +5,7 @@ import authServices from "../../../services/auth.services"
 import { AuthContext } from "../../../contexts/auth.context"
 
 
-const UserLoginForm = () => {
+const UserLoginForm = ({ }) => {
 
     const [loginData, setLoginData] = useState({
         email: '',

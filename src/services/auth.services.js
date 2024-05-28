@@ -1,11 +1,12 @@
 import axios from 'axios'
 
+
 class AuthServices {
 
     constructor() {
 
         this.axiosApp = axios.create({
-            baseURL: `${import.meta.env.VITE_API_URL}/auth`
+            baseURL: `${import.meta.env.VITE_API_URL}/api/auth`
         })
     }
 
