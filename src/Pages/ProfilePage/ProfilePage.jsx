@@ -3,10 +3,10 @@ import { AuthContext } from '../../contexts/auth.context'
 
 
 const ProfilePage = () => {
-    const { user } = useContext(AuthContext)
+    const { loggedUser } = useContext(AuthContext)
 
     return (
-        <h1>Profile, {user.username}</h1>
+        <h1> Welcome, {loggedUser.username}</h1>
 
     )
 }

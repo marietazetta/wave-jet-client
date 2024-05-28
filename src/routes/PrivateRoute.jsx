@@ -5,13 +5,13 @@ import { AuthContext } from "../contexts/auth.context"
 
 const PrivateRoute = () => {
 
-    const { user, isLoading } = useContext(AuthContext)
+    const { loggedUser, isLoading } = useContext(AuthContext)
 
     if (isLoading) {
         return <Loader />
     }
 
-    if (!user) {
+    if (!loggedUser) {
         return <Navigate to="/login" />
     }
 

@@ -8,6 +8,8 @@ import EditFlightFormPage from "../Pages/Flights/EditFlightFormPage/EditFlightFo
 import AboutPage from "../Pages/AboutPage/AboutPage"
 import SignupPage from "../Pages/Users/SignUpPage/SignUpPage"
 import LoginPage from "../Pages/Users/LoginPage/LoginPage"
+import ProfilePage from "../Pages/ProfilePage/ProfilePage"
+import PrivateRoute from "./PrivateRoute"
 import { Route, Routes } from "react-router-dom"
 
 
@@ -33,6 +35,10 @@ const Approutes = () => {
             <Route path={'/about'} element={<AboutPage />} />
             <Route path={'/signup'} element={<SignupPage />} />
             <Route path={'/login'} element={<LoginPage />} />
+
+            <Route element={<PrivateRoute />}>
+                <Route path={'/profile'} element={<ProfilePage />} />
+            </Route>
 
 
             <Route path={'*'} element={<p>EL ERROR</p>} />
