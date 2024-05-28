@@ -1,4 +1,4 @@
-import './AircraftCard.css'
+
 
 const AircraftCard = () => {
     return (

@@ -1,4 +1,5 @@
-import './AircraftList.css'
+import AircraftCard from "../AircraftCard/AircraftCard"
+
 
 const AircraftList = () => {
     return (

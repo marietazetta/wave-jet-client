@@ -3,7 +3,8 @@ import NewAircraftForm from "../../../components/Aircrafts/NewAircraftForm/NewAi
 
 const AddAircraftFormPage = () => {
     return (
-        <>       <h1>Soy la AddAircraftFormPage</h1>
+        <>
+            <h1>Soy la AddAircraftFormPage</h1>
             <NewAircraftForm />
         </>
 
