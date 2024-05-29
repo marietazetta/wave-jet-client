@@ -3,7 +3,9 @@ import AircraftsPage from "../Pages/Aircrafts/AircraftsPage/AircraftsPage"
 import AircraftDetailsPage from "../Pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
 import FlightsPage from "../Pages/Flights/FlightsPage/FlightsPage"
 import FlightDetailsPage from "../Pages/Flights/FlightDetailsPage/FlightDetailsPage"
+import AddFlightFormPage from "../Pages/Flights/AddFlightFormPage/AddFlightFormPage"
 import EditAircraftFormPage from "../Pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage"
+import AddAircraftFormPage from "../Pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
 import EditFlightFormPage from "../Pages/Flights/EditFlightFormPage/EditFlightFormPage"
 import AboutPage from "../Pages/AboutPage/AboutPage"
 import SignupPage from "../Pages/Users/SignUpPage/SignUpPage"
@@ -30,7 +32,9 @@ const Approutes = () => {
             <Route path={'/flights'} element={< FlightsPage />} />
             <Route path={'/flights/:flightId'} element={< FlightDetailsPage />} />
             <Route path={'/fleet/add/:aircraftId'} element={< AddAircraftFormPage />} />
+            <Route path={'/flights/add'} element={< AddFlightFormPage />} />
             <Route path={'/fleet/edit/:aircraftId'} element={< EditAircraftFormPage />} />
+            <Route path={'/fleet/add'} element={< AddAircraftFormPage />} />
             <Route path={'/flights/edit/:flighttId'} element={< EditFlightFormPage />} />
 
 
