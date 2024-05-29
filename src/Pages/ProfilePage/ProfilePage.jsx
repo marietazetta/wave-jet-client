@@ -7,7 +7,6 @@ const ProfilePage = () => {
 
     return (
         <h1> Welcome, {loggedUser.username}</h1>
-
     )
 }
 

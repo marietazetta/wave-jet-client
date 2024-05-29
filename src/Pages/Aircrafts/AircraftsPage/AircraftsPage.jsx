@@ -3,10 +3,10 @@ import AircraftsList from "../../../components/Aircrafts/AircraftsList/Aircrafts
 
 const AircraftsPage = () => {
     return (
-        <>
+        <div className='AircraftsPage'>
             <h1>Soy la AircraftsPage</h1>
             <AircraftsList />
-        </>
+        </div>
     )
 }
 
