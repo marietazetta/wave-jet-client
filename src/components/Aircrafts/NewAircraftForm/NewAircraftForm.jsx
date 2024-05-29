@@ -96,13 +96,23 @@ const NewAircraftForm = () => {
 
                         </Row>
 
-                        <Form.Group className="mb-3" controlId="Manufacturer.Input">
-                            <Form.Label>Manufacturer</Form.Label>
-                            <Form.Control size="md" type="text" placeholder="Manufacturer"
-                                name="manufacturer"
-                                value={aircraftData.manufacturer}
-                                onChange={handleInputChange} />
-                        </Form.Group>
+                        <Row>
+                            <Form.Group className="mb-3" controlId="Manufacturer.Input">
+                                <Form.Label>Manufacturer</Form.Label>
+                                <Form.Control size="md" type="text" placeholder="Manufacturer"
+                                    name="manufacturer"
+                                    value={aircraftData.manufacturer}
+                                    onChange={handleInputChange} />
+                            </Form.Group>
+                            <Form.Group as={Col} controlId="range.input">
+                                <Form.Label>Range</Form.Label>
+                                <Form.Control type="number" placeholder="Km"
+                                    name="range"
+                                    value={aircraftData.range}
+                                    onChange={handleInputChange} />
+                            </Form.Group>
+                        </Row>
+
 
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="Registration.Input">
