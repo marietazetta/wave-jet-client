@@ -13,9 +13,9 @@ class FlightServices {
         return this.axiosApp.get('/')
     }
 
-    // getOneFlight(flightId) {
-    //     return this.axiosApp.get(`/${flightId}`)
-    // }
+    getOneFlight(flightId) {
+        return this.axiosApp.get(`/${flightId}`)
+    }
 
     // saveFlight(flightData) {
     //     return this.axiosApp.post('/', flightData)
