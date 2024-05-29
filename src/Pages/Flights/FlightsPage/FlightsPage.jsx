@@ -4,12 +4,14 @@ import FlightServices from "../../../services/flight.services"
 import { AuthContext } from "../../../contexts/auth.context"
 import { Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
+import Loader from "../../../components/Loader/Loader"
 
 
 
 const FlightsPage = () => {
 
     const [flights, setFlights] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const { loggedUser } = useContext(AuthContext)
 
@@ -21,7 +23,10 @@ const FlightsPage = () => {
 
         FlightServices
             .getAllFlights()
-            .then(({ data }) => setFlights(data))
+            .then(({ data }) => {
+                setFlights(data)
+                setIsLoading(false)
+            })
             .catch(err => console.log(err))
     }
 
@@ -33,11 +38,13 @@ const FlightsPage = () => {
                 <p>Our Summer Routes</p>
 
                 {
+                    isLoading ? <Loader /> : <FlightsList flights={flights} />
+                }
+
+                {
                     loggedUser && <Link className="btn btn-sm btn-dark" to={'/flights/add'}>New Route</Link>
                 }
                 <hr />
-
-                <FlightsList flights={flights} />
 
             </Container>
         </div>

@@ -1,18 +1,17 @@
-import HomePage from "../Pages/HomePage/HomePage"
-import AircraftsPage from "../Pages/Aircrafts/AircraftsPage/AircraftsPage"
-import AircraftDetailsPage from "../Pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
-import FlightsPage from "../Pages/Flights/FlightsPage/FlightsPage"
-import FlightDetailsPage from "../Pages/Flights/FlightDetailsPage/FlightDetailsPage"
-import AddFlightFormPage from "../Pages/Flights/AddFlightFormPage/AddFlightFormPage"
-import EditAircraftFormPage from "../Pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage"
-import AddAircraftFormPage from "../Pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
-import EditFlightFormPage from "../Pages/Flights/EditFlightFormPage/EditFlightFormPage"
-import AboutPage from "../Pages/AboutPage/AboutPage"
-import SignupPage from "../Pages/Users/SignUpPage/SignUpPage"
-import LoginPage from "../Pages/Users/LoginPage/LoginPage"
-import ProfilePage from "../Pages/ProfilePage/ProfilePage"
+import HomePage from "../pages/HomePage/HomePage"
+import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage"
+import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
+import FlightsPage from "../pages/Flights/FlightsPage/FlightsPage"
+import FlightDetailsPage from "../pages/Flights/FlightDetailsPage/FlightDetailsPage"
+import AddFlightFormPage from "../pages/Flights/AddFlightFormPage/AddFlightFormPage"
+import EditAircraftFormPage from "../pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage"
+import AddAircraftFormPage from "../pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
+import EditFlightFormPage from "../pages/Flights/EditFlightFormPage/EditFlightFormPage"
+import AboutPage from "../pages/AboutPage/AboutPage"
+import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
+import LoginPage from "../pages/Users/LoginPage/LoginPage"
+import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import PrivateRoute from "./PrivateRoute"
-import AddAircraftFormPage from "../Pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
 import { Route, Routes } from "react-router-dom"
 
 
@@ -25,17 +24,16 @@ const Approutes = () => {
 
         <Routes>
             <Route path={'/'} element={<HomePage />} />
-            <Route path={'/fleet'} element={< AircraftsPage />} />
-            <Route path={'/fleet/:aircraftId'} element={< AircraftDetailsPage />} />
+            <Route path={'/fleet'} element={<AircraftsPage />} />
+            <Route path={'/fleet/:aircraftId'} element={<AircraftDetailsPage />} />
 
             {/* ADMIN RIGHTS */}
-            <Route path={'/flights'} element={< FlightsPage />} />
-            <Route path={'/flights/:flightId'} element={< FlightDetailsPage />} />
-            <Route path={'/fleet/add/:aircraftId'} element={< AddAircraftFormPage />} />
-            <Route path={'/flights/add'} element={< AddFlightFormPage />} />
-            <Route path={'/fleet/edit/:aircraftId'} element={< EditAircraftFormPage />} />
-            <Route path={'/fleet/add'} element={< AddAircraftFormPage />} />
-            <Route path={'/flights/edit/:flighttId'} element={< EditFlightFormPage />} />
+            <Route path={'/routes'} element={<FlightsPage />} />
+            <Route path={'/routes/:flightId'} element={<FlightDetailsPage />} />
+            <Route path={'/routes/add'} element={<AddFlightFormPage />} />
+            <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
+            <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
+            <Route path={'/routes/edit/:flighttId'} element={<EditFlightFormPage />} />
 
 
             <Route path={'/about'} element={<AboutPage />} />

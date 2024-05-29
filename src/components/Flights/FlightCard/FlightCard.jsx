@@ -19,7 +19,7 @@ const FlightCard = ({ _id, toDestination, flightTime, fromDestination }) => {
                         <Card.Text >
                             {flightTime} hours
                         </Card.Text>
-                        <Link to={`/flights/edit/${_id}`}>
+                        <Link to={`/routes/edit/${_id}`}>
                             <Button variant="secondary" size="md" >
                                 Edit Route
                             </Button>
