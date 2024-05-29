@@ -1,11 +1,13 @@
 import './AddAircraftFormPage.css'
 import NewAircraftForm from "../../../components/Aircrafts/NewAircraftForm/NewAircraftForm"
+import { Container } from 'react-bootstrap'
 
 const AddAircraftFormPage = () => {
     return (
         <>
-            <h1>Soy la AddAircraftFormPage</h1>
-            <NewAircraftForm />
+            <Container>
+                <NewAircraftForm />
+            </Container>
         </>
 
     )

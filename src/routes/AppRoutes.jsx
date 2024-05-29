@@ -10,6 +10,7 @@ import SignupPage from "../Pages/Users/SignUpPage/SignUpPage"
 import LoginPage from "../Pages/Users/LoginPage/LoginPage"
 import ProfilePage from "../Pages/ProfilePage/ProfilePage"
 import PrivateRoute from "./PrivateRoute"
+import AddAircraftFormPage from "../Pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
 import { Route, Routes } from "react-router-dom"
 
 
@@ -28,6 +29,7 @@ const Approutes = () => {
             {/* ADMIN RIGHTS */}
             <Route path={'/flights'} element={< FlightsPage />} />
             <Route path={'/flights/:flightId'} element={< FlightDetailsPage />} />
+            <Route path={'/fleet/add/:aircraftId'} element={< AddAircraftFormPage />} />
             <Route path={'/fleet/edit/:aircraftId'} element={< EditAircraftFormPage />} />
             <Route path={'/flights/edit/:flighttId'} element={< EditFlightFormPage />} />
 
