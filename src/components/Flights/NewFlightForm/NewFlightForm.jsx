@@ -32,9 +32,11 @@ const NewFlightForm = () => {
     }
 
     const handleFileUpload = e => {
+        console.log(e.target.files[0])
 
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
+
 
         uploadServices
             .uploadimage(formData)
