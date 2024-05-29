@@ -1,7 +1,7 @@
 import './NewAircraftForm.css'
-import { useState, useEffect } from "react"
-import { Form, Row, Col, InputGroup, Button, Spinner } from "react-bootstrap"
-import { useNavigate, useParams } from "react-router-dom"
+import { useState } from "react"
+import { Form, Row, Col, InputGroup, Button } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 import aircraftServices from '../../../services/aircraft.services'
 
 const NewAircraftForm = () => {
@@ -23,6 +23,7 @@ const NewAircraftForm = () => {
         availability: true,
         description: ''
     })
+
 
 
     const handleInputChange = e => {
@@ -53,6 +54,7 @@ const NewAircraftForm = () => {
         })
 
     }
+
 
     const handleAircraftFormSubmit = e => {
 
@@ -85,25 +87,6 @@ const NewAircraftForm = () => {
 
                 </Row>
 
-<<<<<<< HEAD
-                        <Row>
-                            <Form.Group className="mb-3" controlId="Manufacturer.Input">
-                                <Form.Label>Manufacturer</Form.Label>
-                                <Form.Control size="md" type="text" placeholder="Manufacturer"
-                                    name="manufacturer"
-                                    value={aircraftData.manufacturer}
-                                    onChange={handleInputChange} />
-                            </Form.Group>
-                            <Form.Group as={Col} controlId="range.input">
-                                <Form.Label>Range</Form.Label>
-                                <Form.Control type="number" placeholder="Km"
-                                    name="range"
-                                    value={aircraftData.range}
-                                    onChange={handleInputChange} />
-                            </Form.Group>
-                        </Row>
-
-=======
                 <Form.Group className="mb-3" controlId="Manufacturer.Input">
                     <Form.Label>Manufacturer</Form.Label>
                     <Form.Control size="md" type="text" placeholder="Manufacturer"
@@ -111,7 +94,7 @@ const NewAircraftForm = () => {
                         value={aircraftData.manufacturer}
                         onChange={handleInputChange} />
                 </Form.Group>
->>>>>>> 8a0824eb93550527a0f6baf64cf8ab22321b4ea8
+
 
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="Registration.Input">
@@ -133,6 +116,23 @@ const NewAircraftForm = () => {
                             onChange={handleInputChange}
                         />
                     </Form.Group>
+                </Row>
+                <Row className="mb-3">
+                    <Form.Group as={Col} controlId="cabinHeight.input">
+                        <Form.Label>Cabin Height</Form.Label>
+                        <Form.Control type="number" placeholder="mts"
+                            name="cabinHeight"
+                            value={aircraftData.cabinHeight}
+                            onChange={handleInputChange} />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="cabinWidth.input">
+                        <Form.Label>Cabin Width</Form.Label>
+                        <Form.Control type="number" placeholder="mts"
+                            name="cabinWidth"
+                            value={aircraftData.cabinWidth}
+                            onChange={handleInputChange} />
+                    </Form.Group>
+
                 </Row>
 
                 <Form.Label htmlFor="basic-url">Cover Image</Form.Label>
