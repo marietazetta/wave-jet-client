@@ -1,13 +1,18 @@
+import { Container } from "react-bootstrap"
 import NewFlightForm from "../../../components/Flights/NewFlightForm/NewFlightForm"
+
 
 const AddFlightFormPage = () => {
 
     return (
 
-        <>
-            <p>This is the page with the </p>
-            <NewFlightForm />
-        </>
+        <div className="AddFlightFormPage">
+            <Container>
+                <h1>Add new Route</h1>
+                <hr></hr>
+                <NewFlightForm />
+            </Container>
+        </div>
 
     )
 }

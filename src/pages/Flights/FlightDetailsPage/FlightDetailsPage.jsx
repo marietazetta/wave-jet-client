@@ -1,7 +1,8 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 import flightServices from "../../../services/flight.services"
 import { useEffect, useState } from "react"
 import "./FlightDetailsPage.css"
+import { Container, Row, Col } from "react-bootstrap"
 
 const FlightDetailsPage = () => {
 
