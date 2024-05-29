@@ -24,3 +24,9 @@
     color: #FFEAD9;
     border-color: white;
 }
+
+.availability-emoji {
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 10px;
+}

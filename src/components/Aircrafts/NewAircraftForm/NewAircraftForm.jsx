@@ -24,56 +24,84 @@ const NewAircraftForm = () => {
         description: ''
     })
 
+    const [servicesData, setServicesData] = useState({
+        flight_attendant: false,
+        catering: false,
+        wifi: false,
+    })
 
-
-    const handleInputChange = e => {
-        const { value, name } = e.currentTarget
-        setAircraftData({ ...aircraftData, [name]: value })
+    const handleAvailabilityClick = () => {
+        setAircraftData({ ...aircraftData, availability: !aircraftData.availability })
     }
 
+    const handleServiceSelect = event => {
+        const { value, checked } = event.target
+        setServicesData({
+            ...servicesData,
+            [value]: checked
+        })
+    }
+
+    const handleInputChange = (e) => {
+        const { name, value, type, checked } = e.currentTarget;
+        const updatedValue = type === 'checkbox' ? checked : value;
+        setAircraftData({ ...aircraftData, [name]: updatedValue });
+
+        if (name === 'availability') {
+            setAircraftData({
+                ...aircraftData,
+                availability: updatedValue,
+                availabilityEmoji: updatedValue ? '🟢' : '🔴',
+            });
+        }
+    };
+
     const addNewImageField = () => {
-
         const newImages = [...aircraftData.images]
-
         newImages.push('')
-
         setAircraftData({
             ...aircraftData,
             images: newImages
         })
     }
 
-    const handleGalleryChange = event => {
-
+    const handleGalleryChange = (event, idx) => {
         const { value } = event.target
-        const images = [...aircraftData.images, value]
-
+        const images = [...aircraftData.images]
+        images[idx] = value
         setAircraftData({
             ...aircraftData,
             images
         })
-
     }
 
-
     const handleAircraftFormSubmit = e => {
-
         e.preventDefault()
 
+        const aircraft = {
+            ...aircraftData,
+            services: servicesData
+        }
+
         aircraftServices
-            .saveAircraft(aircraftData)
+            .saveAircraft(aircraft)
             .then(() => navigate('/fleet'))
             .catch(err => console.log(err))
     }
 
     return (
-
-        <div className="NewAircraftForm">
+        <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded">
 
             <Form onSubmit={handleAircraftFormSubmit}>
 
-                <Row className="mb-3">
+                <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
+                    <span onClick={handleAvailabilityClick} className="availability-emoji">
+                        {aircraftData.availability ? '🟢' : '🔴'}
+                    </span>
+                    {/* <Form.Label>Availability</Form.Label> */}
 
+                </Form.Group>
+                <Row className="mb-3">
                     <Form.Group as={Col} className="mb-3" controlId="Model.Input">
                         <Form.Label>Aircraft Model</Form.Label>
                         <Form.Control size="md" type="text" placeholder="Model"
@@ -81,9 +109,7 @@ const NewAircraftForm = () => {
                             value={aircraftData.model}
                             onChange={handleInputChange}
                         />
-
                     </Form.Group>
-
 
                 </Row>
 
@@ -95,7 +121,6 @@ const NewAircraftForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="Registration.Input">
                         <Form.Label>Registration</Form.Label>
@@ -104,7 +129,6 @@ const NewAircraftForm = () => {
                             value={aircraftData.tailNumber}
                             onChange={handleInputChange} />
                     </Form.Group>
-
 
                     <Form.Group as={Col} controlId="paxCapacity.Input">
                         <Form.Label>Passenger Capacity</Form.Label>
@@ -117,6 +141,7 @@ const NewAircraftForm = () => {
                         />
                     </Form.Group>
                 </Row>
+
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="cabinHeight.input">
                         <Form.Label>Cabin Height</Form.Label>
@@ -132,11 +157,9 @@ const NewAircraftForm = () => {
                             value={aircraftData.cabinWidth}
                             onChange={handleInputChange} />
                     </Form.Group>
-
                 </Row>
 
                 <Form.Label htmlFor="basic-url">Cover Image</Form.Label>
-
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon3">
                         Image URL
@@ -149,23 +172,19 @@ const NewAircraftForm = () => {
 
                 <Form.Group controlId="ImagesGallery" className="mb-3">
                     <Form.Label>Images Gallery</Form.Label>
-
                     {
-                        aircraftData.images.map((eachField, idx) => {
-                            return (
-                                <Form.Control
-                                    key={idx}
-                                    className="mb-3"
-                                    type="url"
-                                    placeholder={`Place your image here`}
-                                    value={aircraftData.images[idx]}
-                                    onChange={event => handleGalleryChange(event, idx)} />
-                            )
-                        })
+                        aircraftData.images.map((eachField, idx) => (
+                            <Form.Control
+                                key={idx}
+                                className="mb-3"
+                                type="url"
+                                placeholder={`Place your image here`}
+                                value={aircraftData.images[idx]}
+                                onChange={event => handleGalleryChange(event, idx)} />
+                        ))
                     }
                     <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
                 </Form.Group>
-
 
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="range.input">
@@ -176,6 +195,14 @@ const NewAircraftForm = () => {
                             onChange={handleInputChange} />
                     </Form.Group>
 
+                    <Form.Group as={Col} controlId="hourlyRate.input">
+                        <Form.Label>Hourly Rate</Form.Label>
+                        <Form.Control type="number" placeholder="$"
+                            name="hourlyRate"
+                            value={aircraftData.hourlyRate}
+                            onChange={handleInputChange} />
+                    </Form.Group>
+
                     <Form.Group as={Col} controlId="homebase.input">
                         <Form.Label>Homebase</Form.Label>
                         <Form.Control type="text" placeholder="Ex. LEMD"
@@ -183,10 +210,43 @@ const NewAircraftForm = () => {
                             value={aircraftData.homebase}
                             onChange={handleInputChange} />
                     </Form.Group>
-
                 </Row>
 
-
+                <Form.Group className="mb-3">
+                    <Form.Label >Services</Form.Label>
+                    <Row>
+                        <Col>
+                            <Form.Check
+                                type="checkbox"
+                                label="Flight Attendant"
+                                name="services"
+                                value="flight_attendant"
+                                checked={servicesData.flight_attendant}
+                                onChange={handleServiceSelect}
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Check
+                                type="checkbox"
+                                label="Wi-Fi"
+                                name="services"
+                                value="wifi"
+                                checked={servicesData.wifi}
+                                onChange={handleServiceSelect}
+                            />
+                        </Col>
+                        <Col>
+                            <Form.Check
+                                type="checkbox"
+                                label="Catering"
+                                name="services"
+                                value="catering"
+                                checked={servicesData.catering}
+                                onChange={handleServiceSelect}
+                            />
+                        </Col>
+                    </Row>
+                </Form.Group>
 
                 <Form.Group className="mb-3" controlId="description.Input">
                     <Form.Label>Description</Form.Label>
@@ -201,7 +261,7 @@ const NewAircraftForm = () => {
                 </Button>
             </Form>
         </div>
-
     )
 }
-export default NewAircraftForm 
+
+export default NewAircraftForm

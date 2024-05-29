@@ -20,6 +20,10 @@ class AircraftServices {
     saveAircraft(aircraftData) {
         return this.axiosApp.post('/', aircraftData)
     }
+
+    editAircraft(aircraftId, aircraftData, servicesData) {
+        return this.axiosApp.put(`/${aircraftId}`, aircraftData, servicesData)
+    }
 }
 
 const aircraftServices = new AircraftServices()
