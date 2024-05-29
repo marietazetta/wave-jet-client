@@ -17,9 +17,9 @@ class FlightServices {
         return this.axiosApp.get(`/${flightId}`)
     }
 
-    // saveFlight(flightData) {
-    //     return this.axiosApp.post('/', flightData)
-    // }
+    saveFlight(flightData) {
+        return this.axiosApp.post('/', flightData)
+    }
 }
 
 const flightServices = new FlightServices()
