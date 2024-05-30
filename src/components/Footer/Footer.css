@@ -1,0 +1,17 @@
+.Footer {
+    font-size: .8em;
+    padding: 4px;
+    text-align: center;
+    width: 100%;
+    background-color: #ede0d4;
+    padding-top: 30px;
+    position: relative;
+    left: 0;
+    bottom: 0;
+
+}
+
+.footer-link {
+    text-decoration: none;
+    color: black;
+}

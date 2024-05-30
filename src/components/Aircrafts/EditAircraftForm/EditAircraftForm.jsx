@@ -4,6 +4,8 @@ import { Form, Row, Col, InputGroup, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import aircraftServices from '../../../services/aircraft.services'
 import { useParams } from 'react-router-dom'
+import uploadServices from '../../../services/upload.services'
+
 
 const EditAircraftForm = () => {
 
@@ -33,7 +35,7 @@ const EditAircraftForm = () => {
         tailNumber: '',
         capacity: 0,
         mainImage: '',
-        images: [''],
+        imagesCarousel: [''],
         range: 0,
         homebase: '',
         cabinWidth: 0,
@@ -77,23 +79,14 @@ const EditAircraftForm = () => {
     };
 
     const addNewImageField = () => {
-        const newImages = [...aircraftData.images]
+        const newImages = [...aircraftData.imagesCarousel]
         newImages.push('')
         setAircraftData({
             ...aircraftData,
-            images: newImages
+            imagesCarousel: newImages
         })
     }
 
-    const handleGalleryChange = (event, idx) => {
-        const { value } = event.target
-        const images = [...aircraftData.images]
-        images[idx] = value
-        setAircraftData({
-            ...aircraftData,
-            images
-        })
-    }
 
     const handleAircraftFormSubmit = e => {
         e.preventDefault()
@@ -101,6 +94,48 @@ const EditAircraftForm = () => {
         aircraftServices
             .editAircraft(aircraftId, aircraftData, servicesData)
             .then(() => navigate(`/fleet/${aircraftId}`))
+            .catch(err => console.log(err))
+    }
+
+    const handleMainImageUpload = e => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setAircraftData({ ...aircraftData, mainImage: res.data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
+    }
+
+    // const handleGalleryChange = (event, idx) => {
+    //     const { value } = event.target
+    //     const images = [...aircraftData.images]
+    //     images[idx] = value
+    //     setAircraftData({
+    //         ...aircraftData,
+    //         images
+    //     })
+    // }
+
+    const handleGalleryUpload = (e, index) => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+
+                let imagesCarouselCopy = [...aircraftData.imagesCarousel]
+                imagesCarouselCopy[index] = res.data.cloudinary_url
+
+                setAircraftData({ ...aircraftData, imagesCarousel: imagesCarouselCopy })
+            })
             .catch(err => console.log(err))
     }
 
@@ -180,21 +215,23 @@ const EditAircraftForm = () => {
                     </InputGroup.Text>
                     <Form.Control id="basic-url" aria-describedby="basic-addon3"
                         name="mainImage"
-                        value={aircraftData.mainImage}
-                        onChange={handleInputChange} />
+                        type="file"
+                        onChange={handleMainImageUpload}
+                    // value={aircraftData.mainImage}
+                    />
                 </InputGroup>
 
                 <Form.Group controlId="ImagesGallery" className="mb-3">
                     <Form.Label>Images Gallery</Form.Label>
                     {
-                        aircraftData.images.map((eachField, idx) => (
+                        aircraftData.imagesCarousel?.map((eachField, idx) => (
                             <Form.Control
                                 key={idx}
                                 className="mb-3"
-                                type="url"
+                                type="file"
                                 placeholder={`Place your image here`}
-                                value={aircraftData.images[idx]}
-                                onChange={event => handleGalleryChange(event, idx)} />
+                                // value={aircraftData.images[idx]}
+                                onChange={event => handleGalleryUpload(event, idx)} />
                         ))
                     }
                     <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>

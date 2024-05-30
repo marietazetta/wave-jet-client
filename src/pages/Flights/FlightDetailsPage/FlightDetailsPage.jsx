@@ -44,7 +44,7 @@ const FlightDetailsPage = () => {
                     </Col>
 
                     <Col md={{ span: 4 }}>
-                        {/* <img src={} style={{ width: '100%' }} /> */}
+                        <img src={flight.imageUrl} style={{ width: '100%' }} />
                     </Col>
 
                 </Row>

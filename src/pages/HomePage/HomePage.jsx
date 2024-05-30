@@ -9,7 +9,6 @@ const HomePage = () => {
 
             <h1>Soy la HomePage</h1>
 
-            <Footer />
 
         </>
 
