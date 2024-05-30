@@ -1,13 +1,14 @@
-import AircraftCard from "../AircraftCard/AircraftCard"
+import AircraftCard from "../AircraftCard/AircraftCard";
+import { Col, Row } from "react-bootstrap";
 
-
-const AircraftList = () => {
+const AircraftsList = ({ aircraft }) => {
     return (
-        <>
-            <h1>Soy la AircraftList</h1>
-            <AircraftCard />
-        </>
-    )
-}
+        <Row className="justify-content-center">
+            <Col lg={6} md={8}>
+                <AircraftCard {...aircraft} />
+            </Col>
+        </Row>
+    );
+};
 
-export default AircraftList
+export default AircraftsList;

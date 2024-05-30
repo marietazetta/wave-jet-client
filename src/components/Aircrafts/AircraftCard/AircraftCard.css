@@ -1,0 +1,22 @@
+/* AircraftCard.css */
+
+.AircraftCard .equal-aspect-ratio {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.AircraftCard .align-items-center {
+    display: flex;
+    align-items: center;
+}
+
+.AircraftCard .mt-3 {
+    margin-top: 1rem;
+}
+
+.AircraftCard .custom-button {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+}
