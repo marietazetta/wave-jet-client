@@ -48,7 +48,7 @@ const NewFlightForm = () => {
 
     return (
 
-        <div className="NewFlightForm">
+        <div className="NewFlightForm shadow-lg p-4 mb-2 bg-white rounded">
             <Form onSubmit={handleFlightSubmit}>
                 <Form.Group className="mb-3" controlId="newFormInput">
                     <Form.Label>From</Form.Label>

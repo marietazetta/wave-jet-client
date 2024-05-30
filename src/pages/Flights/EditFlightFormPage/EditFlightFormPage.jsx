@@ -1,14 +1,17 @@
-
+import { Container } from "react-bootstrap"
 import EditFlightForm from "../../../components/Flights/EditFlightForm/EditFlightForm"
+import './EditFlightFormPage.css'
 
 const EditFlightFormPage = () => {
 
     return (
 
-        <>
-            <p>This is the page with the Edit Flight Form </p>
+
+        <Container>
             <EditFlightForm />
-        </>
+        </Container>
+
+
 
     )
 }

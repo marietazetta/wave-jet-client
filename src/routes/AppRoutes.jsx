@@ -34,7 +34,7 @@ const Approutes = () => {
             <Route path={'/routes/add'} element={<AddFlightFormPage />} />
             <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
             <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
-            <Route path={'/routes/edit/:flighttId'} element={<EditFlightFormPage />} />
+            <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
 
 
             <Route path={'/about'} element={<AboutPage />} />

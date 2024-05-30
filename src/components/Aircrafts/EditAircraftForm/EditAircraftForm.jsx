@@ -217,7 +217,7 @@ const EditAircraftForm = () => {
                         name="mainImage"
                         type="file"
                         onChange={handleMainImageUpload}
-                    // value={aircraftData.mainImage}
+
                     />
                 </InputGroup>
 
