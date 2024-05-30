@@ -1,107 +1,99 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { Container, Row, Button } from "react-bootstrap"
-import aircraftServices from "../../../services/aircraft.services"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { Container, Row, Button, Col } from "react-bootstrap";
+import aircraftServices from "../../../services/aircraft.services";
+import { Link } from "react-router-dom";
+import "./AirCraftDetailsPage.css";
 
-const aircraftDetailsPage = () => {
-
-    const { aircraftId } = useParams()
-
-    const [aircraft, setAircraftData] = useState({})
-    const [services, setServicesData] = useState(null)
+const AircraftDetailsPage = () => {
+    const { aircraftId } = useParams();
+    const [aircraft, setAircraftData] = useState({});
+    const [services, setServicesData] = useState(null);
 
     useEffect(() => {
-        loadAircraftDetails()
-    }, [])
+        loadAircraftDetails();
+    }, []);
 
     const loadAircraftDetails = () => {
         aircraftServices
             .getOneAircraft(aircraftId)
             .then(({ data }) => {
-                setAircraftData(data)
-                setServicesData(data.services)
+                setAircraftData(data);
+                setServicesData(data.services);
             })
-            .catch(err => console.log(err))
-    }
+            .catch(err => console.log(err));
+    };
 
     return (
         <Container>
+            <Row className="my-4">
+                <h1 className="text">{aircraft.model}</h1>
+            </Row>
 
-            <h2 className="text-center">Check our {aircraft.model}</h2>
-
-            <table className="table table-striped">
-                <thead>
-                    <tr>
-                        <th className="text-center" colSpan="2">
-                            <img src={aircraft.mainImage} alt="airplaneImage" style={{ maxWidth: '60%', height: 'auto' }} />
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th className="text-center" scope="row">Manufacturer</th>
-                        <td className="text-center">{aircraft.manufacturer}</td>
-                    </tr>
-                    <tr>
-                        <th className="text-center" scope="row">Capacity</th>
-                        <td className="text-center">{aircraft.capacity}</td>
-                    </tr>
-                    <tr>
-                        <th className="text-center" scope="row">Range</th>
-                        <td className="text-center">{aircraft.range}</td>
-                    </tr>
-                    <tr>
-                        <th className="text-center" scope="row">Cabin Height</th>
-                        <td className="text-center">{aircraft.cabinHeight}</td>
-                    </tr>
-                    <tr>
-                        <th className="text-center" scope="row">Cabin Width</th>
-                        <td className="text-center">{aircraft.cabinWidth}</td>
-                    </tr>
-                </tbody>
-            </table>
-
+            <Row className="mb-4">
+                <h5 className="text">{aircraft.description}</h5>
+            </Row>
 
             <Row>
-
-                <h5 className="text-center">Services</h5>
-
-                {services && (
-                    <table className="table table-striped">
-                        <thead>
-                            <tr>
-                                <th className="text-center" scope="col">Wifi</th>
-                            </tr>
-                        </thead>
+                <Col>
+                    <h5 className="text-center">Details</h5>
+                    <table className="table table-striped table-custom">
                         <tbody>
                             <tr>
-                                <td className="text-center">{services.wifi ? "Available" : "Not Available"}</td>
+                                <th className="text-center" scope="row">Manufacturer</th>
+                                <td className="text-center">{aircraft.manufacturer}</td>
                             </tr>
-                        </tbody>
-                        <thead>
                             <tr>
-                                <th className="text-center" scope="col">Catering</th>
+                                <th className="text-center" scope="row">Capacity</th>
+                                <td className="text-center">{aircraft.capacity}</td>
                             </tr>
-                        </thead>
-                        <tbody>
                             <tr>
-                                <td className="text-center">{services.catering ? "Available" : "Not Available"}</td>
+                                <th className="text-center" scope="row">Range</th>
+                                <td className="text-center">{aircraft.range}</td>
                             </tr>
-                        </tbody>
-                        <thead>
                             <tr>
-                                <th className="text-center" scope="col">Flight Attendant</th>
+                                <th className="text-center" scope="row">Cabin Height</th>
+                                <td className="text-center">{aircraft.cabinHeight}</td>
                             </tr>
-                        </thead>
-                        <tbody>
                             <tr>
-                                <td className="text-center">{services.flightAttendant ? "Available" : "Not Available"}</td>
+                                <th className="text-center" scope="row">Cabin Width</th>
+                                <td className="text-center">{aircraft.cabinWidth}</td>
                             </tr>
                         </tbody>
                     </table>
-
-                )}
+                </Col>
+                <Col>
+                    <h5 className="text-center">Services</h5>
+                    {services && (
+                        <table className="table table-striped table-custom">
+                            <tbody>
+                                <tr>
+                                    <td className="text-center"><strong>Wifi</strong></td>
+                                    <td className="text-center">{services.wifi ? "Available" : "Not Available"}</td>
+                                </tr>
+                                <tr>
+                                    <td className="text-center"><strong>Catering</strong></td>
+                                    <td className="text-center">{services.catering ? "Available" : "Not Available"}</td>
+                                </tr>
+                                <tr>
+                                    <td className="text-center"><strong>Flight Attendant</strong></td>
+                                    <td className="text-center">{services.flightAttendant ? "Available" : "Not Available"}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    )}
+                </Col>
+            </Row>
+            <Row className="collage-images mb-4">
+                {aircraft.imagesCarousel?.map((eachImage, index) => (
+                    <Col key={index} xs={6} md={4} lg={3} className="mb-3">
+                        <img
+                            src={eachImage}
+                            alt={`Image ${index}`}
+                            className="fixed-size-image"
+                        />
+                    </Col>
+                ))}
             </Row>
             <Link to={`/fleet/edit/${aircraftId}`}>
                 <Button variant="secondary" size="md" className="custom-color-button">
@@ -109,8 +101,7 @@ const aircraftDetailsPage = () => {
                 </Button>
             </Link>
         </Container>
+    );
+};
 
-    )
-}
-
-export default aircraftDetailsPage
+export default AircraftDetailsPage;

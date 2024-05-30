@@ -29,13 +29,13 @@ const Approutes = () => {
             <Route path={'/fleet/:aircraftId'} element={<AircraftDetailsPage />} />
 
             {/* ADMIN RIGHTS */}
+
             <Route path={'/routes'} element={<FlightsPage />} />
             <Route path={'/routes/:flightId'} element={<FlightDetailsPage />} />
             <Route path={'/routes/add'} element={<AddFlightFormPage />} />
             <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
             <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
             <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
-
 
             <Route path={'/about'} element={<AboutPage />} />
             <Route path={'/signup'} element={<SignupPage />} />

@@ -2,7 +2,7 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './AircraftCard.css';
 
-const AircraftCard = ({ _id, model, description, mainImage }) => {
+const AircraftCard = ({ _id, model, mainImage }) => {
 
     return (
         <div className="AircraftCard">
@@ -18,22 +18,17 @@ const AircraftCard = ({ _id, model, description, mainImage }) => {
                                 />
                             </Link>
                         </Col>
+
                     </Row>
 
 
-                    <Card.Title className="mt-3">{model}</Card.Title>
-                    <Row className="align-items-center">
-                        <Col>
+                    <Row className="mt-4">
+                        <Col xs={4}>
                             <Link to={`/fleet/${_id}`}>
                                 <Button variant="secondary" size="md" className="custom-button">
                                     Learn More about the {model}
                                 </Button>
                             </Link>
-                        </Col>
-                        <Col>
-                            <Card.Text>
-                                {description}
-                            </Card.Text>
                         </Col>
                     </Row>
                 </Card.Body>

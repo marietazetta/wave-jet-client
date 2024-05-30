@@ -1,5 +1,41 @@
 .table-custom {
-    width: 80%;
-    background-color: #f2f2f2;
-    /* Gris claro */
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.collage-images {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.collage-images .col {
+    padding: 10px;
+}
+
+.fixed-size-image {
+    width: 150%;
+    height: 300px;
+    /* Ajusta esta altura según tus necesidades */
+    object-fit: cover;
+}
+
+.mb-4 {
+    margin-bottom: 20px;
+}
+
+.my-4 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.custom-color-button {
+    background-color: #6c757d;
+    color: white;
 }

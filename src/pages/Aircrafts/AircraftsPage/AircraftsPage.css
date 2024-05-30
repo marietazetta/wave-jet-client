@@ -10,10 +10,7 @@
     bottom: 10px;
     width: 100%;
     margin: 0;
-    left: 50%;
-    transform: translateX(-50%);
 }
-
 
 .AircraftsPage .carousel-indicators li {
     background-color: #ccc;
@@ -21,6 +18,7 @@
     height: 12px;
     border-radius: 50%;
     border: 1px solid #ccc;
+    margin: 0 5px;
 }
 
 .AircraftsPage .carousel-indicators .active {
@@ -30,19 +28,28 @@
 
 .AircraftsPage .carousel-control-prev,
 .AircraftsPage .carousel-control-next {
-    top: 10px;
-    width: 800PX;
+    top: 50%;
+    width: auto;
     position: absolute;
-    margin-top: 250PX;
-
     transform: translateY(-50%);
 }
 
 .AircraftsPage .carousel-control-prev-icon,
 .AircraftsPage .carousel-control-next-icon {
     background-color: black;
-    position: relative;
-    align-items: center;
+    width: 30px;
+    height: 30px;
+
+}
+
+.AircraftsPage .carousel-control-prev {
+    left: 20%;
+
+}
+
+.AircraftsPage .carousel-control-next {
+    right: 20%;
+
 }
 
 .AircraftsPage .carousel-caption {
@@ -53,5 +60,4 @@
     left: auto;
     padding: 0;
     color: #000;
-
 }
