@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom"
+import "./Navigation.css"
 import { Nav, Navbar, Container, Offcanvas, NavDropdown, Form, Button } from "react-bootstrap"
 
 
@@ -6,21 +8,30 @@ const Navigation = () => {
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+                <Navbar key={expand} expand={expand} className="Navbar">
                     <Container fluid>
-                        <Navbar.Brand href="#">WAVE JET</Navbar.Brand>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+
+                        <Link to="/fleet">
+                            <Nav.Link href="/fleet" as="span">Fleet</Nav.Link>
+                        </Link>
+                        <Link to="/routes">
+                            <Nav.Link href="/routes" as="span">Routes</Nav.Link>
+                        </Link>
+
+                        <Navbar.Brand href="/">WAVE JET</Navbar.Brand>
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                            placement="end"
+                            placement="start"
+                            className="custom-offcanvas"
                         >
-                            <Offcanvas.Header closeButton>
+                            <Offcanvas.Header closeButton className="header-body">
                                 <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
                                     WAVE JET
                                 </Offcanvas.Title>
                             </Offcanvas.Header>
-                            <Offcanvas.Body>
+                            <Offcanvas.Body className="canvas-body">
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
                                     <Nav.Link href="#action1">Fleet</Nav.Link>
                                     <Nav.Link href="#action2">About</Nav.Link>
@@ -45,7 +56,7 @@ const Navigation = () => {
                                         className="me-2"
                                         aria-label="Search"
                                     />
-                                    <Button variant="outline-success">Search</Button>
+                                    <Button className="custom-color-button" variant="outline-success">Search</Button>
                                 </Form>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>

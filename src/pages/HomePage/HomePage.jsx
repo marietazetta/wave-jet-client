@@ -1,16 +1,20 @@
 import './HomePage.css'
-import Navigation from "../../components/Navigation/Navigation"
-import Footer from "../../components/Footer/Footer"
+
 
 
 const HomePage = () => {
     return (
-        <>
 
-            <h1>Soy la HomePage</h1>
+        <div>
+            <video
+                src="https://res.cloudinary.com/dzncdwx7u/video/upload/v1717084577/homepagevideo_tessr8.mp4"
+                width='120%'
+                autoPlay
+                muted
+                loop
+            />
 
-
-        </>
+        </div>
 
     )
 }
