@@ -21,11 +21,12 @@ const AircraftsPage = () => {
     return (
         <div className='AircraftsPage'>
             <Carousel className="carousel-dark custom-carousel">
-                {aircrafts.map(aircraft => (
-                    <Carousel.Item key={aircraft._id}>
-                        <AircraftsList aircraft={aircraft} />
-                    </Carousel.Item>
-                ))}
+                {
+                    aircrafts.map(aircraft => (
+                        <Carousel.Item key={aircraft._id}>
+                            <AircraftsList aircraft={aircraft} />
+                        </Carousel.Item>
+                    ))}
             </Carousel>
         </div>
     );

@@ -1,29 +1,14 @@
-import { Card, Button, Row, Col, Carousel } from "react-bootstrap";
+import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './AircraftCard.css';
 
-const AircraftCard = ({ _id, model, description, images, mainImage }) => {
+const AircraftCard = ({ _id, model, description, mainImage }) => {
 
     return (
         <div className="AircraftCard">
             <Card className="shadow-sm border-0">
                 <Card.Body>
                     <Row>
-                        {/* <Col>
-                            <Carousel>
-                                {images.map((image, index) => (
-                                    <Carousel.Item key={index}>
-                                        <Link to={`/fleet/${_id}`}>
-                                            <img
-                                                className="d-block w-100 rounded equal-aspect-ratio"
-                                                src={image}
-                                                alt={`Slide ${index}`}
-                                            />
-                                        </Link>
-                                    </Carousel.Item>
-                                ))}
-                            </Carousel>
-                        </Col> */}
 
                         <Col>
                             <Link to={`/fleet/${_id}`}>

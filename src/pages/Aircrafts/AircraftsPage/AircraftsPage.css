@@ -14,10 +14,9 @@
     transform: translateX(-50%);
 }
 
-/* Cambia el color de los puntos de los indicadores */
+
 .AircraftsPage .carousel-indicators li {
     background-color: #ccc;
-    /* Color para los indicadores no activos */
     width: 12px;
     height: 12px;
     border-radius: 50%;
@@ -25,23 +24,25 @@
 }
 
 .AircraftsPage .carousel-indicators .active {
-    background-color: #1b7ccb;
-    /* Color para el indicador activo */
-    border: 1px solid #1b7ccb;
+    background-color: #EDE0D4;
+    border: 1px solid #EDE0D4;
 }
 
 .AircraftsPage .carousel-control-prev,
 .AircraftsPage .carousel-control-next {
     top: 10px;
-    width: auto;
-    height: auto;
+    width: 800PX;
+    position: absolute;
+    margin-top: 250PX;
+
     transform: translateY(-50%);
 }
 
 .AircraftsPage .carousel-control-prev-icon,
 .AircraftsPage .carousel-control-next-icon {
     background-color: black;
-    /* Puedes cambiar esto a tu preferencia */
+    position: relative;
+    align-items: center;
 }
 
 .AircraftsPage .carousel-caption {
@@ -52,5 +53,5 @@
     left: auto;
     padding: 0;
     color: #000;
-    /* Cambia el color si es necesario */
+
 }
