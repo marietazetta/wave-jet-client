@@ -3,6 +3,8 @@ import { useState } from "react"
 import { Form, Row, Col, InputGroup, Button } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import aircraftServices from '../../../services/aircraft.services'
+import uploadServices from '../../../services/upload.services'
+
 
 const NewAircraftForm = () => {
 
@@ -14,7 +16,7 @@ const NewAircraftForm = () => {
         tailNumber: '',
         capacity: 0,
         mainImage: '',
-        images: [''],
+        imagesCarousel: [''],
         range: 0,
         homebase: '',
         cabinWidth: 0,
@@ -57,35 +59,67 @@ const NewAircraftForm = () => {
     };
 
     const addNewImageField = () => {
-        const newImages = [...aircraftData.images]
+        const newImages = [...aircraftData.imagesCarousel]
         newImages.push('')
         setAircraftData({
             ...aircraftData,
-            images: newImages
+            imagesCarousel: newImages
         })
     }
 
-    const handleGalleryChange = (event, idx) => {
-        const { value } = event.target
-        const images = [...aircraftData.images]
-        images[idx] = value
-        setAircraftData({
-            ...aircraftData,
-            images
-        })
-    }
+    // const handleGalleryChange = (event, idx) => {
+    //     const { value } = event.target
+    //     const images = [...aircraftData.images]
+    //     images[idx] = value
+    //     setAircraftData({
+    //         ...aircraftData,
+    //         images
+    //     })
+    // }
 
     const handleAircraftFormSubmit = e => {
         e.preventDefault()
 
         const aircraft = {
             ...aircraftData,
-            services: servicesData
+            services: servicesData,
         }
 
         aircraftServices
             .saveAircraft(aircraft)
             .then(() => navigate('/fleet'))
+            .catch(err => console.log(err))
+    }
+
+    const handleMainImageUpload = e => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+                setAircraftData({ ...aircraftData, mainImage: res.data.cloudinary_url })
+            })
+            .catch(err => console.log(err))
+    }
+
+    const handleGalleryUpload = (e, index) => {
+
+        const formData = new FormData()
+        formData.append('imageData', e.target.files[0])
+
+
+
+        uploadServices
+            .uploadimage(formData)
+            .then(res => {
+
+                let imagesCarouselCopy = [...aircraftData.imagesCarousel]
+                imagesCarouselCopy[index] = res.data.cloudinary_url
+
+                setAircraftData({ ...aircraftData, imagesCarousel: imagesCarouselCopy })
+            })
             .catch(err => console.log(err))
     }
 
@@ -166,21 +200,20 @@ const NewAircraftForm = () => {
                     </InputGroup.Text>
                     <Form.Control id="basic-url" aria-describedby="basic-addon3"
                         name="mainImage"
-                        value={aircraftData.mainImage}
-                        onChange={handleInputChange} />
+                        type="file"
+                        onChange={handleMainImageUpload} />
                 </InputGroup>
 
                 <Form.Group controlId="ImagesGallery" className="mb-3">
                     <Form.Label>Images Gallery</Form.Label>
                     {
-                        aircraftData.images.map((eachField, idx) => (
+                        aircraftData.imagesCarousel.map((eachField, idx) => (
                             <Form.Control
                                 key={idx}
                                 className="mb-3"
-                                type="url"
+                                type="file"
                                 placeholder={`Place your image here`}
-                                value={aircraftData.images[idx]}
-                                onChange={event => handleGalleryChange(event, idx)} />
+                                onChange={event => handleGalleryUpload(event, idx)} />
                         ))
                     }
                     <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
