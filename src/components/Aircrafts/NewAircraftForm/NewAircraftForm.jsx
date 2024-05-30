@@ -18,7 +18,7 @@ const NewAircraftForm = () => {
         mainImage: '',
         imagesCarousel: [''],
         range: 0,
-        homebase: '',
+        homebase: 'LEMD',
         cabinWidth: 0,
         cabinHeight: 0,
         hourlyRate: 0,
@@ -236,9 +236,12 @@ const NewAircraftForm = () => {
                             onChange={handleInputChange} />
                     </Form.Group>
 
-                    <Form.Group as={Col} controlId="homebase.input">
+                    <Form.Group as={Col} controlId="homebase.input" >
                         <Form.Label>Homebase</Form.Label>
-                        <Form.Control type="text" placeholder="Ex. LEMD"
+                        <Form.Control
+                            type="text"
+                            placeholder="Ex. LEMD"
+                            disabled
                             name="homebase"
                             value={aircraftData.homebase}
                             onChange={handleInputChange} />

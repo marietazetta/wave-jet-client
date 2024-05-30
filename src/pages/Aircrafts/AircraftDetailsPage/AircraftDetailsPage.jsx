@@ -4,7 +4,7 @@ import { Container, Row, Button } from "react-bootstrap"
 import aircraftServices from "../../../services/aircraft.services"
 import { Link } from "react-router-dom"
 
-const CoasterDetailsPage = () => {
+const aircraftDetailsPage = () => {
 
     const { aircraftId } = useParams()
 
@@ -113,4 +113,4 @@ const CoasterDetailsPage = () => {
     )
 }
 
-export default CoasterDetailsPage
+export default aircraftDetailsPage

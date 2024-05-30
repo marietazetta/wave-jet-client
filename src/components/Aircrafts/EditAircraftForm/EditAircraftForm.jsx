@@ -37,7 +37,7 @@ const EditAircraftForm = () => {
         mainImage: '',
         imagesCarousel: [''],
         range: 0,
-        homebase: '',
+        homebase: 'LEMD',
         cabinWidth: 0,
         cabinHeight: 0,
         hourlyRate: 0,
@@ -258,6 +258,7 @@ const EditAircraftForm = () => {
                         <Form.Label>Homebase</Form.Label>
                         <Form.Control type="text" placeholder="Ex. LEMD"
                             name="homebase"
+                            disabled
                             value={aircraftData.homebase}
                             onChange={handleInputChange} />
                     </Form.Group>
