@@ -34,7 +34,7 @@ const AircraftCard = ({ _id, model, mainImage }) => {
                 </Card.Body>
             </Card>
         </div>
-    );
+    )
 }
 
 export default AircraftCard;
