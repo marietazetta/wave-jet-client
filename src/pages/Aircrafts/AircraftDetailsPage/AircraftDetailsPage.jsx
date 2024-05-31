@@ -26,10 +26,10 @@ const AircraftDetailsPage = () => {
 
     return (
 
-        <div className="AircraftDetailsPage">
+        <div>
 
-            <Container>
-                <Row className="mb-4">
+            <Container className="AircraftDetailsPage">
+                <Row className="my-4">
                     <h1 className="text">{aircraft.model}</h1>
                 </Row>
 
@@ -50,16 +50,6 @@ const AircraftDetailsPage = () => {
                         <table className="table table-striped table-custom">
                             <tbody>
                                 <tr>
-                                    <td className="text-center"><strong>Wifi</strong></td>
-                                    <td className="text-center">{services.wifi === true ? 'available' : 'not available'}</td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center"><strong>Catering</strong></td>
-                                    <td className="text-center">{services.catering === true ? 'available' : 'not available'}</td>
-                                </tr>
-                                <tr>
-                                    <td className="text-center"><strong>Flight Attendant</strong></td>
-                                    <td className="text-center">{services.flight_attendant === true ? 'available' : 'not available'}</td>
                                     <th className="text-center" scope="row">Manufacturer</th>
                                     <td className="text-center">{aircraft.manufacturer}</td>
                                 </tr>

@@ -38,7 +38,7 @@ const FlightsPage = () => {
                 <p>Our Summer Routes</p>
 
                 {
-                    isLoading ? <Loader /> : <FlightsList flights={flights} />
+                    isLoading ? <Loader /> : <FlightsList flights={flights} loadFlights={loadFlights} />
                 }
 
                 {

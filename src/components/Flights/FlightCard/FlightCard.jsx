@@ -1,20 +1,21 @@
 import { Card, Button } from "react-bootstrap"
 import { Link } from "react-router-dom"
 import './FlightCard.css'
+import DeleteModal from "../../DeleteModal/DeleteModal"
+import { useState } from "react"
 
-const FlightCard = ({ _id, toDestination, flightTime, fromDestination, imageUrl }) => {
+const FlightCard = ({ _id, toDestination, flightTime, fromDestination, loadFlights }) => {
+
+    const [show, setShow] = useState(false)
+    const handleClose = () => setShow(false)
+    const showConfirmModal = () => setShow(true)
 
     return (
         <>
             <div className="FlightCard">
 
                 <Card className="shadow-sm border-0">
-                    {/* <Link to={`/route/${_id}`}>
-                        <Card.Img variant="top"
-                            src={imageUrl}
-                            className="rounded-top equal-aspect-ratio"
-                        />
-                    </Link> */}
+
                     <Card.Body >
                         <Card.Title>{fromDestination} - {toDestination}</Card.Title>
                         <Card.Text >
@@ -31,6 +32,10 @@ const FlightCard = ({ _id, toDestination, flightTime, fromDestination, imageUrl 
                                 View
                             </Button>
                         </Link>
+
+
+                        <Button onClick={showConfirmModal} className="custom-color-button">Delete</Button>
+                        <DeleteModal show={show} handleClose={handleClose} flightId={_id} loadFlights={loadFlights} />
 
                     </Card.Body>
 
