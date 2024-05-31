@@ -1,15 +1,17 @@
 import './LoginPage.css'
 import UserLoginForm from "../../../components/Users/UserLoginForm/UserLoginForm"
-import { Container } from 'react-bootstrap'
+import { Container, Col } from 'react-bootstrap'
 
 const LoginPage = () => {
     return (
         <>
-            <Container className='pt-5'>
-
-                <UserLoginForm />
-
-            </Container>
+            <div className='LoginPage'>
+                <Container className='pt-5'>
+                    <Col>
+                        <UserLoginForm />
+                    </Col>
+                </Container>
+            </div>
 
         </>
 

@@ -1,23 +1,16 @@
-import './Footer.css'
-import { Container, Nav } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
-
-
+import './Footer.css';
+import { Container } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
-
     return (
         <div className="Footer">
-
-            <Container >
-
+            <Container>
                 <Link to={'/'} className='footer-link'><h6>WAVE JET 🛩️</h6></Link>
                 <p>&copy; All rights reserved</p>
-
             </Container>
-
         </div>
-    )
+    );
 }
 
-export default Footer
+export default Footer;

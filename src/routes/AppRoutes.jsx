@@ -12,6 +12,7 @@ import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
 import LoginPage from "../pages/Users/LoginPage/LoginPage"
 import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import PrivateRoute from "./PrivateRoute"
+import UsersPage from "../pages/Users/UsersPage/UsersPage"
 import { Route, Routes } from "react-router-dom"
 
 
@@ -44,6 +45,7 @@ const Approutes = () => {
 
             <Route element={<PrivateRoute />}>
                 <Route path={'/profile'} element={<ProfilePage />} />
+                <Route path={'/users'} element={<UsersPage />} />
             </Route>
 
 

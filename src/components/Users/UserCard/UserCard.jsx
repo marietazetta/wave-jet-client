@@ -1,19 +1,31 @@
 import Card from 'react-bootstrap/Card';
-import './AircraftCard.css';
+import Table from 'react-bootstrap/Table';
+import './UserCard.css';
 
-const UserCard = ({ userName, email }) => {
+const UserCard = ({ username, email }) => {
 
     return (
+        <>
 
-        <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-                <Card.Title>User Name {userName}</Card.Title>
-                <Card.Text>
-                    Email {email}
-                </Card.Text>
-            </Card.Body>
-        </Card>
+            <Card className='userCard'>
+                <Table striped>
+                    <thead>
+                        <tr>
+                            <th>User Name</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{username}</td>
+                            <td>{email}</td>
+                        </tr>
+
+                    </tbody>
+                </Table>
+            </Card>
+        </>
+
 
     );
 }
