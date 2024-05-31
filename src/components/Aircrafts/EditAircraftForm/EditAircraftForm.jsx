@@ -6,28 +6,7 @@ import aircraftServices from '../../../services/aircraft.services'
 import { useParams } from 'react-router-dom'
 import uploadServices from '../../../services/upload.services'
 
-
 const EditAircraftForm = () => {
-
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        loadFormData()
-    }, [])
-
-
-    const { aircraftId } = useParams()
-
-    const loadFormData = () => {
-        aircraftServices
-            .getOneAircraft(aircraftId)
-            .then(({ data }) => {
-                setAircraftData(data)
-                setServicesData(data.services)
-            })
-            .catch(err => console.log(err))
-    }
-
 
     const [aircraftData, setAircraftData] = useState({
         model: '',
@@ -51,10 +30,27 @@ const EditAircraftForm = () => {
         wifi: false,
     })
 
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        loadFormData()
+    }, [])
+
+    const { aircraftId } = useParams()
+
+    const loadFormData = () => {
+        aircraftServices
+            .getOneAircraft(aircraftId)
+            .then(({ data }) => {
+                setAircraftData(data)
+                setServicesData(data.services)
+            })
+            .catch(err => console.log(err))
+    }
+
     const handleAvailabilityClick = () => {
         setAircraftData({ ...aircraftData, availability: !aircraftData.availability })
     }
-
 
     const handleServiceSelect = event => {
         const { value, checked } = event.target
@@ -87,12 +83,13 @@ const EditAircraftForm = () => {
         })
     }
 
-
     const handleAircraftFormSubmit = e => {
         e.preventDefault()
 
+        const updatedData = { ...aircraftData, services: servicesData }
+
         aircraftServices
-            .editAircraft(aircraftId, aircraftData, servicesData)
+            .editAircraft(aircraftId, updatedData)
             .then(() => navigate(`/fleet/${aircraftId}`))
             .catch(err => console.log(err))
     }
@@ -110,27 +107,14 @@ const EditAircraftForm = () => {
             .catch(err => console.log(err))
     }
 
-    // const handleGalleryChange = (event, idx) => {
-    //     const { value } = event.target
-    //     const images = [...aircraftData.images]
-    //     images[idx] = value
-    //     setAircraftData({
-    //         ...aircraftData,
-    //         images
-    //     })
-    // }
-
     const handleGalleryUpload = (e, index) => {
 
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
-
-
         uploadServices
             .uploadimage(formData)
             .then(res => {
-
                 let imagesCarouselCopy = [...aircraftData.imagesCarousel]
                 imagesCarouselCopy[index] = res.data.cloudinary_url
 
@@ -141,14 +125,11 @@ const EditAircraftForm = () => {
 
     return (
         <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded">
-
             <Form onSubmit={handleAircraftFormSubmit}>
-
                 <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
                     <span onClick={handleAvailabilityClick} className="availability-emoji">
                         {aircraftData.availability ? '🟢' : '🔴'}
                     </span>
-
                 </Form.Group>
                 <Row className="mb-3">
                     <Form.Group as={Col} className="mb-3" controlId="Model.Input">
@@ -159,9 +140,7 @@ const EditAircraftForm = () => {
                             onChange={handleInputChange}
                         />
                     </Form.Group>
-
                 </Row>
-
                 <Form.Group className="mb-3" controlId="Manufacturer.Input">
                     <Form.Label>Manufacturer</Form.Label>
                     <Form.Control size="md" type="text" placeholder="Manufacturer"
@@ -169,7 +148,6 @@ const EditAircraftForm = () => {
                         value={aircraftData.manufacturer}
                         onChange={handleInputChange} />
                 </Form.Group>
-
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="Registration.Input">
                         <Form.Label>Registration</Form.Label>
@@ -178,7 +156,6 @@ const EditAircraftForm = () => {
                             value={aircraftData.tailNumber}
                             onChange={handleInputChange} />
                     </Form.Group>
-
                     <Form.Group as={Col} controlId="paxCapacity.Input">
                         <Form.Label>Passenger Capacity</Form.Label>
                         <Form.Control type="number" placeholder="10"
@@ -190,7 +167,6 @@ const EditAircraftForm = () => {
                         />
                     </Form.Group>
                 </Row>
-
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="cabinHeight.input">
                         <Form.Label>Cabin Height</Form.Label>
@@ -207,36 +183,27 @@ const EditAircraftForm = () => {
                             onChange={handleInputChange} />
                     </Form.Group>
                 </Row>
-
                 <Form.Label htmlFor="basic-url">Cover Image</Form.Label>
                 <InputGroup className="mb-3">
-                    <InputGroup.Text id="basic-addon3">
-                        Image URL
-                    </InputGroup.Text>
+                    <InputGroup.Text id="basic-addon3">Image URL</InputGroup.Text>
                     <Form.Control id="basic-url" aria-describedby="basic-addon3"
                         name="mainImage"
                         type="file"
                         onChange={handleMainImageUpload}
-
                     />
                 </InputGroup>
-
                 <Form.Group controlId="ImagesGallery" className="mb-3">
                     <Form.Label>Images Gallery</Form.Label>
-                    {
-                        aircraftData.imagesCarousel?.map((eachField, idx) => (
-                            <Form.Control
-                                key={idx}
-                                className="mb-3"
-                                type="file"
-                                placeholder={`Place your image here`}
-                                // value={aircraftData.images[idx]}
-                                onChange={event => handleGalleryUpload(event, idx)} />
-                        ))
-                    }
+                    {aircraftData.imagesCarousel?.map((eachField, idx) => (
+                        <Form.Control
+                            key={idx}
+                            className="mb-3"
+                            type="file"
+                            placeholder={`Place your image here`}
+                            onChange={event => handleGalleryUpload(event, idx)} />
+                    ))}
                     <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
                 </Form.Group>
-
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="range.input">
                         <Form.Label>Range</Form.Label>
@@ -245,7 +212,6 @@ const EditAircraftForm = () => {
                             value={aircraftData.range}
                             onChange={handleInputChange} />
                     </Form.Group>
-
                     <Form.Group as={Col} controlId="hourlyRate.input">
                         <Form.Label>Hourly Rate</Form.Label>
                         <Form.Control type="number" placeholder="$"
@@ -253,7 +219,6 @@ const EditAircraftForm = () => {
                             value={aircraftData.hourlyRate}
                             onChange={handleInputChange} />
                     </Form.Group>
-
                     <Form.Group as={Col} controlId="homebase.input">
                         <Form.Label>Homebase</Form.Label>
                         <Form.Control type="text" placeholder="Ex. LEMD"
@@ -263,9 +228,8 @@ const EditAircraftForm = () => {
                             onChange={handleInputChange} />
                     </Form.Group>
                 </Row>
-
                 <Form.Group className="mb-3">
-                    <Form.Label >Services</Form.Label>
+                    <Form.Label>Services</Form.Label>
                     <Row>
                         <Col>
                             <Form.Check
@@ -299,7 +263,6 @@ const EditAircraftForm = () => {
                         </Col>
                     </Row>
                 </Form.Group>
-
                 <Form.Group className="mb-3" controlId="description.Input">
                     <Form.Label>Description</Form.Label>
                     <Form.Control size="md" as="textarea" rows={2}
@@ -307,7 +270,6 @@ const EditAircraftForm = () => {
                         value={aircraftData.description}
                         onChange={handleInputChange} />
                 </Form.Group>
-
                 <Button variant="dark" type="submit">
                     Submit
                 </Button>

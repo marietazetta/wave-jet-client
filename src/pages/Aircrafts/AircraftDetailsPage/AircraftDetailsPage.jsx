@@ -8,7 +8,7 @@ import "./AirCraftDetailsPage.css";
 const AircraftDetailsPage = () => {
     const { aircraftId } = useParams();
     const [aircraft, setAircraftData] = useState({});
-    const [services, setServicesData] = useState(null);
+    const [services, setServicesData] = useState({});
 
     useEffect(() => {
         loadAircraftDetails();
@@ -69,15 +69,15 @@ const AircraftDetailsPage = () => {
                             <tbody>
                                 <tr>
                                     <td className="text-center"><strong>Wifi</strong></td>
-                                    <td className="text-center">{services.wifi ? "Available" : "Not Available"}</td>
+                                    <td className="text-center">{services.wifi === true ? 'available' : 'not available'}</td>
                                 </tr>
                                 <tr>
                                     <td className="text-center"><strong>Catering</strong></td>
-                                    <td className="text-center">{services.catering ? "Available" : "Not Available"}</td>
+                                    <td className="text-center">{services.catering === true ? 'available' : 'not available'}</td>
                                 </tr>
                                 <tr>
                                     <td className="text-center"><strong>Flight Attendant</strong></td>
-                                    <td className="text-center">{services.flightAttendant ? "Available" : "Not Available"}</td>
+                                    <td className="text-center">{services.flight_attendant === true ? 'available' : 'not available'}</td>
                                 </tr>
                             </tbody>
                         </table>

@@ -42,7 +42,7 @@ const FlightsPage = () => {
                 }
 
                 {
-                    loggedUser && <Link className="btn btn-sm btn-dark" to={'/flights/add'}>New Route</Link>
+                    loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>
                 }
                 <hr />
 

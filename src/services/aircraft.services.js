@@ -24,6 +24,7 @@ class AircraftServices {
     editAircraft(aircraftId, aircraftData, servicesData) {
         return this.axiosApp.put(`/${aircraftId}`, aircraftData, servicesData)
     }
+
 }
 
 const aircraftServices = new AircraftServices()

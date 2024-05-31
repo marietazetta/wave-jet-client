@@ -21,6 +21,10 @@ class AuthServices {
         })
     }
 
+    getAllUsers() {
+        return this.axiosApp.get('/')
+    }
+
     signupUser(userData) {
         return this.axiosApp.post('/signup', userData)
     }
