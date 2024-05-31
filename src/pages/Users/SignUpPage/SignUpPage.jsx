@@ -1,12 +1,17 @@
 
+import { Container } from "react-bootstrap"
 import UserSignUpForm from "../../../components/Users/UserSignUpForm/UserSignUpForm"
+
 
 const SignUp = () => {
     return (
         <>
-            <h1>Soy la SignUp</h1>
 
-            <UserSignUpForm />
+            <Container className='pt-5'>
+
+                <UserSignUpForm />
+
+            </Container>
 
         </>
 
