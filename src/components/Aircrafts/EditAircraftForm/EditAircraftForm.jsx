@@ -1,6 +1,6 @@
 import './EditAircraftForm.css'
 import { useState, useEffect } from "react"
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap"
+import { Form, Row, Col, InputGroup, Button, Image } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import aircraftServices from '../../../services/aircraft.services'
 import { useParams } from 'react-router-dom'
@@ -194,6 +194,11 @@ const EditAircraftForm = () => {
                 </InputGroup>
                 <Form.Group controlId="ImagesGallery" className="mb-3">
                     <Form.Label>Images Gallery</Form.Label>
+                    {
+                        aircraftData.imagesCarousel?.map((eachField, idx) => (
+                            <Image src={eachField} alt={aircraftData.model} key={idx} style={{ width: 100 }} />
+                        ))
+                    }
                     {aircraftData.imagesCarousel?.map((eachField, idx) => (
                         <Form.Control
                             key={idx}

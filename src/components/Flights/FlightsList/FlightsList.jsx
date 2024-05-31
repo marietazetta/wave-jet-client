@@ -1,7 +1,7 @@
 import FlightCard from "../FlightCard/FlightCard"
 import { Row, Col } from "react-bootstrap"
 
-const FlightsList = ({ flights }) => {
+const FlightsList = ({ flights, loadFlights }) => {
 
     return (
 
@@ -12,7 +12,7 @@ const FlightsList = ({ flights }) => {
                     flights.map(elm => {
                         return (
                             <Col lg={{ span: 6 }} md={{ span: 6 }} key={elm._id}>
-                                <FlightCard {...elm} />
+                                <FlightCard {...elm} loadFlights={loadFlights} />
                             </Col>
                         )
                     })

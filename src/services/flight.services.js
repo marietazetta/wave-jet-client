@@ -24,6 +24,10 @@ class FlightServices {
     editFlight(flightId, flightData) {
         return this.axiosApp.put(`/${flightId}`, flightData)
     }
+
+    deleteFlight(flightId) {
+        return this.axiosApp.delete(`/${flightId}`)
+    }
 }
 
 const flightServices = new FlightServices()
