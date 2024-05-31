@@ -1,15 +1,20 @@
 import { Link } from "react-router-dom"
 import "./Navigation.css"
 import { Nav, Navbar, Container, Offcanvas, NavDropdown, Form, Button } from "react-bootstrap"
+import { useContext } from 'react'
+import { AuthContext } from "../../contexts/auth.context"
+
 
 
 const Navigation = () => {
+
+    const { loggedUser, logout } = useContext(AuthContext)
 
     return (
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className="Navbar">
-                    <Container fluid>
+                    <Container>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 
                         <Link to="/fleet">
@@ -18,6 +23,25 @@ const Navigation = () => {
                         <Link to="/routes">
                             <Nav.Link href="/routes" as="span">Routes</Nav.Link>
                         </Link>
+
+
+
+                        {
+                            loggedUser ?
+                                <>
+                                    <Navbar.Text>Welcome, {loggedUser.username}!</Navbar.Text>
+                                    <span onClick={logout} className='nav-link'>Cerrar sesión</span>
+                                </>
+                                :
+                                <>
+                                    <Link to="/signup">
+                                        <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
+                                    </Link>
+                                    <Link to="/login">
+                                        <Nav.Link href="/login" as="span">Log In</Nav.Link>
+                                    </Link>
+                                </>
+                        }
 
                         <Navbar.Brand href="/">WAVE JET</Navbar.Brand>
                         <Navbar.Offcanvas
@@ -33,13 +57,13 @@ const Navigation = () => {
                             </Offcanvas.Header>
                             <Offcanvas.Body className="canvas-body">
                                 <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <Nav.Link href="#action1">Fleet</Nav.Link>
-                                    <Nav.Link href="#action2">About</Nav.Link>
+                                    <Nav.Link href="/fleet">Fleet</Nav.Link>
+                                    <Nav.Link href="/about">About</Nav.Link>
                                     <NavDropdown
                                         title="Profile"
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
-                                        <NavDropdown.Item href="#action3">My Details</NavDropdown.Item>
+                                        <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
                                         <NavDropdown.Item href="#action4">
                                             Log Out
                                         </NavDropdown.Item>
