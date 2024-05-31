@@ -6,8 +6,6 @@ import { Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
 import Loader from "../../../components/Loader/Loader"
 
-
-
 const FlightsPage = () => {
 
     const [flights, setFlights] = useState([])
@@ -32,7 +30,7 @@ const FlightsPage = () => {
 
     return (
 
-        <div className="FlightsPage">
+        <div className="FlightsPage full-height">
             <Container>
 
                 <p>Our Summer Routes</p>

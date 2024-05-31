@@ -1,11 +1,7 @@
 import './DeleteModal.css'
-import { useNavigate, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import flightServices from '../../services/flight.services'
 import { Modal, Button } from 'react-bootstrap'
-
-
-
 
 const DeleteModal = ({ show, handleClose, flightId, loadFlights }) => {
 
@@ -22,8 +18,6 @@ const DeleteModal = ({ show, handleClose, flightId, loadFlights }) => {
             })
             .catch(err => console.log(err))
     }
-
-
 
     return (
         <>

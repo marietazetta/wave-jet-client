@@ -6,12 +6,9 @@ const EditFlightFormPage = () => {
 
     return (
 
-
         <Container>
             <EditFlightForm />
         </Container>
-
-
 
     )
 }

@@ -2,7 +2,7 @@ import './AircraftsPage.css';
 import AircraftsList from "../../../components/Aircrafts/AircraftsList/AircraftsList";
 import aircraftServices from "../../../services/aircraft.services";
 import { useState, useEffect } from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 
 const AircraftsPage = () => {
     const [aircrafts, setAircrafts] = useState([]);
@@ -19,16 +19,18 @@ const AircraftsPage = () => {
     };
 
     return (
-        <div className='AircraftsPage'>
-            <Carousel className="carousel-dark custom-carousel">
+        <Container>
+            <div className='AircraftsPage  full-height'>
+
                 {
                     aircrafts.map(aircraft => (
-                        <Carousel.Item key={aircraft._id}>
+                        <p key={aircraft._id}>
                             <AircraftsList aircraft={aircraft} />
-                        </Carousel.Item>
+                        </p>
                     ))}
-            </Carousel>
-        </div>
+
+            </div>
+        </Container>
     );
 };
 

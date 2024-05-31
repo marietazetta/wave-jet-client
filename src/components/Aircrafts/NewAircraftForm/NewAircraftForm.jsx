@@ -8,8 +8,6 @@ import uploadServices from '../../../services/upload.services'
 
 const NewAircraftForm = () => {
 
-    const navigate = useNavigate()
-
     const [aircraftData, setAircraftData] = useState({
         model: '',
         manufacturer: '',
@@ -31,6 +29,9 @@ const NewAircraftForm = () => {
         catering: false,
         wifi: false,
     })
+
+    const navigate = useNavigate()
+
 
     const handleAvailabilityClick = () => {
         setAircraftData({ ...aircraftData, availability: !aircraftData.availability })
@@ -67,16 +68,6 @@ const NewAircraftForm = () => {
         })
     }
 
-    // const handleGalleryChange = (event, idx) => {
-    //     const { value } = event.target
-    //     const images = [...aircraftData.images]
-    //     images[idx] = value
-    //     setAircraftData({
-    //         ...aircraftData,
-    //         images
-    //     })
-    // }
-
     const handleAircraftFormSubmit = e => {
         e.preventDefault()
 
@@ -109,8 +100,6 @@ const NewAircraftForm = () => {
         const formData = new FormData()
         formData.append('imageData', e.target.files[0])
 
-
-
         uploadServices
             .uploadimage(formData)
             .then(res => {
@@ -132,7 +121,6 @@ const NewAircraftForm = () => {
                     <span onClick={handleAvailabilityClick} className="availability-emoji">
                         {aircraftData.availability ? '🟢' : '🔴'}
                     </span>
-                    {/* <Form.Label>Availability</Form.Label> */}
 
                 </Form.Group>
                 <Row className="mb-3">

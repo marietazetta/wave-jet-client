@@ -4,12 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import uploadServices from "../../../services/upload.services"
 import flightServices from "../../../services/flight.services"
 
-
-
 const EditFlightForm = () => {
 
     const navigate = useNavigate()
-
 
     const [flightData, setFlightData] = useState({
         fromDestination: '',
@@ -34,7 +31,6 @@ const EditFlightForm = () => {
     useEffect(() => {
         loadFormData()
     }, [])
-
 
 
     const handleInputChange = e => {
@@ -107,7 +103,6 @@ const EditFlightForm = () => {
                 </div>
             </Form>
         </div>
-
 
     )
 }

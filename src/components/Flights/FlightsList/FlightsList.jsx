@@ -6,7 +6,6 @@ const FlightsList = ({ flights, loadFlights }) => {
     return (
 
         <>
-
             <Row>
                 {
                     flights.map(elm => {
@@ -18,7 +17,6 @@ const FlightsList = ({ flights, loadFlights }) => {
                     })
                 }
             </Row>
-
         </>
 
 

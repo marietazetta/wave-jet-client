@@ -1,12 +1,8 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import UsersList from "../../../components/Users/UsersList/UsersList"
-import { AuthContext } from "../../../contexts/auth.context"
-import { Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
 import Loader from "../../../components/Loader/Loader"
 import authServices from "../../../services/auth.services"
-
-
 
 const UsersPage = () => {
 

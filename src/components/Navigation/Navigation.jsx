@@ -4,8 +4,6 @@ import { Nav, Navbar, Container, Offcanvas, NavDropdown, Form, Button } from "re
 import { useContext } from 'react'
 import { AuthContext } from "../../contexts/auth.context"
 
-
-
 const Navigation = () => {
 
     const { loggedUser, logout } = useContext(AuthContext)
@@ -23,8 +21,6 @@ const Navigation = () => {
                         <Link to="/routes">
                             <Nav.Link href="/routes" as="span">Routes</Nav.Link>
                         </Link>
-
-
 
                         {
                             loggedUser ?
