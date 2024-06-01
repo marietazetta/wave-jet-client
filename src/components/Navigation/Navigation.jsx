@@ -22,6 +22,11 @@ const Navigation = () => {
                             <Nav.Link href="/routes" as="span">Routes</Nav.Link>
                         </Link>
 
+                        <Navbar.Brand className="logo" as={Link} to="/">
+                            <img src="https://res.cloudinary.com/dzncdwx7u/image/upload/v1717236317/logoaircraft_bdmr4y.png"
+                                style={{ width: "80px" }} />
+                        </Navbar.Brand>
+
                         {
                             loggedUser ?
                                 <>
@@ -39,7 +44,7 @@ const Navigation = () => {
                                 </>
                         }
 
-                        <Navbar.Brand href="/">WAVE JET</Navbar.Brand>
+                        {/* <Navbar.Brand href="/">WAVE JET</Navbar.Brand> */}
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
