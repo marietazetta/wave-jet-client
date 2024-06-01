@@ -11,6 +11,7 @@ const EditAircraftForm = () => {
     const [aircraftData, setAircraftData] = useState({
         model: '',
         manufacturer: '',
+        manufacturerDescription: '',
         tailNumber: '',
         capacity: 0,
         mainImage: '',

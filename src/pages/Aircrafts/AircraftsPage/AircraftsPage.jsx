@@ -19,7 +19,10 @@ const AircraftsPage = () => {
     };
 
     return (
-        <Container>
+        <Container className='AircraftsPage'>
+
+            <h2>Your private jet fleet.</h2>
+
             <div className='AircraftsPage full-height font-family'>
 
                 {

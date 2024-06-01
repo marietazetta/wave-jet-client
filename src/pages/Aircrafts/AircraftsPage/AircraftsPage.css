@@ -1,4 +1,10 @@
-.AircraftsPage .carousel {
+.AircraftsPage h2 {
+    text-align: center;
+    padding-top: 10%;
+}
+
+
+/* .AircraftsPage .carousel {
     position: relative;
 }
 
@@ -60,4 +66,4 @@
     left: auto;
     padding: 0;
     color: #000;
-}
+} */

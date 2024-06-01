@@ -11,6 +11,7 @@ const NewAircraftForm = () => {
     const [aircraftData, setAircraftData] = useState({
         model: '',
         manufacturer: '',
+        manufacturerDescription: '',
         tailNumber: '',
         capacity: 0,
         mainImage: '',

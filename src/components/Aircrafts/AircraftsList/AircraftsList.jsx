@@ -1,18 +1,19 @@
+import "./AircraftsList"
+import { Container } from "react-bootstrap";
 import AircraftCard from "../AircraftCard/AircraftCard";
-import { Col, Row } from "react-bootstrap";
+
+
 
 const AircraftsList = ({ aircraft }) => {
     return (
-        <Row className="justify-content-center">
-            <Col lg={6} md={8}>
-                <AircraftCard {...aircraft} />
-            </Col>
+        <>
+            <Container className="mt-5 pt-5 pb-5">
 
-            <Col lg={6} md={8}>
-                <h2>{aircraft.manufacturer}</h2>
-                <p>Here we will add the manufacturer description</p>
-            </Col>
-        </Row>
+                <AircraftCard {...aircraft} />
+
+            </Container>
+        </>
+
     );
 };
 

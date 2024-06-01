@@ -1,39 +1,44 @@
-import { Card, Button, Row, Col } from "react-bootstrap";
+import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './AircraftCard.css';
 
-const AircraftCard = ({ _id, model, mainImage, manufacturer }) => {
+const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription, isLeft }) => {
+
+
+    const justifyContent = isLeft ? 'flex-start' : 'flex-end';
+
 
     return (
         <div className="AircraftCard font-family">
-            <Card className="shadow-sm border-0">
-                <Card.Body>
-                    <Row>
 
-                        <Col xs={6}>
-                            <Link to={`/fleet/${_id}`}>
-                                <Card.Img variant="top"
-                                    src={mainImage}
-                                    className="rounded-top equal-aspect-ratio"
-                                />
-                            </Link>
-                        </Col>
+            <Container fluid className="mt-5">
+                <Row className="d-flex align-items-center" style={{ justifyContent }}>
+                    <Col lg={6} md={8}>
+                        <h2>{manufacturer}</h2>
+                        <p>{manufacturerDescription}</p>
+                        <Link to={`/fleet/${_id}`}>
+                            <Button variant="light" size="sm" className="custom-button">
 
-                        <Col xs={6}>
-                            <h2>{model}</h2>
-                            <Link to={`/fleet/${_id}`}>
-                                <Button variant="light" size="sm" className="custom-button">
+                                Discover {manufacturer} Jets
 
-                                    DISCOVER {manufacturer} JETS
+                            </Button>
+                        </Link>
+                    </Col>
+                    <Col lg={6} md={8}>
+                        <Link to={`/fleet/${_id}`}>
+                            <Card.Img variant="top"
+                                src={mainImage}
+                            // className="rounded-top equal-aspect-ratio"
+                            />
+                        </Link>
+                    </Col>
 
-                                </Button>
-                            </Link>
-                        </Col>
-                    </Row>
-                </Card.Body>
-            </Card>
-        </div>
+                </Row>
+            </Container>
+
+
+        </div >
     )
 }
 
-export default AircraftCard;
+export default AircraftCard
