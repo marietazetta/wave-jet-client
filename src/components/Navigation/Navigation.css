@@ -9,6 +9,8 @@
     color: #0D1F2D;
 }
 
+.Navbar .logo {}
+
 
 .canvas-body {
     background-color: #EDE0D4;
@@ -34,11 +36,3 @@
     color: #ede0d4;
 
 }
-
-
-/* .Navigation .logo {
-    position: absolute;
-    z-index: 9000;
-    left: calc(50% - 50px);
-    top: 10px;
-} */

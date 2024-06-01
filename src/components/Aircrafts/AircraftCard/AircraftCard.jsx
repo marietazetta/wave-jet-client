@@ -2,7 +2,7 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './AircraftCard.css';
 
-const AircraftCard = ({ _id, model, mainImage }) => {
+const AircraftCard = ({ _id, model, mainImage, manufacturer }) => {
 
     return (
         <div className="AircraftCard font-family">
@@ -10,7 +10,7 @@ const AircraftCard = ({ _id, model, mainImage }) => {
                 <Card.Body>
                     <Row>
 
-                        <Col>
+                        <Col xs={6}>
                             <Link to={`/fleet/${_id}`}>
                                 <Card.Img variant="top"
                                     src={mainImage}
@@ -19,14 +19,13 @@ const AircraftCard = ({ _id, model, mainImage }) => {
                             </Link>
                         </Col>
 
-                    </Row>
-
-
-                    <Row className="mt-4">
-                        <Col xs={4}>
+                        <Col xs={6}>
+                            <h2>{model}</h2>
                             <Link to={`/fleet/${_id}`}>
-                                <Button variant="secondary" size="md" className="custom-button">
-                                    Learn More about the {model}
+                                <Button variant="light" size="sm" className="custom-button">
+
+                                    DISCOVER {manufacturer} JETS
+
                                 </Button>
                             </Link>
                         </Col>
