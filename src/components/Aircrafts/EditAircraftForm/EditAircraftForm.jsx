@@ -125,30 +125,39 @@ const EditAircraftForm = () => {
     }
 
     return (
-        <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded font-family">
+        <div className="EditAircraftForm">
             <Form onSubmit={handleAircraftFormSubmit}>
                 <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
                     <span onClick={handleAvailabilityClick} className="availability-emoji">
-                        {aircraftData.availability ? '🟢' : '🔴'}
+                        {aircraftData.availability ?
+                            `🟢${aircraftData.model} | available` :
+                            `🔴${aircraftData.model} | out of service`}
                     </span>
                 </Form.Group>
                 <Row className="mb-3">
-                    <Form.Group as={Col} className="mb-3" controlId="Model.Input">
+                    <Form.Group as={Col} controlId="Manufacturer.Input">
+                        <Form.Label>Manufacturer</Form.Label>
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            placeholder="Manufacturer"
+                            name="manufacturer"
+                            value={aircraftData.manufacturer}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="Model.Input">
                         <Form.Label>Aircraft Model</Form.Label>
-                        <Form.Control size="md" type="text" placeholder="Model"
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            placeholder="Model"
                             name="model"
                             value={aircraftData.model}
                             onChange={handleInputChange}
                         />
                     </Form.Group>
                 </Row>
-                <Form.Group className="mb-3" controlId="Manufacturer.Input">
-                    <Form.Label>Manufacturer</Form.Label>
-                    <Form.Control size="md" type="text" placeholder="Manufacturer"
-                        name="manufacturer"
-                        value={aircraftData.manufacturer}
-                        onChange={handleInputChange} />
-                </Form.Group>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="Registration.Input">
                         <Form.Label>Registration</Form.Label>
@@ -193,13 +202,16 @@ const EditAircraftForm = () => {
                         onChange={handleMainImageUpload}
                     />
                 </InputGroup>
-                <Form.Group controlId="ImagesGallery" className="mb-3">
+                <Form.Group controlId="ImagesGallery" className="mb-3 ">
                     <Form.Label>Images Gallery</Form.Label>
-                    {
-                        aircraftData.imagesCarousel?.map((eachField, idx) => (
-                            <Image src={eachField} alt={aircraftData.model} key={idx} style={{ width: 100 }} />
-                        ))
-                    }
+                    <div className='d-flex flex-wrap'>
+                        {
+                            aircraftData.imagesCarousel?.map((eachField, idx) => (
+                                <Image src={eachField} alt={aircraftData.model} key={idx}
+                                    style={{ marginLeft: 10, width: 100, marginBottom: 10 }} />
+                            ))
+                        }
+                    </div>
                     {aircraftData.imagesCarousel?.map((eachField, idx) => (
                         <Form.Control
                             key={idx}
