@@ -12,8 +12,10 @@ const Navigation = () => {
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} expand={expand} className="Navbar font-family">
-                    <Container>
+                    <Container fluid>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+
+
 
                         <Link to="/fleet">
                             <Nav.Link href="/fleet" as="span">Fleet</Nav.Link>
@@ -21,6 +23,8 @@ const Navigation = () => {
                         <Link to="/routes">
                             <Nav.Link href="/routes" as="span">Routes</Nav.Link>
                         </Link>
+
+
 
                         <Navbar.Brand className="logo" as={Link} to="/">
                             <img src="https://res.cloudinary.com/dzncdwx7u/image/upload/v1717236317/logoaircraft_bdmr4y.png"
@@ -31,7 +35,6 @@ const Navigation = () => {
                             loggedUser ?
                                 <>
                                     <Navbar.Text>Welcome, {loggedUser.username}!</Navbar.Text>
-                                    <span onClick={logout} className='nav-link'>Cerrar sesión</span>
                                 </>
                                 :
                                 <>
@@ -65,16 +68,14 @@ const Navigation = () => {
                                         id={`offcanvasNavbarDropdown-expand-${expand}`}
                                     >
                                         <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-                                        <NavDropdown.Item href="#action4">
-                                            Log Out
-                                        </NavDropdown.Item>
+
                                         <NavDropdown.Divider />
-                                        <NavDropdown.Item href="#action5">
-                                            Something else here
+                                        <NavDropdown.Item>
+                                            <span onClick={logout} className='nav-link'>Log Out</span>
                                         </NavDropdown.Item>
                                     </NavDropdown>
                                 </Nav>
-                                <Form className="d-flex">
+                                {/* <Form className="d-flex">
                                     <Form.Control
                                         type="search"
                                         placeholder="Search"
@@ -82,7 +83,7 @@ const Navigation = () => {
                                         aria-label="Search"
                                     />
                                     <Button className="custom-color-button" variant="outline-success">Search</Button>
-                                </Form>
+                                </Form> */}
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
                     </Container>
