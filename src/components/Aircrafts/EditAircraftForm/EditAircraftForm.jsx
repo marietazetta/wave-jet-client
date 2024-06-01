@@ -124,7 +124,7 @@ const EditAircraftForm = () => {
     }
 
     return (
-        <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded">
+        <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded font-family">
             <Form onSubmit={handleAircraftFormSubmit}>
                 <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
                     <span onClick={handleAvailabilityClick} className="availability-emoji">

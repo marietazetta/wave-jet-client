@@ -20,7 +20,7 @@ const AircraftsPage = () => {
 
     return (
         <Container>
-            <div className='AircraftsPage  full-height'>
+            <div className='AircraftsPage full-height font-family'>
 
                 {
                     aircrafts.map(aircraft => (

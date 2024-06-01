@@ -11,7 +11,7 @@ const Navigation = () => {
     return (
         <>
             {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className="Navbar">
+                <Navbar key={expand} expand={expand} className="Navbar font-family">
                     <Container>
                         <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
 

@@ -5,7 +5,7 @@ import './AircraftCard.css';
 const AircraftCard = ({ _id, model, mainImage }) => {
 
     return (
-        <div className="AircraftCard">
+        <div className="AircraftCard font-family">
             <Card className="shadow-sm border-0">
                 <Card.Body>
                     <Row>

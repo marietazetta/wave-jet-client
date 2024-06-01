@@ -29,7 +29,7 @@ const UserSignUpForm = () => {
 
     return (
 
-        <Form onSubmit={handleFormSubmit}>
+        <Form className="sign-up-form font-family" onSubmit={handleFormSubmit}>
 
             <Form.Group className="mb-3" controlId="username">
                 <Form.Label>User Name</Form.Label>

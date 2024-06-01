@@ -30,7 +30,7 @@ const FlightsPage = () => {
 
     return (
 
-        <div className="FlightsPage full-height">
+        <div className="FlightsPage full-height font-family">
             <Container>
 
                 <p>Our Summer Routes</p>

@@ -23,7 +23,7 @@ const FlightDetailsPage = () => {
 
     return (
 
-        <div className="FlightDetailsPage">
+        <div className="FlightDetailsPage full-height font-family">
             <Container>
 
                 <h1 className="mb-4">{flight.fromDestination} - {flight.toDestination}</h1>

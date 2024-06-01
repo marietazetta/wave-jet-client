@@ -7,11 +7,13 @@ const ProfilePage = () => {
 
     return (
         <>
-            <h1> Welcome, {loggedUser.username}</h1>
+            <div className="profile-page full-height font-family">
+                <h1> Welcome, {loggedUser.username}</h1>
 
-            <hr />
+                <hr />
 
-            <h2>My bookings</h2>
+                <h2>My bookings</h2>
+            </div>
         </>
     )
 }

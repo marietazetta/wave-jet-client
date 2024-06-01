@@ -21,7 +21,7 @@ const DeleteModal = ({ show, handleClose, flightId, loadFlights }) => {
 
     return (
         <>
-            <Modal className="ModalDelete" show={show} onHide={handleClose}>
+            <Modal className="ModalDelete font-family" show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                     <Modal.Title>Are you sure?</Modal.Title>
                 </Modal.Header>

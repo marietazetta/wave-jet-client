@@ -3,7 +3,7 @@ import { Col, Row } from "react-bootstrap";
 
 const AircraftsList = ({ aircraft }) => {
     return (
-        <Row className="justify-content-center">
+        <Row className="justify-content-center ">
             <Col lg={3} md={8}>
                 <AircraftCard {...aircraft} />
             </Col>

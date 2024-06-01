@@ -7,7 +7,7 @@ const UserCard = ({ username, email }) => {
     return (
         <>
 
-            <Card className='userCard'>
+            <Card className='userCard font-family'>
                 <Table striped>
                     <thead>
                         <tr>

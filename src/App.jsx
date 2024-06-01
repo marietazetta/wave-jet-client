@@ -9,9 +9,11 @@ function App() {
 
   return (
     <>
-      <Navigation />
-      <AppRoutes />
-      <Footer />
+      <div className='App full-height'>
+        <Navigation />
+        <AppRoutes />
+        <Footer />
+      </div >
     </>
   )
 }

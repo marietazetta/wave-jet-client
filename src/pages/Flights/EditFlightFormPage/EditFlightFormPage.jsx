@@ -5,12 +5,14 @@ import './EditFlightFormPage.css'
 const EditFlightFormPage = () => {
 
     return (
-
-        <Container>
-            <EditFlightForm />
-        </Container>
+        <div className="edit-flight-form full-height font-family">
+            <Container>
+                <EditFlightForm />
+            </Container>
+        </div>
 
     )
 }
 
 export default EditFlightFormPage
+

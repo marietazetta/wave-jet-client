@@ -5,7 +5,7 @@ import { Container, Col } from 'react-bootstrap'
 const LoginPage = () => {
     return (
         <>
-            <div className='LoginPage full-height'>
+            <div className='LoginPage full-height font-family'>
                 <Container className='pt-5'>
                     <Col>
                         <UserLoginForm />

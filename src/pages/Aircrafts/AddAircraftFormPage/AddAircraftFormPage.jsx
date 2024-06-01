@@ -5,9 +5,11 @@ import { Container } from 'react-bootstrap'
 const AddAircraftFormPage = () => {
     return (
         <>
-            <Container>
-                <NewAircraftForm />
-            </Container>
+            <div className='add-form-page full-height font-family'>
+                <Container>
+                    <NewAircraftForm />
+                </Container>
+            </div>
         </>
 
     )

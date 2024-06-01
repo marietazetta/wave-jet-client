@@ -3,7 +3,7 @@ import './HomePage.css'
 const HomePage = () => {
     return (
 
-        <div>
+        <div className='home-page full-height font-family'>
             <video
                 src="https://res.cloudinary.com/dzncdwx7u/video/upload/v1717084577/homepagevideo_tessr8.mp4"
                 width='120%'

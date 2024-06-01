@@ -2,19 +2,20 @@ import { Container } from "react-bootstrap"
 import UserSignUpForm from "../../../components/Users/UserSignUpForm/UserSignUpForm"
 
 
-const SignUp = () => {
+const SignUpPage = () => {
     return (
         <>
+            <div className="sign-up full-height font-family">
+                <Container className='pt-5'>
 
-            <Container className='pt-5'>
+                    <UserSignUpForm />
 
-                <UserSignUpForm />
-
-            </Container>
+                </Container>
+            </div>
 
         </>
 
     )
 }
 
-export default SignUp
+export default SignUpPage

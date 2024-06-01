@@ -26,9 +26,9 @@ const AircraftDetailsPage = () => {
 
     return (
 
-        <div>
+        <div className="AircraftDetailsPage full-height font-family">
 
-            <Container className="AircraftDetailsPage">
+            <Container>
                 <Row className="my-4">
                     <h1 className="text">{aircraft.model}</h1>
                 </Row>

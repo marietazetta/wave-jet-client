@@ -3,7 +3,9 @@ import './AboutPage.css'
 const AboutPage = () => {
     return (
         <>
-            <h1>Soy la AboutPage</h1>
+            <div className='about-page full-height font-family'>
+                <h1>Soy la AboutPage</h1>
+            </div>
 
         </>
 

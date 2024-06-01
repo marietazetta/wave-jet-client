@@ -6,7 +6,7 @@ const AddFlightFormPage = () => {
 
     return (
 
-        <div className="AddFlightFormPage">
+        <div className="AddFlightFormPage full-height font-family">
             <Container>
                 <h1>Add new Route</h1>
                 <hr></hr>
@@ -18,3 +18,4 @@ const AddFlightFormPage = () => {
 }
 
 export default AddFlightFormPage
+

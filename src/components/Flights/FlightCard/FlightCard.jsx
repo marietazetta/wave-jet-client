@@ -12,7 +12,7 @@ const FlightCard = ({ _id, toDestination, flightTime, fromDestination, loadFligh
 
     return (
         <>
-            <div className="FlightCard">
+            <div className="FlightCard font-family">
 
                 <Card className="shadow-sm border-0">
 

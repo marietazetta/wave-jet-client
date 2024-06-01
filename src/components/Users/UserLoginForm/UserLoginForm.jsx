@@ -38,7 +38,7 @@ const UserLoginForm = () => {
     }
 
     return (
-        <div className="user-login-form-container">
+        <div className="user-login-form-container font-family">
             <Form onSubmit={handleSubmit} className="user-login-form">
 
                 <Form.Group className="mb-3" controlId="email">

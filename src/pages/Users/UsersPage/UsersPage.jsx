@@ -26,7 +26,7 @@ const UsersPage = () => {
 
     return (
 
-        <div className="FlightsPage">
+        <div className="users-page full-height font-family">
             <Container>
 
 

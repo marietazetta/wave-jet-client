@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-        <div className="Footer">
+        <div className="Footer font-family">
             <Container>
                 <Link to={'/'} className='footer-link'><h6>WAVE JET 🛩️</h6></Link>
                 <p>&copy; All rights reserved</p>

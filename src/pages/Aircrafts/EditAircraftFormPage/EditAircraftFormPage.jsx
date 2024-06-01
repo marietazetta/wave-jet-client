@@ -4,10 +4,14 @@ import EditAircraftForm from "../../../components/Aircrafts/EditAircraftForm/Edi
 
 const EditAircraftFormPage = () => {
     return (
-        <Container>
-            <EditAircraftForm />
-        </Container>
+        <div className='edit-form-page full-height font-family'>
+            <Container>
+                <EditAircraftForm />
+            </Container>
+        </div>
     )
 }
 
 export default EditAircraftFormPage
+
+
