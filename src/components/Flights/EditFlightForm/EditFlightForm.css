@@ -1,0 +1,30 @@
+.EditFlightForm {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #ffead9ac;
+    width: 40%;
+    margin: 30px auto;
+}
+
+.EditFlightForm .form-label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0D1F2D;
+}
+
+.EditFlightForm .form-control {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.71);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.EditFlightForm .row {
+    margin-bottom: 15px;
+}
+
+.EditFlightForm button {
+    background-color: rgba(13, 31, 45, 0.8);
+    color: #FFEAD9;
+    border-color: rgba(255, 255, 255, 0.5);
+}

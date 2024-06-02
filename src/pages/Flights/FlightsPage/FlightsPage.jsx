@@ -1,20 +1,24 @@
 import { useContext, useEffect, useState } from "react"
-import FlightsList from "../../../components/Flights/FlightsList/FlightsList"
 import FlightServices from "../../../services/flight.services"
+import AircfraftServices from "../../../services/aircraft.services"
 import { AuthContext } from "../../../contexts/auth.context"
 import { Link } from 'react-router-dom'
 import { Container } from "react-bootstrap"
 import Loader from "../../../components/Loader/Loader"
+import DashboardFlights from "../../../components/DashboardFlights/DashboardFlights"
+import "./FlightsPage.css"
 
 const FlightsPage = () => {
 
     const [flights, setFlights] = useState([])
+    const [aircrafts, setAircrafts] = useState([])
     const [isLoading, setIsLoading] = useState(true)
 
     const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         loadFlights()
+        loadAircrafts()
     }, [])
 
     const loadFlights = () => {
@@ -28,15 +32,24 @@ const FlightsPage = () => {
             .catch(err => console.log(err))
     }
 
-    return (
+    const loadAircrafts = () => {
 
-        <div className="FlightsPage full-height font-family">
+        AircfraftServices
+            .getAllAircrafts()
+            .then(({ data }) => {
+                setAircrafts(data)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
+
+    return (
+        <>        <div className="flights-page full-height font-family">
             <Container>
 
-                <p>Our Summer Routes</p>
 
                 {
-                    isLoading ? <Loader /> : <FlightsList flights={flights} loadFlights={loadFlights} />
+                    isLoading ? <Loader /> : <DashboardFlights aircrafts={aircrafts} flights={flights} />
                 }
 
                 {
@@ -44,8 +57,10 @@ const FlightsPage = () => {
                 }
                 <hr />
 
+
             </Container>
         </div>
+        </>
 
 
     )
