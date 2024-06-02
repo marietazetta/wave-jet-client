@@ -1,3 +1,4 @@
+import "./EditFlightForm.css"
 import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
@@ -64,35 +65,41 @@ const EditFlightForm = () => {
 
     return (
 
-        <div className="EditFlightFormshadow-lg p-4 mb-2 bg-white rounded font-family">
+        <div className="EditFlightForm">
             <Form onSubmit={handleFlightSubmit}>
-                <Form.Group className="mb-3" controlId="From">
-                    <Form.Label>From</Form.Label>
-                    <Form.Control type="text" value={flightData.fromDestination} name="fromDestination" onChange={handleInputChange} />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="To">
-                    <Form.Label>To</Form.Label>
-                    <Form.Control type="text" value={flightData.toDestination} name="toDestination" onChange={handleInputChange} />
-                </Form.Group>
+                <Row>
+                    <Col>
+                        <Form.Group as={Col} className="mb-3" controlId="From">
+                            <Form.Label > From </Form.Label>
+                            <Form.Control type="text" value={flightData.fromDestination} name="fromDestination" onChange={handleInputChange} />
+                        </Form.Group>
+                    </Col>
+                    <Col>
+                        <Form.Group className="mb-3" controlId="To">
+                            <Form.Label >To</Form.Label>
+                            <Form.Control type="text" value={flightData.toDestination} name="toDestination" onChange={handleInputChange} />
+                        </Form.Group>
+                    </Col>
+                </Row>
 
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="FlightTime">
-                            <Form.Label>Flight Time</Form.Label>
+                            <Form.Label >Flight Time</Form.Label>
                             <Form.Control type="number" value={flightData.flightTime} name="flightTime" onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
                     <Col>
                         <Form.Group className="mb-3" controlId="miles">
-                            <Form.Label>Miles</Form.Label>
+                            <Form.Label >Miles</Form.Label>
                             <Form.Control type="number" value={flightData.miles} name="miles" onChange={handleInputChange} />
                         </Form.Group>
                     </Col>
-
+                </Row>
+                <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="image">
-                            <Form.Label>Image</Form.Label>
+                            <Form.Label > Image</Form.Label>
                             <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Col>
@@ -102,7 +109,7 @@ const EditFlightForm = () => {
                     <Button variant="dark" type="submit" >Submit</Button>
                 </div>
             </Form>
-        </div>
+        </div >
 
     )
 }
