@@ -9,8 +9,6 @@
     color: #0D1F2D;
 }
 
-.Navbar .logo {}
-
 
 .canvas-body {
     background-color: #EDE0D4;
@@ -35,4 +33,9 @@
     border: #0D1F2D;
     color: #ede0d4;
 
+}
+
+.canvas-body {
+    text-align: center;
+    font-size: large;
 }
