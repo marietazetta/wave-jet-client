@@ -8,3 +8,19 @@
     text-decoration: none;
     color: #0D1F2D;
 }
+
+.Navbar .me-auto {
+    margin-top: 20px;
+}
+
+/* .Navbar.logo {
+    position: fixed;
+    align-items: calc(50% - 50px);
+
+} */
+
+.dropdown-item {
+    width: calc(50% - 50px);
+}
+
+.Navbar-brand {}
