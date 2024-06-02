@@ -3,6 +3,10 @@ import "./Navigation.css"
 import { Nav, Navbar, Container, Offcanvas, NavDropdown, Form, Button } from "react-bootstrap"
 import { useContext } from 'react'
 import { AuthContext } from "../../contexts/auth.context"
+import linkedin from "./../../../public/assets/icons/linkedin.svg"
+import twitter from "./../../../public/assets/icons/twitter.svg"
+import navbarlogo from "./../../../public/assets/icons/navbarlogo.svg"
+
 
 const Navigation = () => {
 
@@ -10,85 +14,59 @@ const Navigation = () => {
 
     return (
         <>
-            {[false].map((expand) => (
-                <Navbar key={expand} expand={expand} className="Navbar font-family">
-                    <Container fluid>
-                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+
+            < Navbar className="Navbar font-family" expand="lg" sticky='top' >
+                <Container className="justify-content-between">
+
+                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+
+                    <Nav style={{ justifyContent: 'start' }}>
+                        <Nav.Link href="/fleet">Fleet</Nav.Link>
+                    </Nav>
+
+                    <Nav >
+                        <img src={navbarlogo} alt="wavejetlogo"></img>
+                        <Navbar.Brand href="/" > Wave Jet</Navbar.Brand>
+                    </Nav>
 
 
 
-                        <Link to="/fleet">
-                            <Nav.Link href="/fleet" as="span">Fleet</Nav.Link>
-                        </Link>
-                        <Link to="/routes">
-                            <Nav.Link href="/routes" as="span">Routes</Nav.Link>
-                        </Link>
+
+                    {
+                        loggedUser ?
+                            <>
+                                <NavDropdown.Item>Welcome, {loggedUser.username}!</NavDropdown.Item>
+                                <NavDropdown title="Profile" id="navbarScrollingDropdown">
+                                    <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item href="/">
+                                        <span onClick={logout} className='nav-link'>Log Out</span>
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            </>
+                            :
+                            <>
+                                <Link to="/signup">
+                                    <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
+                                </Link>
+                                <Link to="/login">
+                                    <Nav.Link href="/login" as="span">Log In</Nav.Link>
+                                </Link>
+                            </>
+                    }
 
 
 
-                        <Navbar.Brand className="logo" as={Link} to="/">
-                            <img src="https://res.cloudinary.com/dzncdwx7u/image/upload/v1717236317/logoaircraft_bdmr4y.png"
-                                style={{ width: "80px" }} />
-                        </Navbar.Brand>
+                    <Nav style={{ gap: '0.5rem', alignItems: 'center' }}>
+                        <img src={twitter} alt='twitter'></img>
+                        <img src={linkedin} alt='linkedin'></img>
+                    </Nav>
 
-                        {
-                            loggedUser ?
-                                <>
-                                    <Navbar.Text>Welcome, {loggedUser.username}!</Navbar.Text>
-                                </>
-                                :
-                                <>
-                                    <Link to="/signup">
-                                        <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
-                                    </Link>
-                                    <Link to="/login">
-                                        <Nav.Link href="/login" as="span">Log In</Nav.Link>
-                                    </Link>
-                                </>
-                        }
 
-                        {/* <Navbar.Brand href="/">WAVE JET</Navbar.Brand> */}
-                        <Navbar.Offcanvas
-                            id={`offcanvasNavbar-expand-${expand}`}
-                            aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
-                            placement="start"
-                            className="custom-offcanvas"
-                        >
-                            <Offcanvas.Header closeButton className="header-body">
-                                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                                    WAVE JET
-                                </Offcanvas.Title>
-                            </Offcanvas.Header>
-                            <Offcanvas.Body className="canvas-body">
-                                <Nav className="justify-content-end flex-grow-1 pe-3">
-                                    <Nav.Link href="/fleet">Fleet</Nav.Link>
-                                    <Nav.Link href="/about">About</Nav.Link>
-                                    <NavDropdown
-                                        title="Profile"
-                                        id={`offcanvasNavbarDropdown-expand-${expand}`}
-                                    >
-                                        <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+                </Container>
+            </Navbar >
 
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item>
-                                            <span onClick={logout} className='nav-link'>Log Out</span>
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
-                                </Nav>
-                                {/* <Form className="d-flex">
-                                    <Form.Control
-                                        type="search"
-                                        placeholder="Search"
-                                        className="me-2"
-                                        aria-label="Search"
-                                    />
-                                    <Button className="custom-color-button" variant="outline-success">Search</Button>
-                                </Form> */}
-                            </Offcanvas.Body>
-                        </Navbar.Offcanvas>
-                    </Container>
-                </Navbar>
-            ))}
         </>
     )
 }
