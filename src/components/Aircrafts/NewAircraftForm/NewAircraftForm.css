@@ -1,28 +1,32 @@
-.AddAircraftForm {
+.NewAircraftForm {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    background-color: #FFEAD9;
+    background-color: #ffead9ac;
+    width: 60%;
+    margin: 30px auto;
 }
 
-.AddAircraftForm .form-label {
+.NewAircraftForm .form-label {
     font-weight: bold;
     margin-bottom: 5px;
     color: #0D1F2D;
 }
 
-.AddAircraftForm .form-control {
+.NewAircraftForm .form-control {
     border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.71);
+    border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.AddAircraftForm .row {
+.NewAircraftForm .row {
     margin-bottom: 15px;
 }
 
-.AddAircraftForm button {
-    background-color: #0D1F2D;
+.NewAircraftForm button {
+    background-color: rgba(13, 31, 45, 0.8);
     color: #FFEAD9;
-    border-color: white;
+    border-color: rgba(255, 255, 255, 0.5);
 }
 
 .availability-emoji {

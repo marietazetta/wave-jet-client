@@ -1,6 +1,6 @@
 import './NewAircraftForm.css'
 import { useState } from "react"
-import { Form, Row, Col, InputGroup, Button } from "react-bootstrap"
+import { Form, Row, Col, InputGroup, Button, Image } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import aircraftServices from '../../../services/aircraft.services'
 import uploadServices from '../../../services/upload.services'
@@ -114,35 +114,42 @@ const NewAircraftForm = () => {
     }
 
     return (
-        <div className="NewAircraftForm shadow-lg p-4 mb-2 bg-white rounded font-family">
+        <div className="NewAircraftForm font-family">
 
             <Form onSubmit={handleAircraftFormSubmit}>
 
                 <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
                     <span onClick={handleAvailabilityClick} className="availability-emoji">
-                        {aircraftData.availability ? '🟢' : '🔴'}
+                        {aircraftData.availability ?
+                            `🟢${aircraftData.model} | available` :
+                            `🔴${aircraftData.model} | out of service`}
                     </span>
 
                 </Form.Group>
                 <Row className="mb-3">
-                    <Form.Group as={Col} className="mb-3" controlId="Model.Input">
+                    <Form.Group as={Col} controlId="Manufacturer.Input">
+                        <Form.Label>Manufacturer</Form.Label>
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            placeholder="Manufacturer"
+                            name="manufacturer"
+                            value={aircraftData.manufacturer}
+                            onChange={handleInputChange}
+                        />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="Model.Input">
                         <Form.Label>Aircraft Model</Form.Label>
-                        <Form.Control size="md" type="text" placeholder="Model"
+                        <Form.Control
+                            size="md"
+                            type="text"
+                            placeholder="Model"
                             name="model"
                             value={aircraftData.model}
                             onChange={handleInputChange}
                         />
                     </Form.Group>
-
                 </Row>
-
-                <Form.Group className="mb-3" controlId="Manufacturer.Input">
-                    <Form.Label>Manufacturer</Form.Label>
-                    <Form.Control size="md" type="text" placeholder="Manufacturer"
-                        name="manufacturer"
-                        value={aircraftData.manufacturer}
-                        onChange={handleInputChange} />
-                </Form.Group>
 
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="Registration.Input">
@@ -193,18 +200,24 @@ const NewAircraftForm = () => {
                         onChange={handleMainImageUpload} />
                 </InputGroup>
 
-                <Form.Group controlId="ImagesGallery" className="mb-3">
+                <Form.Group controlId="ImagesGallery" className="mb-3 ">
                     <Form.Label>Images Gallery</Form.Label>
-                    {
-                        aircraftData.imagesCarousel.map((eachField, idx) => (
-                            <Form.Control
-                                key={idx}
-                                className="mb-3"
-                                type="file"
-                                placeholder={`Place your image here`}
-                                onChange={event => handleGalleryUpload(event, idx)} />
-                        ))
-                    }
+                    <div className='d-flex flex-wrap'>
+                        {
+                            aircraftData.imagesCarousel?.map((eachField, idx) => (
+                                <Image src={eachField} alt={aircraftData.model} key={idx}
+                                    style={{ marginLeft: 10, width: 100, marginBottom: 10 }} />
+                            ))
+                        }
+                    </div>
+                    {aircraftData.imagesCarousel?.map((eachField, idx) => (
+                        <Form.Control
+                            key={idx}
+                            className="mb-3"
+                            type="file"
+                            placeholder={`Place your image here`}
+                            onChange={event => handleGalleryUpload(event, idx)} />
+                    ))}
                     <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
                 </Form.Group>
 
