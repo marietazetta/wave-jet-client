@@ -33,20 +33,21 @@ const Navigation = () => {
                         </Nav>
 
 
-
-                        <Navbar.Brand className="logo" as={Link} href="/" >
-                            <img src={navbarlogo}
-                                alt="wavejetlogo"
-                                style={{ width: "30px" }}
-                            ></img>
-                            Wave Jet</Navbar.Brand>
-
+                        <Link to="/">
+                            <Navbar.Brand className="logo" >
+                                <img src={navbarlogo}
+                                    alt="wavejetlogo"
+                                    style={{ width: "30px" }}
+                                ></img>
+                                Wave Jet</Navbar.Brand>
+                        </Link>
 
 
                         {
                             loggedUser ?
                                 <>
-                                    <NavDropdown.Item>Welcome, {loggedUser.username}!</NavDropdown.Item>
+                                    <Navbar.Text>Welcome, {loggedUser.username}!</Navbar.Text>
+
                                     <NavDropdown title="Profile" id="navbarScrollingDropdown">
                                         <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
 

@@ -13,14 +13,13 @@
     margin-top: 20px;
 }
 
-/* .Navbar.logo {
+
+/* .dropdown-item {
+    width: calc(50% - 50px);
+} */
+
+.Navbar-brand {
     position: fixed;
     align-items: calc(50% - 50px);
 
-} */
-
-.dropdown-item {
-    width: calc(50% - 50px);
 }
-
-.Navbar-brand {}

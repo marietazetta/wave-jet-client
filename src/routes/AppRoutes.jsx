@@ -28,24 +28,31 @@ const Approutes = () => {
             <Route path={'/about'} element={<AboutPage />} />
             <Route path={'/signup'} element={<SignupPage />} />
             <Route path={'/login'} element={<LoginPage />} />
-
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/fleet'} element={<AircraftsPage />} />
             <Route path={'/fleet/:aircraftId'} element={<AircraftDetailsPage />} />
 
+
+
+            {/* USER RIGHTS */}
+
+            <Route element={<PrivateRoute onlyAdmin={false} />}>
+
+                <Route path={'/profile'} element={<ProfilePage />} />
+
+            </Route>
+
             {/* ADMIN RIGHTS */}
 
-            <Route path={'/routes'} element={<FlightsPage />} />
-            <Route path={'/routes/:flightId'} element={<FlightDetailsPage />} />
-            <Route path={'/routes/add'} element={<AddFlightFormPage />} />
-            <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
-            <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
-            <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
+            <Route element={<PrivateRoute onlyAdmin={true} />}>
 
-
-            <Route element={<PrivateRoute />}>
-                <Route path={'/profile'} element={<ProfilePage />} />
                 <Route path={'/users'} element={<UsersPage />} />
+                <Route path={'/routes'} element={<FlightsPage />} />
+                <Route path={'/routes/:flightId'} element={<FlightDetailsPage />} />
+                <Route path={'/routes/add'} element={<AddFlightFormPage />} />
+                <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
+                <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
+                <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
             </Route>
 
 
