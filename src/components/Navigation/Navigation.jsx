@@ -1,85 +1,72 @@
-import { Link } from "react-router-dom"
-import "./Navigation.css"
-import { Nav, Navbar, Container, Offcanvas, NavDropdown, Form, Button } from "react-bootstrap"
-import { useContext } from 'react'
-import { AuthContext } from "../../contexts/auth.context"
-import linkedin from "./../../../public/assets/icons/linkedin.svg"
-import twitter from "./../../../public/assets/icons/twitter.svg"
-import navbarlogo from "./../../../public/assets/icons/navbarlogo.svg"
-
+import { Link } from "react-router-dom";
+import "./Navigation.css";
+import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
+import { useContext, useEffect, useState } from 'react';
+import { AuthContext } from "../../contexts/auth.context";
+import linkedin from "./../../../public/assets/icons/linkedin.svg";
+import twitter from "./../../../public/assets/icons/twitter.svg";
+import navbarlogo from "./../../../public/assets/icons/navbarlogo.svg";
 
 const Navigation = () => {
+    const { loggedUser, logout } = useContext(AuthContext);
+    const [scrolled, setScrolled] = useState(false);
 
-    const { loggedUser, logout } = useContext(AuthContext)
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                setScrolled(true);
+            } else {
+                setScrolled(false);
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     return (
-        <>
+        <Navbar className={`Navbar font-family ${scrolled ? 'navbar-scrolled' : ''}`} expand="lg" sticky='top'>
+            <Container fluid>
+                <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-            < Navbar className="Navbar font-family" expand="lg" sticky='top' >
-                <Container fluid>
+                <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav className="me-auto">
+                        <Link to="/fleet" className="nav-link">Fleet</Link>
+                        <Link to="/signup" className="nav-link">Become a member</Link>
+                    </Nav>
 
-                    <Navbar.Toggle aria-controls="basic-navbar-nav" />
+                    <Navbar.Brand className="mx-auto" as={Link} to="/">
+                        <img src={navbarlogo} alt="wavejetlogo" style={{ width: "30px" }} />
+                        Wave Jet
+                    </Navbar.Brand>
 
-                    <Navbar.Collapse id="basic-navbar-nav">
-
-
-                        <Nav className="me-auto">
-                            <Link to="/fleet">
-                                <Nav.Link href="/fleet" as="span">Fleet</Nav.Link>
-                            </Link>
-                            <Link to="/signup">
-                                <Nav.Link href="/signup" as="span">Become a member</Nav.Link>
-                            </Link>
-                        </Nav>
-
-
-
-                        <Navbar.Brand className="logo" as={Link} href="/" >
-                            <img src={navbarlogo}
-                                alt="wavejetlogo"
-                                style={{ width: "30px" }}
-                            ></img>
-                            Wave Jet</Navbar.Brand>
-
-
-
-                        {
-                            loggedUser ?
-                                <>
-                                    <NavDropdown.Item>Welcome, {loggedUser.username}!</NavDropdown.Item>
-                                    <NavDropdown title="Profile" id="navbarScrollingDropdown">
-                                        <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-
-                                        <NavDropdown.Divider />
-                                        <NavDropdown.Item href="/">
-                                            <span onClick={logout} className='nav-link'>Log Out</span>
-                                        </NavDropdown.Item>
-                                    </NavDropdown>
-                                </>
-                                :
-                                <>
-                                    <Link to="/signup">
-                                        <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
-                                    </Link>
-                                    <Link to="/login">
-                                        <Nav.Link href="/login" as="span">Log In</Nav.Link>
-                                    </Link>
-                                </>
-                        }
-
-
-
-                        <Nav style={{ gap: '0.5rem', alignItems: 'center' }}>
-                            <img src={twitter} alt='twitter'></img>
-                            <img src={linkedin} alt='linkedin'></img>
-                        </Nav>
-
-                    </Navbar.Collapse>
-                </Container>
-            </Navbar >
-
-        </>
-    )
+                    <Nav className="ms-auto" style={{ gap: '0.5rem', alignItems: 'center' }}>
+                        {loggedUser ? (
+                            <>
+                                <NavDropdown title={`Welcome, ${loggedUser.username}`} id="navbarScrollingDropdown">
+                                    <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
+                                    <NavDropdown.Divider />
+                                    <NavDropdown.Item onClick={logout}>
+                                        Log Out
+                                    </NavDropdown.Item>
+                                </NavDropdown>
+                            </>
+                        ) : (
+                            <>
+                                <Link to="/signup" className="nav-link">Sign Up</Link>
+                                <Link to="/login" className="nav-link">Log In</Link>
+                            </>
+                        )}
+                        <img src={twitter} alt='twitter' className="icon" />
+                        <img src={linkedin} alt='linkedin' className="icon" />
+                    </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+    );
 }
 
-export default Navigation
+export default Navigation;
