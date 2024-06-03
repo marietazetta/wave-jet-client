@@ -16,54 +16,65 @@ const Navigation = () => {
         <>
 
             < Navbar className="Navbar font-family" expand="lg" sticky='top' >
-                <Container className="justify-content-between">
+                <Container fluid>
 
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
-                    <Nav style={{ justifyContent: 'start' }}>
-                        <Nav.Link href="/fleet">Fleet</Nav.Link>
-                    </Nav>
-
-                    <Nav >
-                        <img src={navbarlogo} alt="wavejetlogo"></img>
-                        <Navbar.Brand href="/" > Wave Jet</Navbar.Brand>
-                    </Nav>
+                    <Navbar.Collapse id="basic-navbar-nav">
 
 
-
-
-                    {
-                        loggedUser ?
-                            <>
-                                <NavDropdown.Item>Welcome, {loggedUser.username}!</NavDropdown.Item>
-                                <NavDropdown title="Profile" id="navbarScrollingDropdown">
-                                    <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
-
-                                    <NavDropdown.Divider />
-                                    <NavDropdown.Item href="/">
-                                        <span onClick={logout} className='nav-link'>Log Out</span>
-                                    </NavDropdown.Item>
-                                </NavDropdown>
-                            </>
-                            :
-                            <>
-                                <Link to="/signup">
-                                    <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
-                                </Link>
-                                <Link to="/login">
-                                    <Nav.Link href="/login" as="span">Log In</Nav.Link>
-                                </Link>
-                            </>
-                    }
+                        <Nav className="me-auto">
+                            <Link to="/fleet">
+                                <Nav.Link href="/fleet" as="span">Fleet</Nav.Link>
+                            </Link>
+                            <Link to="/signup">
+                                <Nav.Link href="/signup" as="span">Become a member</Nav.Link>
+                            </Link>
+                        </Nav>
 
 
 
-                    <Nav style={{ gap: '0.5rem', alignItems: 'center' }}>
-                        <img src={twitter} alt='twitter'></img>
-                        <img src={linkedin} alt='linkedin'></img>
-                    </Nav>
+                        <Navbar.Brand className="logo" as={Link} href="/" >
+                            <img src={navbarlogo}
+                                alt="wavejetlogo"
+                                style={{ width: "30px" }}
+                            ></img>
+                            Wave Jet</Navbar.Brand>
 
 
+
+                        {
+                            loggedUser ?
+                                <>
+                                    <NavDropdown.Item>Welcome, {loggedUser.username}!</NavDropdown.Item>
+                                    <NavDropdown title="Profile" id="navbarScrollingDropdown">
+                                        <NavDropdown.Item href="/profile">My Profile</NavDropdown.Item>
+
+                                        <NavDropdown.Divider />
+                                        <NavDropdown.Item href="/">
+                                            <span onClick={logout} className='nav-link'>Log Out</span>
+                                        </NavDropdown.Item>
+                                    </NavDropdown>
+                                </>
+                                :
+                                <>
+                                    <Link to="/signup">
+                                        <Nav.Link href="/signup" as="span">Sign Up</Nav.Link>
+                                    </Link>
+                                    <Link to="/login">
+                                        <Nav.Link href="/login" as="span">Log In</Nav.Link>
+                                    </Link>
+                                </>
+                        }
+
+
+
+                        <Nav style={{ gap: '0.5rem', alignItems: 'center' }}>
+                            <img src={twitter} alt='twitter'></img>
+                            <img src={linkedin} alt='linkedin'></img>
+                        </Nav>
+
+                    </Navbar.Collapse>
                 </Container>
             </Navbar >
 
