@@ -52,9 +52,6 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                                         <Link to={`/routes/edit/${flight._id}`}>
                                             <Button variant="secondary" size="sm" className="action-button mr-2">Edit</Button>
                                         </Link>
-                                        <Link to={`/routes/${flight._id}`}>
-                                            <Button variant="secondary" size="sm" className="action-button mr-2">View</Button>
-                                        </Link>
                                         <Button variant="danger" size="sm" className="action-button" onClick={() => showConfirmModal(flight._id)}>Delete</Button>
                                     </td>
                                 </tr>

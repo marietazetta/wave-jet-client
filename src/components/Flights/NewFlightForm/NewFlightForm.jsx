@@ -13,7 +13,6 @@ const NewFlightForm = () => {
         toDestination: '',
         flightTime: 0,
         miles: 0,
-        imageUrl: '',
         aircraftId: []
     })
 
@@ -38,18 +37,6 @@ const NewFlightForm = () => {
         FlightServices
             .saveFlight(flightData)
             .then(() => navigate('/routes'))
-            .catch(err => console.log(err))
-    }
-
-    const handleFileUpload = e => {
-        const formData = new FormData()
-        formData.append('imageData', e.target.files[0])
-
-        uploadServices
-            .uploadimage(formData)
-            .then(res => {
-                setFlightData({ ...flightData, imageUrl: res.data.cloudinary_url })
-            })
             .catch(err => console.log(err))
     }
 
@@ -92,14 +79,7 @@ const NewFlightForm = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-                <Row>
-                    <Col>
-                        <Form.Group className="mb-3" controlId="image">
-                            <Form.Label>Image</Form.Label>
-                            <Form.Control type="file" onChange={handleFileUpload} />
-                        </Form.Group>
-                    </Col>
-                </Row>
+
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="aircraftSelect">

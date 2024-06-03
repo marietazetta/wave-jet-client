@@ -6,8 +6,6 @@ import { RiCalendarLine } from "react-icons/ri";
 import { RiSearchLine } from "react-icons/ri";
 
 
-
-
 const FlightSearch = () => {
 
 
