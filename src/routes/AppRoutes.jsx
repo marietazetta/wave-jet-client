@@ -14,6 +14,7 @@ import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import PrivateRoute from "./PrivateRoute"
 import UsersPage from "../pages/Users/UsersPage/UsersPage"
 import { Route, Routes } from "react-router-dom"
+import BookingsPage from "../pages/Bookings/BookingsPage"
 
 
 
@@ -31,6 +32,11 @@ const Approutes = () => {
             <Route path={'/'} element={<HomePage />} />
             <Route path={'/fleet'} element={<AircraftsPage />} />
             <Route path={'/fleet/:aircraftId'} element={<AircraftDetailsPage />} />
+
+
+            {/* NEW BOOKING ROUTES TO BE REVISED*/}
+
+            <Route path={'/bookings'} element={<BookingsPage />} />
 
 
 
