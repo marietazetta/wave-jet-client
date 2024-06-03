@@ -11,15 +11,18 @@ const PrivateRoute = ({ onlyAdmin }) => {
         return <Loader />
     }
 
-    if (loggedUser.role != 'Admin' && onlyAdmin === true) {
-
-    }
-
     if (!loggedUser) {
         return <Navigate to="/login" />
     }
 
+
+    if (loggedUser.role != 'Admin' && onlyAdmin === true) {
+        return <Navigate to="/404" />
+
+    }
+
+
     return <Outlet />
 }
 
-export default PrivateRoutede
+export default PrivateRoute
