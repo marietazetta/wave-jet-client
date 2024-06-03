@@ -3,7 +3,7 @@ import { Outlet, Navigate } from "react-router-dom"
 import Loader from "../components/Loader/Loader"
 import { AuthContext } from "../contexts/auth.context"
 
-const PrivateRoute = () => {
+const PrivateRoute = ({ onlyAdmin }) => {
 
     const { loggedUser, isLoading } = useContext(AuthContext)
 
@@ -14,6 +14,13 @@ const PrivateRoute = () => {
     if (!loggedUser) {
         return <Navigate to="/login" />
     }
+
+
+    if (loggedUser.role != 'Admin' && onlyAdmin === true) {
+        return <Navigate to="/404" />
+
+    }
+
 
     return <Outlet />
 }
