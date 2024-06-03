@@ -1,12 +1,14 @@
 import { Row, Table, Button, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useState } from "react";
-import DeleteModal from "../../components/DeleteModal/DeleteModal";
+import { useContext, useState } from "react";
+import DeleteModal from "../DeleteModal/DeleteModal";
 import './DashboardFlights.css';
+import { AuthContext } from "../../contexts/auth.context";
 
 const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
     const [show, setShow] = useState(false);
     const [selectedFlightId, setSelectedFlightId] = useState(null);
+    const { loggedUser } = useContext(AuthContext)
 
     const handleClose = () => setShow(false);
     const showConfirmModal = (flightId) => {
@@ -20,6 +22,11 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                 <Col>
                     <h1 style={{ color: 'white' }}>Aircrafts and Flights Overview</h1>
                 </Col>
+            </Row>
+            <Row>
+                {
+                    loggedUser && <Link className="btn btn-sm btn-light" to={'/routes/add'}>New Route</Link>
+                }
             </Row>
             <Row>
                 <Col>

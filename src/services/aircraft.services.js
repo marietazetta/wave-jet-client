@@ -7,6 +7,17 @@ class AircraftServices {
         this.axiosApp = axios.create({
             baseURL: `${import.meta.env.VITE_API_URL}/aircrafts`
         })
+
+        this.axiosApp.interceptors.request.use(config => {
+
+            const storedToken = localStorage.getItem('authToken');
+
+            if (storedToken) {
+                config.headers = { Authorization: `Bearer ${storedToken}` };
+            }
+
+            return config
+        })
     }
 
     getAllAircrafts() {

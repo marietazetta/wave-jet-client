@@ -3,7 +3,7 @@ import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import FlightServices from "../../../services/flight.services"
-import uploadServices from "../../../services/upload.services"
+
 import AircraftServices from "../../../services/aircraft.services"
 
 const NewFlightForm = () => {
@@ -13,6 +13,7 @@ const NewFlightForm = () => {
         toDestination: '',
         flightTime: 0,
         miles: 0,
+        owner: '',
         aircraftId: []
     })
 

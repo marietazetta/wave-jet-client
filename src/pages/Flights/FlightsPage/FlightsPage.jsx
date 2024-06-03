@@ -47,14 +47,14 @@ const FlightsPage = () => {
         <>        <div className="flights-page full-height font-family">
             <Container>
 
+                {
+                    loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>
+                }
 
                 {
                     isLoading ? <Loader /> : <DashboardFlights aircrafts={aircrafts} flights={flights} />
                 }
 
-                {
-                    loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>
-                }
                 <hr />
 
 

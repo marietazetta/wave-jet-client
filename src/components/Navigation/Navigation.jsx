@@ -6,6 +6,7 @@ import { AuthContext } from "../../contexts/auth.context";
 import linkedin from "./../../../public/assets/icons/linkedin.svg";
 import twitter from "./../../../public/assets/icons/twitter.svg";
 import navbarlogo from "./../../../public/assets/icons/navbarlogo.svg";
+import { FaLinkedin, FaTiktok } from "react-icons/fa";
 
 const Navigation = () => {
     const { loggedUser, logout } = useContext(AuthContext);
@@ -35,7 +36,7 @@ const Navigation = () => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
                         <Link to="/fleet" className="nav-link">Fleet</Link>
-                        <Link to="/signup" className="nav-link">Become a member</Link>
+                        <Link to="/about" className="nav-link">Meet the team</Link>
                     </Nav>
 
                     <Navbar.Brand className="mx-auto" as={Link} to="/">
@@ -72,8 +73,10 @@ const Navigation = () => {
                                 <Link to="/login" className="nav-link">Log In</Link>
                             </>
                         )}
-                        <img src={twitter} alt='twitter' className="icon" />
-                        <img src={linkedin} alt='linkedin' className="icon" />
+                        <FaLinkedin />
+                        <FaTiktok />
+
+
                     </Nav>
                 </Navbar.Collapse>
             </Container>
