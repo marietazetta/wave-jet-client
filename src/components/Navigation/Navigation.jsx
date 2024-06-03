@@ -47,8 +47,20 @@ const Navigation = () => {
                         {loggedUser ? (
                             <>
                                 <NavDropdown title={`Welcome, ${loggedUser.username}`} id="navbarScrollingDropdown">
-                                    <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
-                                    <NavDropdown.Divider />
+                                    {loggedUser.role === "Admin" ? (
+                                        <>
+                                            <NavDropdown.Item as={Link} to="/routes">Routes</NavDropdown.Item>
+
+                                            <NavDropdown.Item as={Link} to="/fleet/add">Add Aircraft</NavDropdown.Item>
+                                            <NavDropdown.Item as={Link} to="/routes/add">Add New Route</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                        </>
+                                    ) : (
+                                        <>
+                                            <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
+                                            <NavDropdown.Divider />
+                                        </>
+                                    )}
                                     <NavDropdown.Item onClick={logout}>
                                         Log Out
                                     </NavDropdown.Item>
