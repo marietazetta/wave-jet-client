@@ -1,9 +1,10 @@
 import { Card, Row, Col, Container } from "react-bootstrap";
+import "./SearchResultsCard.css"
 
-const BookingResultsCard = ({ aircrafts, flights }) => {
+const SearchResultsCard = ({ aircrafts, flights }) => {
 
     return (
-        <div className="BookingResultsCard font-family">
+        <div className="SearchResultsCard font-family">
 
             <Container fluid className="mt-5">
 
@@ -44,4 +45,4 @@ const BookingResultsCard = ({ aircrafts, flights }) => {
     )
 }
 
-export default BookingResultsCard
+export default SearchResultsCard

@@ -1,19 +1,9 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import "./FlightSearch.css";
 import { Form, Button, InputGroup } from 'react-bootstrap';
-import { RiMapPinLine, RiUser3Line, RiCalendarLine, RiSearchLine } from "react-icons/ri";
+import { RiMapPinLine, RiUser3Line, RiCalendarLine } from "react-icons/ri";
 import flightServices from "../../services/flight.services";
-=======
 import { FaPlaneDeparture } from "react-icons/fa";
-import "./FlightSearch.css"
-import { Form, Button, InputGroup } from 'react-bootstrap';
-import { RiMapPinLine } from "react-icons/ri";
-import { RiUser3Line } from "react-icons/ri";
-import { RiCalendarLine } from "react-icons/ri";
-
-
->>>>>>> 49c00d63a8a21adcb0046c54c629ba61526a8055
 
 const FlightSearch = () => {
 
