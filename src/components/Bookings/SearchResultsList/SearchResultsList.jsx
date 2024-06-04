@@ -10,7 +10,7 @@ const SearchResultsList = ({ searchResults }) => {
             <Container className="mt-5 pt-5 pb-5">
 
                 {
-                    searchResults.map(search => <SearchResultsCard {...search} />)
+                    searchResults.map(aircraft => <SearchResultsCard {...aircraft} />)
                 }
 
             </Container>

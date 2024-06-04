@@ -1,7 +1,7 @@
 import { Card, Row, Col, Container } from "react-bootstrap";
 import "./SearchResultsCard.css"
 
-const SearchResultsCard = ({ aircrafts, flights }) => {
+const SearchResultsCard = ({ aircraftId, flights }) => {
 
     return (
         <div className="SearchResultsCard font-family">
@@ -10,7 +10,7 @@ const SearchResultsCard = ({ aircrafts, flights }) => {
 
                 <Row className="d-flex align-items-center">
 
-                    {aircrafts.map(aircraft => (
+                    {aircraftId.map(aircraft => (
 
                         <Col key={aircraft._id} lg={6} md={8}>
                             <h2>{aircraft.model}</h2>
@@ -20,7 +20,7 @@ const SearchResultsCard = ({ aircrafts, flights }) => {
 
                     ))}
 
-
+                    {/* 
                     {flights.map(flight => (
 
                         <Col lg={6} md={8}>
@@ -37,7 +37,7 @@ const SearchResultsCard = ({ aircrafts, flights }) => {
 
                         </Col>
 
-                    ))}
+                    ))} */}
 
                 </Row>
             </Container>

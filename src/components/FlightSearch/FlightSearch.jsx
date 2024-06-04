@@ -5,7 +5,7 @@ import { RiMapPinLine, RiUser3Line, RiCalendarLine } from "react-icons/ri";
 import flightServices from "../../services/flight.services";
 import { FaPlaneDeparture } from "react-icons/fa";
 
-const FlightSearch = () => {
+const FlightSearch = ({ setSearchResults }) => {
 
     const [flightSearchData, setFlightData] = useState({
         fromDestination: '',
@@ -50,7 +50,7 @@ const FlightSearch = () => {
         flightServices
             .searchFlight(flightSearchData)
             .then(({ data }) => {
-                console.log('LOS VUELOS', data);
+                setSearchResults(data)
             })
             .catch(err => console.log(err));
     };
