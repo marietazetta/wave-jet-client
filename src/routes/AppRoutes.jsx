@@ -17,8 +17,6 @@ import { Route, Routes } from "react-router-dom"
 import BookingsPage from "../pages/Bookings/BookingsPage"
 
 
-
-
 const Approutes = () => {
 
 
@@ -37,6 +35,7 @@ const Approutes = () => {
             {/* NEW BOOKING ROUTES TO BE REVISED*/}
 
             <Route path={'/bookings'} element={<BookingsPage />} />
+            {/* <Route path={'/explore'} element={<ExplorePage />} /> */}
 
 
 
