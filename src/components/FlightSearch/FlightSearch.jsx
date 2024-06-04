@@ -5,7 +5,6 @@ import { RiMapPinLine, RiUser3Line, RiCalendarLine } from "react-icons/ri";
 import flightServices from "../../services/flight.services";
 import { FaPlaneDeparture } from "react-icons/fa";
 
-
 const FlightSearch = () => {
 
     const [flightSearchData, setFlightData] = useState({
