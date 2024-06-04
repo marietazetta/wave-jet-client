@@ -1,11 +1,15 @@
 import { Container } from 'react-bootstrap'
 import './HomePage.css'
 import FlightSearch from "../../components/FlightSearch/FlightSearch"
+import BookingResultsList from '../../components/Bookings/BookingResultsList/BookingResultsList'
+import { useEffect, useState } from 'react'
 
 const HomePage = () => {
+
+    const [bookingResults, setBookingResults] = useState([])
+
     return (
         <>
-
             <div className='home-page full-height font-family'>
                 <video
                     className='background-video'
@@ -15,17 +19,17 @@ const HomePage = () => {
                     muted
                     loop
                 />
-
-
-
             </div>
-
 
             <div className='overlay'>
                 <Container className='text-container'>
                     <h4>PLAN A FLIGHT</h4>
                     <p>Enter your flight details below and our team will contact you shortly. Private jet charter flight prices are subject to the market rate and start from $5,000 per hour.</p>
-                    <FlightSearch className='mt-5' />
+
+                    <FlightSearch className='mt-5' setBookingResults={setBookingResults} />
+
+                    <BookingResultsList bookingResults={bookingResults} />
+
                 </Container>
             </div>
 

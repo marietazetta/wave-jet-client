@@ -1,0 +1,24 @@
+.BookingResultsCard .equal-aspect-ratio {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.BookingResultsCard .align-items-center {
+    display: flex;
+    align-items: center;
+}
+
+/* .BookingResultsCard .mt-3 {
+    margin-top: 1rem;
+}
+
+.BookingResultsCard .custom-button {
+    display: inline-block;
+    width: auto;
+    white-space: nowrap;
+    color: #ede0d4;
+    background-color: #0D1F2D;
+
+
+} */
