@@ -1,23 +1,14 @@
-<<<<<<< HEAD
 import { useEffect, useState } from "react";
 import "./FlightSearch.css";
 import { Form, Button, InputGroup } from 'react-bootstrap';
-import { RiMapPinLine, RiUser3Line, RiCalendarLine, RiSearchLine } from "react-icons/ri";
+import { RiMapPinLine, RiUser3Line, RiCalendarLine } from "react-icons/ri";
 import flightServices from "../../services/flight.services";
-=======
 import { FaPlaneDeparture } from "react-icons/fa";
-import "./FlightSearch.css"
-import { Form, Button, InputGroup } from 'react-bootstrap';
-import { RiMapPinLine } from "react-icons/ri";
-import { RiUser3Line } from "react-icons/ri";
-import { RiCalendarLine } from "react-icons/ri";
 
-
->>>>>>> 49c00d63a8a21adcb0046c54c629ba61526a8055
 
 const FlightSearch = () => {
 
-    const [flightData, setFlightData] = useState({
+    const [flightSearchData, setFlightData] = useState({
         fromDestination: '',
         toDestination: '',
         departureDate: '',
@@ -49,19 +40,21 @@ const FlightSearch = () => {
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFlightData({
-            ...flightData,
+            ...flightSearchData,
             [name]: value
         });
     }
 
     const handleSearch = e => {
-        e.preventDefault()
+        e.preventDefault();
 
         flightServices
-            .searchFlight(flightData)
-            .then(({ data }) => console.log('LOS VUELOS', data))
-            .catch(err => console.log(err))
-    }
+            .searchFlight(flightSearchData)
+            .then(({ data }) => {
+                console.log('LOS VUELOS', data);
+            })
+            .catch(err => console.log(err));
+    };
 
     return (
         <section className="section__container booking__container">
@@ -72,7 +65,7 @@ const FlightSearch = () => {
                         <Form.Control
                             as="select"
                             name="fromDestination"
-                            value={flightData.fromDestination}
+                            value={flightSearchData.fromDestination}
                             onChange={handleInputChange}
                         >
                             <option value="" disabled>Select Departure City</option>
@@ -93,7 +86,7 @@ const FlightSearch = () => {
                         <Form.Control
                             as="select"
                             name="toDestination"
-                            value={flightData.toDestination}
+                            value={flightSearchData.toDestination}
                             onChange={handleInputChange}
                         >
                             <option value="" disabled>Select Destination City</option>
@@ -110,7 +103,7 @@ const FlightSearch = () => {
                         <Form.Control
                             type="date"
                             name="departureDate"
-                            value={flightData.departureDate}
+                            value={flightSearchData.departureDate}
                             onChange={handleInputChange}
                             placeholder="Departure"
                         />
@@ -124,7 +117,7 @@ const FlightSearch = () => {
                         <Form.Control
                             type="date"
                             name="returnDate"
-                            value={flightData.returnDate}
+                            value={flightSearchData.returnDate}
                             onChange={handleInputChange}
                             placeholder="Return"
                         />
@@ -138,7 +131,7 @@ const FlightSearch = () => {
                         <Form.Control
                             type="number"
                             name="travellers"
-                            value={flightData.travellers}
+                            value={flightSearchData.travellers}
                             onChange={handleInputChange}
                             placeholder="Travellers"
                         />
