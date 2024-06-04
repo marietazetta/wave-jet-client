@@ -24,16 +24,15 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                 </Col>
             </Row>
             <Row>
-                {
-                    loggedUser && <Link className="btn btn-sm btn-light" to={'/routes/add'}>New Route</Link>
-                }
-            </Row>
-            <Row>
                 <Col>
                     <Table striped bordered hover responsive className="flights-table">
                         <thead>
                             <tr>
-                                <th>Route</th>
+                                <th>Route
+                                    {
+                                        loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>
+                                    }
+                                </th>
                                 <th>Range (nm)</th>
                                 <th>Flight Time</th>
                                 {aircrafts.map(aircraft => (

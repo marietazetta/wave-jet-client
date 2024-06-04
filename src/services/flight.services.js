@@ -24,6 +24,14 @@ class FlightServices {
         return this.axiosApp.get('/')
     }
 
+    getAllOrigins() {
+        return this.axiosApp.get('/origin')
+    }
+
+    getAllDestinations() {
+        return this.axiosApp.get('/destination')
+    }
+
     getOneFlight(flightId) {
         return this.axiosApp.get(`/${flightId}`)
     }
@@ -38,6 +46,12 @@ class FlightServices {
 
     deleteFlight(flightId) {
         return this.axiosApp.delete(`/${flightId}`)
+    }
+
+    searchFlight(searchParams) {
+        return this.axiosApp.get('/search',
+            { params: searchParams }
+        )
     }
 }
 

@@ -12,7 +12,6 @@ const EditFlightForm = () => {
         toDestination: '',
         flightTime: 0,
         miles: 0,
-        imageUrl: '',
         aircraftId: []
     })
 
@@ -54,17 +53,6 @@ const EditFlightForm = () => {
             .catch(err => console.log(err))
     }
 
-    const handleFileUpload = e => {
-        const formData = new FormData()
-        formData.append('imageData', e.target.files[0])
-
-        uploadServices
-            .uploadimage(formData)
-            .then(res => {
-                setFlightData({ ...flightData, imageUrl: res.data.cloudinary_url })
-            })
-            .catch(err => console.log(err))
-    }
 
     const handleCheckboxChange = e => {
         const { value, checked } = e.target
@@ -109,14 +97,6 @@ const EditFlightForm = () => {
                         <Form.Group className="mb-3" controlId="miles">
                             <Form.Label>Miles</Form.Label>
                             <Form.Control type="number" value={flightData.miles} name="miles" onChange={handleInputChange} />
-                        </Form.Group>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <Form.Group className="mb-3" controlId="image">
-                            <Form.Label>Image</Form.Label>
-                            <Form.Control type="file" onChange={handleFileUpload} />
                         </Form.Group>
                     </Col>
                 </Row>

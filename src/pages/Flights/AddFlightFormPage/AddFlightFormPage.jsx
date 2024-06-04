@@ -1,6 +1,7 @@
 import "./AddFlightFormPage.css"
 import { Container } from "react-bootstrap"
 import NewFlightForm from "../../../components/Flights/NewFlightForm/NewFlightForm"
+import { Link } from "react-router-dom"
 
 
 const AddFlightFormPage = () => {
@@ -11,7 +12,9 @@ const AddFlightFormPage = () => {
             <Container>
                 <h1 style={{ color: 'white' }}>New Flight Route</h1>
                 <hr style={{ color: 'white' }}></hr>
+                <Link to="/routes" className="btn btn-dark">Back to Routes</Link>
                 <NewFlightForm />
+
             </Container>
         </div >
 
