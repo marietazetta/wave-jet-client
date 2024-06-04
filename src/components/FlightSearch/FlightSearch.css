@@ -2,9 +2,9 @@
     border-radius: 2rem;
     border: 1px solid var(--extra-light);
     box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
-    padding: 1rem;
+    padding: 1.2rem 1rem;
     margin-bottom: 2rem;
-    padding-top: 0.1rem;
+
 }
 
 .booking__nav {
