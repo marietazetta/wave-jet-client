@@ -11,6 +11,7 @@ const HomePage = () => {
     return (
         <>
             <div className='home-page full-height font-family'>
+
                 <video
                     className='background-video'
                     src="https://res.cloudinary.com/dzncdwx7u/video/upload/v1717084577/homepagevideo_tessr8.mp4"
@@ -18,7 +19,9 @@ const HomePage = () => {
                     autoPlay
                     muted
                     loop
+
                 />
+
             </div>
 
             <div className='overlay'>

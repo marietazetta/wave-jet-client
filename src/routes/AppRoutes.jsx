@@ -15,6 +15,9 @@ import PrivateRoute from "./PrivateRoute"
 import UsersPage from "../pages/Users/UsersPage/UsersPage"
 import { Route, Routes } from "react-router-dom"
 import BookingsPage from "../pages/Bookings/BookingsPage"
+import ErrorPage from "../pages/ErrorPage/ErrorPage"
+
+
 
 
 const Approutes = () => {
@@ -61,7 +64,7 @@ const Approutes = () => {
             </Route>
 
 
-            <Route path={'*'} element={<p>EL ERROR</p>} />
+            <Route path={'*'} element={<ErrorPage />} />
         </Routes>
     )
 

@@ -9,7 +9,7 @@ const SearchResultsList = ({ searchResults }) => {
 
             {
                 !searchResults.length ?
-                    <h1>Sin resultados</h1> :
+                    <h3>The selected route is not available</h3> :
                     searchResults.map(aircraft => <SearchResultsCard {...aircraft} />)
             }
 
