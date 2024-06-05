@@ -14,7 +14,7 @@ const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate
             <Container fluid className="mt-5">
 
                 <Row className="d-flex align-items-center mb-4">
-                    <Col lg={12}>
+                    <Col lg={12} md={8}>
                         <div className="custom-card">
 
                             <div className="card-content">

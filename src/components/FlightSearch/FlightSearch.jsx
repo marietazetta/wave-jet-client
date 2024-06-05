@@ -8,10 +8,10 @@ import { FaPlaneDeparture } from "react-icons/fa";
 const FlightSearch = ({ setSearchResults }) => {
 
     const [flightSearchData, setFlightData] = useState({
-        fromDestination: 'Madrid',
-        toDestination: 'Ibiza',
-        departureDate: '2024-06-11',
-        returnDate: '2024-06-12',
+        fromDestination: '',
+        toDestination: '',
+        departureDate: '',
+        returnDate: '',
         travellers: 1
     })
 
