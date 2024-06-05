@@ -46,7 +46,7 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
                                                 <span>{aircraft.capacity}</span>
                                             </div>
 
-                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id)}>
+                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id, aircraft.hourlyRate)}>
                                                 Request Flight
                                             </Button>
                                             <Link to={`/fleet/${aircraft._id}`} className="button-request-flight">
