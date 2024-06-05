@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Button, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Card } from "react-bootstrap";
 import aircraftServices from "../../../services/aircraft.services";
-import { Link } from "react-router-dom";
 import "./AirCraftDetailsPage.css";
 
 const AircraftDetailsPage = () => {
@@ -105,11 +104,6 @@ const AircraftDetailsPage = () => {
                         </Col>
                     ))}
                 </Row>
-                <Link to={`/fleet/edit/${aircraftId}`}>
-                    <Button variant="secondary" size="md" className="custom-color-button">
-                        Edit
-                    </Button>
-                </Link>
             </Container>
 
         </div>

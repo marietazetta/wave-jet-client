@@ -8,7 +8,7 @@ import { AuthContext } from "../../contexts/auth.context";
 const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
     const [show, setShow] = useState(false);
     const [selectedFlightId, setSelectedFlightId] = useState(null);
-    const { loggedUser } = useContext(AuthContext)
+    const { loggedUser } = useContext(AuthContext);
 
     const handleClose = () => setShow(false);
     const showConfirmModal = (flightId) => {
@@ -28,17 +28,24 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                     <Table striped bordered hover responsive className="flights-table">
                         <thead>
                             <tr>
-                                <th>Route
-                                    {
-                                        loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>
-                                    }
+                                <th className="wide-header" rowSpan="2">Route
+                                    {loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>}
                                 </th>
-                                <th>Range (nm)</th>
-                                <th>Flight Time</th>
+                                <th className="wide-header" rowSpan="2">Range (nm)</th>
+                                <th className="wide-header" rowSpan="2">Flight Time</th>
                                 {aircrafts.map(aircraft => (
-                                    <th key={aircraft._id}>{aircraft.model} - {aircraft.tailNumber}</th>
+                                    <th key={aircraft._id} colSpan="2">{aircraft.model} - {aircraft.tailNumber}</th>
                                 ))}
-                                <th>Actions</th>
+                                <th className="wide-header" rowSpan="2">Actions</th>
+                            </tr>
+                            <tr>
+                                {aircrafts.map(aircraft => (
+                                    <th key={aircraft._id} colSpan="2">
+                                        <Link to={`/fleet/edit/${aircraft._id}`}>
+                                            <Button variant="secondary" size="sm" className="action-button">Edit Aircraft</Button>
+                                        </Link>
+                                    </th>
+                                ))}
                             </tr>
                         </thead>
                         <tbody>
@@ -50,13 +57,13 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                                     {aircrafts.map(aircraft => {
                                         if (flight.aircraftId.includes(aircraft._id)) {
                                             const pricePerFlight = flight.flightTime * aircraft.hourlyRate;
-                                            return <td key={aircraft._id}>${pricePerFlight.toFixed(2)}</td>;
+                                            return <td key={aircraft._id} colSpan="2">${pricePerFlight.toFixed(2)}</td>;
                                         }
-                                        return <td key={aircraft._id}>N/A</td>;
+                                        return <td key={aircraft._id} colSpan="2">N/A</td>;
                                     })}
                                     <td className="actions-column">
                                         <Link to={`/routes/edit/${flight._id}`}>
-                                            <Button variant="secondary" size="sm" className="action-button mr-2">Edit</Button>
+                                            <Button variant="secondary" size="sm" className="action-button mr-2">Edit Route</Button>
                                         </Link>
                                         <Button variant="danger" size="sm" className="action-button" onClick={() => showConfirmModal(flight._id)}>Delete</Button>
                                     </td>
@@ -67,7 +74,7 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                 </Col>
             </Row>
             <DeleteModal show={show} handleClose={handleClose} flightId={selectedFlightId} loadFlights={loadFlights} />
-        </Container >
+        </Container>
     );
 };
 

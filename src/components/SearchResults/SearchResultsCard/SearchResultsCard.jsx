@@ -1,13 +1,21 @@
-import "./SearchResultsCard.css"
+import React, { useContext } from 'react';
 import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { FaRegClock } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdOutlineEuro } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from '../../../contexts/auth.context';
+import "./SearchResultsCard.css"
 
 const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
+    const { loggedUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleRequest = (aircraftId) => {
+        if (!loggedUser) {
+            navigate('/login');
+            return;
+        }
         const bookingData = {
             aircraftId
         }
@@ -16,7 +24,6 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
 
     return (
         <div className="SearchResultsCard font-family">
-
             <Container fluid className="mt-5">
                 {
                     aircraftId.map(aircraft => (
@@ -46,7 +53,7 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
                                                 <span>{aircraft.capacity}</span>
                                             </div>
 
-                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id, aircraft.hourlyRate)}>
+                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id)}>
                                                 Request Flight
                                             </Button>
                                             <Link to={`/fleet/${aircraft._id}`} className="button-request-flight">
@@ -60,9 +67,8 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
                     ))
                 }
             </Container>
-
-        </div >
+        </div>
     )
 }
 
-export default SearchResultsCard
+export default SearchResultsCard;

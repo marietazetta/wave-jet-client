@@ -3,8 +3,7 @@ import { AuthContext } from '../../contexts/auth.context'
 import bookingServices from "../../services/booking.services"
 import Loader from "../../components/Loader/Loader"
 import BookingList from "../../components/Bookings/BookingList/BookingList"
-
-
+import { Container, Row, Col } from "react-bootstrap"
 
 const BookingsPage = () => {
     const { loggedUser } = useContext(AuthContext)
@@ -15,7 +14,6 @@ const BookingsPage = () => {
         loadBookings()
     }, [])
 
-
     const loadBookings = () => {
         bookingServices
             .getBookingsByOwner(loggedUser._id)
@@ -23,16 +21,31 @@ const BookingsPage = () => {
                 setBookings(data)
                 setIsLoading(false)
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                console.log(err)
+                setIsLoading(false)
+            })
     }
 
     return (
         <>
-            <div className="profile-page full-height font-family">
-                <h1> Welcome, {loggedUser.username}</h1>
-                <hr />
-                <BookingList bookings={bookings} />
-            </div>
+            <Container>
+                <Row>
+                    <Col>
+                        {isLoading ? (
+                            <Loader />
+                        ) : (
+                            <div className="profile-page full-height font-family">
+                                <h1>Welcome, {loggedUser.username}</h1>
+                                <hr />
+                                <BookingList bookings={bookings} />
+                            </div>
+                        )}
+                    </Col>
+
+                </Row>
+
+            </Container>
         </>
     )
 }

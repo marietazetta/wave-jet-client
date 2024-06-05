@@ -1,5 +1,6 @@
+import React from "react"
 import "./BookingCard.css"
-import { Container, Row, Col } from "react-bootstrap"
+import { Row, Col, Card } from "react-bootstrap"
 import { MdOutlineEuro } from "react-icons/md"
 import { LiaPlaneArrivalSolid, LiaPlaneDepartureSolid } from "react-icons/lia"
 import { GrStatusWarning } from "react-icons/gr"
@@ -7,48 +8,37 @@ import { GrStatusWarning } from "react-icons/gr"
 
 const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate, status, aircraftId, flightId }) => {
 
-
     return (
         <div className="BookingCard font-family">
 
-            <Container fluid className="mt-5">
+            <Card className="custom-card">
+                <Card.Body>
+                    <Card.Title className="mb-4">
+                        <h3>{fromDestination} - {toDestination}</h3>
+                    </Card.Title>
+                    <Row className="card-details">
+                        <Col md={4} className="detail-item">
+                            <LiaPlaneDepartureSolid className="icon" />
+                            <p>Departure: {new Date(departureDate).toLocaleDateString()}</p>
+                        </Col>
+                        <Col md={4} className="detail-item">
+                            <LiaPlaneArrivalSolid className="icon" />
+                            <p>Return: {new Date(returnDate).toLocaleDateString()}</p>
+                        </Col>
+                        <Col md={4} className="detail-item">
+                            <MdOutlineEuro className="icon" />
+                            <span>{aircraftId.hourlyRate * flightId?.flightTime}</span>
+                        </Col>
+                        <Col md={4} className="detail-item mt-3">
+                            <GrStatusWarning className="icon" />
+                            <span>{status}</span>
+                        </Col>
+                    </Row>
+                </Card.Body>
+            </Card>
 
-                <Row className="d-flex align-items-center mb-4">
-                    <Col lg={12}>
-                        <div className="custom-card">
-
-                            <div className="card-content">
-                                <h3>{fromDestination} - {toDestination}</h3>
-                                <div className="card-details">
-                                    <div className="detail-item">
-
-                                        <LiaPlaneDepartureSolid />
-                                        <p>Departure:{new Date(departureDate).toLocaleDateString()}</p>
-                                        <LiaPlaneArrivalSolid />
-                                        <p>Return: {new Date(returnDate).toLocaleDateString()}</p>
-
-                                    </div>
-                                    <div className="separator"></div>
-                                    <div className="detail-item">
-                                        <MdOutlineEuro />
-                                        <span>{aircraftId.hourlyRate * flightId?.flightTime}</span>
-                                    </div>
-                                    <div className="separator"></div>
-                                    <div className="detail-item">
-                                        <GrStatusWarning />
-                                        <span>{status}</span>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </Col>
-                </Row>
-
-            </Container>
         </div>
-
     )
-
 }
+
 export default BookingCard

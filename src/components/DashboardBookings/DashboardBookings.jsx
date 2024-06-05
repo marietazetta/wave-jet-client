@@ -1,13 +1,16 @@
+import './DashboardBookings.css';
 import React, { useEffect, useState } from 'react';
 import { Row, Table, Col, Container, Button } from "react-bootstrap";
-import './DashboardBookings.css';
-import bookingServices from "../../services/booking.services"
+import bookingServices from "../../services/booking.services";
+import authServices from '../../services/auth.services';
 
 const DashboardBookings = () => {
     const [bookings, setBookings] = useState([]);
+    const [userMap, setUserMap] = useState({});
 
     useEffect(() => {
         loadBookings();
+        loadUsers();
     }, []);
 
     const loadBookings = () => {
@@ -21,12 +24,28 @@ const DashboardBookings = () => {
             });
     };
 
+    const loadUsers = () => {
+        authServices
+            .getAllUsers()
+            .then(response => {
+                const users = response.data;
+                const userMap = {};
+                users.forEach(user => {
+                    userMap[user._id] = { username: user.username, email: user.email };
+                });
+                setUserMap(userMap);
+            })
+            .catch(error => {
+                console.error('Error fetching users:', error);
+            });
+    };
+
     const updateBookingStatus = (bookingId, status) => {
         bookingServices
             .editBooking(bookingId, { status })
             .then(() => {
-                setBookings(prevBookings =>
-                    prevBookings.map(booking =>
+                setBookings(bookings =>
+                    bookings.map(booking =>
                         booking._id === bookingId ? { ...booking, status } : booking
                     )
                 );
@@ -60,6 +79,8 @@ const DashboardBookings = () => {
                     <Table striped bordered hover responsive className="flights-table">
                         <thead>
                             <tr>
+                                <th>User</th>
+                                <th>Email</th>
                                 <th>Flight Route</th>
                                 <th>Departure Date</th>
                                 <th>Return Date</th>
@@ -71,6 +92,8 @@ const DashboardBookings = () => {
                         <tbody>
                             {bookings.map(booking => (
                                 <tr key={booking._id}>
+                                    <td>{userMap[booking.owner]?.username || 'Unknown User'}</td>
+                                    <td>{userMap[booking.owner]?.email || 'Unknown Email'}</td>
                                     <td>{booking.fromDestination} - {booking.toDestination}</td>
                                     <td>{new Date(booking.departureDate).toLocaleDateString()}</td>
                                     <td>{new Date(booking.returnDate).toLocaleDateString()}</td>
