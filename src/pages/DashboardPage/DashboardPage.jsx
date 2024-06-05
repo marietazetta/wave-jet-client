@@ -1,23 +1,24 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import FlightServices from "../../services/flight.services"
 import AircfraftServices from "../../services/aircraft.services"
-import { AuthContext } from "../../contexts/auth.context"
-import { Container } from "react-bootstrap"
-import Loader from "../../components/Loader/Loader"
+import BookingServices from "../../services/booking.services"
 import DashboardFlights from "../../components/DashboardFlights/DashboardFlights"
+import DashboardBookings from "../../components/DashboardBookings/DashboardBookings"
+import Loader from "../../components/Loader/Loader"
+import { Container } from "react-bootstrap"
 import "./DashboardPage.css"
 
 const DashboardPage = () => {
 
     const [flights, setFlights] = useState([])
     const [aircrafts, setAircrafts] = useState([])
+    const [bookings, setBookings] = useState([])
     const [isLoading, setIsLoading] = useState(true)
-
-    const { loggedUser } = useContext(AuthContext)
 
     useEffect(() => {
         loadFlights()
         loadAircrafts()
+        loadBookings()
     }, [])
 
     const loadFlights = () => {
@@ -42,13 +43,30 @@ const DashboardPage = () => {
             .catch(err => console.log(err))
     }
 
+    const loadBookings = () => {
+
+        BookingServices
+            .getAllBookings()
+            .then(({ data }) => {
+                setBookings(data)
+                setIsLoading(false)
+            })
+            .catch(err => console.log(err))
+    }
+
     return (
         <>        <div className="dashboard-page full-height font-family">
             <Container>
 
 
                 {
-                    isLoading ? <Loader /> : <DashboardFlights aircrafts={aircrafts} flights={flights} />
+                    isLoading ? <Loader /> :
+                        <>
+                            <DashboardBookings bookings={bookings} />
+
+                            <DashboardFlights aircrafts={aircrafts} flights={flights} />
+                        </>
+
                 }
 
                 <hr />

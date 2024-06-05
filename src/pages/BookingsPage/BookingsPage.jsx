@@ -13,6 +13,7 @@ const BookingsPage = () => {
         loadBookings()
     }, [])
 
+
     const loadBookings = () => {
         bookingServices
             .getBookingsByOwner(loggedUser._id)
@@ -30,6 +31,7 @@ const BookingsPage = () => {
                 <hr />
                 {isLoading ?
                     <Loader /> :
+
                     bookings.length ? (
                         bookings.map((booking) => (
                             <div key={booking._id}>
