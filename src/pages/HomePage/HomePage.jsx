@@ -4,9 +4,12 @@ import FlightSearch from "../../components/FlightSearch/FlightSearch"
 import { useState } from 'react'
 import SearchResultsList from '../../components/SearchResults/SearchResultsList/SearchResultsList'
 import BookingServices from "../../services/booking.services"
+import { useNavigate } from 'react-router-dom'
 
 
 const HomePage = () => {
+
+    const navigate = useNavigate()
 
     const [searchResults, setSearchResults] = useState({
         items: [],
@@ -17,14 +20,13 @@ const HomePage = () => {
 
         const fullBookingData = {
             ...searchResults.searchData,
+            totalPrice: 0,
             aircraftId
         }
 
         BookingServices
             .saveBooking(fullBookingData)
-            .then(response => {
-                console.log('Booking confirmed:', response.bookingData)
-            })
+            .then(() => navigate('/bookings'))
             .catch(err => console.log(err))
     }
 
