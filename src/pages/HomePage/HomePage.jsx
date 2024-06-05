@@ -16,13 +16,16 @@ const HomePage = () => {
         searchData: {}
     })
 
-    const requestBooking = ({ aircraftId }) => {
+    const requestBooking = ({ aircraftId, flightId }) => {
 
         const fullBookingData = {
             ...searchResults.searchData,
-            totalPrice: 0,
-            aircraftId
+            aircraftId,
+            flightId: searchResults.items[0]._id
+
         }
+
+
 
         BookingServices
             .saveBooking(fullBookingData)

@@ -8,7 +8,6 @@ import { GrStatusWarning } from "react-icons/gr"
 const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate, status, aircraftId, flightId }) => {
 
 
-
     return (
         <div className="BookingCard font-family">
 
@@ -32,7 +31,7 @@ const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate
                                     <div className="separator"></div>
                                     <div className="detail-item">
                                         <MdOutlineEuro />
-                                        <span>{aircraftId.hourlyRate * flightId.flightTime}</span>
+                                        <span>{aircraftId.hourlyRate * flightId?.flightTime}</span>
                                     </div>
                                     <div className="separator"></div>
                                     <div className="detail-item">
