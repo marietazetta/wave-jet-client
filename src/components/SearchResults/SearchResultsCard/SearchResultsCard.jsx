@@ -1,11 +1,15 @@
 import "./SearchResultsCard.css"
-import { Card, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container, Button } from "react-bootstrap";
 import { FaRegClock } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdOutlineEuro } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const SearchResultsCard = ({ aircraftId, flightTime }) => {
+const SearchResultsCard = ({ aircraftId, flightTime, confirmBooking }) => {
+
+    const handleRequest = flightId => {
+        console.log('este es el id ', aircraftId)
+    }
 
     return (
         <div className="SearchResultsCard font-family">
@@ -39,9 +43,9 @@ const SearchResultsCard = ({ aircraftId, flightTime }) => {
                                                 <span>{aircraft.capacity}</span>
                                             </div>
 
-                                            <Link to="/bookings" className="button-request-flight">
+                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id)}>
                                                 Request Flight
-                                            </Link>
+                                            </Button>
                                             <Link to={`/fleet/${aircraft._id}`} className="button-request-flight">
                                                 Aircraft Details
                                             </Link>

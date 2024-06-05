@@ -2,11 +2,15 @@ import { Container } from 'react-bootstrap'
 import './HomePage.css'
 import FlightSearch from "../../components/FlightSearch/FlightSearch"
 import { useState } from 'react'
-import SearchResultsList from '../../components/Bookings/SearchResultsList/SearchResultsList'
+import SearchResultsList from '../../components/SearchResults/SearchResultsList/SearchResultsList'
 
 const HomePage = () => {
 
     const [searchResults, setSearchResults] = useState([])
+
+    const confirmBooking = bookingData => {
+        console.log('LOS DATOS DE LA RESERVA TIENEN QUE LLEGAR AQUI Y ENVIARSE A LA API LOL', bookingData)
+    }
 
     return (
         <>
@@ -33,7 +37,7 @@ const HomePage = () => {
 
                     <FlightSearch className='flightSearch' setSearchResults={setSearchResults} />
 
-                    <SearchResultsList searchResults={searchResults} />
+                    <SearchResultsList searchResults={searchResults} confirmBooking={confirmBooking} />
 
                 </Container>
             </div>
