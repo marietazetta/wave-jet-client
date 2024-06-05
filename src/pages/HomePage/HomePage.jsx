@@ -3,13 +3,29 @@ import './HomePage.css'
 import FlightSearch from "../../components/FlightSearch/FlightSearch"
 import { useState } from 'react'
 import SearchResultsList from '../../components/SearchResults/SearchResultsList/SearchResultsList'
+import BookingServices from "../../services/booking.services"
+
 
 const HomePage = () => {
 
-    const [searchResults, setSearchResults] = useState([])
+    const [searchResults, setSearchResults] = useState({
+        items: [],
+        searchData: {}
+    })
 
-    const confirmBooking = bookingData => {
-        console.log('LOS DATOS DE LA RESERVA TIENEN QUE LLEGAR AQUI Y ENVIARSE A LA API LOL', bookingData)
+    const requestBooking = ({ aircraftId }) => {
+
+        const fullBookingData = {
+            ...searchResults.searchData,
+            aircraftId
+        }
+
+        BookingServices
+            .saveBooking(fullBookingData)
+            .then(response => {
+                console.log('Booking confirmed:', response.bookingData)
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -37,7 +53,7 @@ const HomePage = () => {
 
                     <FlightSearch className='flightSearch' setSearchResults={setSearchResults} />
 
-                    <SearchResultsList searchResults={searchResults} confirmBooking={confirmBooking} />
+                    <SearchResultsList searchResults={searchResults.items} requestBooking={requestBooking} />
 
                 </Container>
             </div>

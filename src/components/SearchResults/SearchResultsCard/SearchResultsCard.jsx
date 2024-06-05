@@ -5,10 +5,14 @@ import { IoPersonSharp } from "react-icons/io5";
 import { MdOutlineEuro } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-const SearchResultsCard = ({ aircraftId, flightTime, confirmBooking }) => {
+const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
 
-    const handleRequest = flightId => {
-        console.log('este es el id ', aircraftId)
+    const handleRequest = (flightId, aircraftId) => {
+        const bookingData = {
+            flightId,
+            aircraftId
+        }
+        requestBooking(bookingData)
     }
 
     return (
@@ -43,7 +47,7 @@ const SearchResultsCard = ({ aircraftId, flightTime, confirmBooking }) => {
                                                 <span>{aircraft.capacity}</span>
                                             </div>
 
-                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id)}>
+                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft.flightId, aircraft._id)}>
                                                 Request Flight
                                             </Button>
                                             <Link to={`/fleet/${aircraft._id}`} className="button-request-flight">

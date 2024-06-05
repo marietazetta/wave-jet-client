@@ -50,10 +50,17 @@ const FlightSearch = ({ setSearchResults }) => {
         flightServices
             .searchFlight(flightSearchData)
             .then(({ data }) => {
-                setSearchResults(data)
+
+                const fullSearchData = {
+                    searchData: flightSearchData,
+                    items: data
+                }
+
+                setSearchResults(fullSearchData)
             })
             .catch(err => console.log(err));
     };
+
 
     return (
         <section className="section__container booking__container">
