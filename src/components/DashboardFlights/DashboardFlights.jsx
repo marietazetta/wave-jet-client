@@ -20,7 +20,7 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
         <Container fluid className="dashboard-flights">
             <Row>
                 <Col>
-                    <h1 style={{ color: 'white' }}>Aircrafts and Flights Overview</h1>
+                    <h1 style={{ color: 'black' }}>Aircrafts and Flights Overview</h1>
                 </Col>
             </Row>
             <Row>

@@ -37,7 +37,7 @@ const NewFlightForm = () => {
         e.preventDefault()
         FlightServices
             .saveFlight(flightData)
-            .then(() => navigate('/routes'))
+            .then(() => navigate('/dashboard'))
             .catch(err => console.log(err))
     }
 

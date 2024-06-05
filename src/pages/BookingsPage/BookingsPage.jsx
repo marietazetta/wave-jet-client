@@ -2,7 +2,7 @@ import { useContext } from "react"
 import { AuthContext } from '../../contexts/auth.context'
 
 
-const ProfilePage = () => {
+const BookingsPage = () => {
     const { loggedUser } = useContext(AuthContext)
 
     return (
@@ -18,4 +18,4 @@ const ProfilePage = () => {
     )
 }
 
-export default ProfilePage
+export default BookingsPage

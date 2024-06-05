@@ -1,14 +1,13 @@
 import { useContext, useEffect, useState } from "react"
-import FlightServices from "../../../services/flight.services"
-import AircfraftServices from "../../../services/aircraft.services"
-import { AuthContext } from "../../../contexts/auth.context"
-import { Link } from 'react-router-dom'
+import FlightServices from "../../services/flight.services"
+import AircfraftServices from "../../services/aircraft.services"
+import { AuthContext } from "../../contexts/auth.context"
 import { Container } from "react-bootstrap"
-import Loader from "../../../components/Loader/Loader"
-import DashboardFlights from "../../../components/DashboardFlights/DashboardFlights"
-import "./FlightsPage.css"
+import Loader from "../../components/Loader/Loader"
+import DashboardFlights from "../../components/DashboardFlights/DashboardFlights"
+import "./DashboardPage.css"
 
-const FlightsPage = () => {
+const DashboardPage = () => {
 
     const [flights, setFlights] = useState([])
     const [aircrafts, setAircrafts] = useState([])
@@ -44,7 +43,7 @@ const FlightsPage = () => {
     }
 
     return (
-        <>        <div className="flights-page full-height font-family">
+        <>        <div className="dashboard-page full-height font-family">
             <Container>
 
 
@@ -63,4 +62,4 @@ const FlightsPage = () => {
     )
 }
 
-export default FlightsPage
+export default DashboardPage

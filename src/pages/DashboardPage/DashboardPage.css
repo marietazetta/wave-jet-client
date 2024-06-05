@@ -1,10 +1,10 @@
-div.flights-page {
-    background-image: url('/public/assets/pexels-olly-3769120.jpg');
+div.dashboard-page {
+    background-color: rgba(255, 255, 255, 0.351);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: fixed;
     min-height: 100vh;
-    padding-top: 50px;
+    padding-top: 5px;
     padding-bottom: 50px;
 }

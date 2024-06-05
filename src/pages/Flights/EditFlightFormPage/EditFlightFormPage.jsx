@@ -9,9 +9,9 @@ const EditFlightFormPage = () => {
     return (
         <div className="edit-flight-form full-height font-family">
             <Container>
-                <h1 style={{ color: 'white' }}>Modify Flight details</h1>
-                <hr style={{ color: 'white' }}></hr>
-                <Link to="/routes" className="btn btn-dark">Back to Routes</Link>
+                <h1 style={{ color: 'black' }}>Modify Flight details</h1>
+                <hr style={{ color: 'black' }}></hr>
+                <Link to="/dashboard" className="btn btn-dark">Back to Dashboard</Link>
                 <EditFlightForm />
             </Container>
         </div>

@@ -10,9 +10,9 @@ const AddFlightFormPage = () => {
 
         <div className="add-flight-page full-height font-family">
             <Container>
-                <h1 style={{ color: 'white' }}>New Flight Route</h1>
-                <hr style={{ color: 'white' }}></hr>
-                <Link to="/routes" className="btn btn-dark">Back to Routes</Link>
+                <h1 style={{ color: 'black' }}>New Flight Route</h1>
+                <hr style={{ color: 'black' }}></hr>
+                <Link to="/dashboard" className="btn btn-dark">Back to Dashboard</Link>
                 <NewFlightForm />
 
             </Container>
