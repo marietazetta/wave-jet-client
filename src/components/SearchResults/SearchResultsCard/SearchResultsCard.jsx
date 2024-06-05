@@ -7,9 +7,8 @@ import { Link } from "react-router-dom";
 
 const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
 
-    const handleRequest = (flightId, aircraftId) => {
+    const handleRequest = (aircraftId) => {
         const bookingData = {
-            flightId,
             aircraftId
         }
         requestBooking(bookingData)
@@ -47,7 +46,7 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
                                                 <span>{aircraft.capacity}</span>
                                             </div>
 
-                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft.flightId, aircraft._id)}>
+                                            <Button className="button-request-flight" onClick={() => handleRequest(aircraft._id)}>
                                                 Request Flight
                                             </Button>
                                             <Link to={`/fleet/${aircraft._id}`} className="button-request-flight">
@@ -62,36 +61,6 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
                 }
             </Container>
 
-            {/* <Container fluid className="mt-5">
-                <Row className="d-flex align-items-center">
-                    {
-                        aircraftId.map(aircraft => (
-                            <Col key={aircraft._id} lg={8} md={6}>
-                                <Card className="card">
-                                    <Card.Img variant="top"
-                                        src={aircraft.mainImage}
-                                        alt={aircraft.model}
-                                        className="card-img" />
-                                    <div className="card-content">
-                                        <h3>{aircraft.model}</h3>
-                                        <div className="card-details">
-                                            <div className="detail-item">
-                                                <FaRegClock />
-                                                <span>{flightTime}h</span>
-                                            </div>
-                                            <div className="separator"></div>
-                                            <div className="detail-item">
-                                                <MdOutlineEuro />
-                                                <span>{aircraft.hourlyRate * flightTime}</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </Card>
-                            </Col>
-                        ))
-                    }
-                </Row>
-            </Container> */}
         </div >
     )
 }

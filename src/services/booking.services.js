@@ -39,6 +39,10 @@ class BookingServices {
     deleteBooking(bookingId) {
         return this.axiosApp.delete(`/${bookingId}`)
     }
+
+    getBookingsByOwner(ownerId) {
+        return this.axiosApp.get(`/owner/${ownerId}`)
+    }
 }
 
 const bookingServices = new BookingServices()
