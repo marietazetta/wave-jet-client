@@ -1,6 +1,11 @@
 .AircraftCard {
     border: none;
     background: none;
+    margin-bottom: 1rem;
+}
+
+.AircraftCard .card {
+    height: 100%;
 }
 
 .AircraftCard .card-body {
@@ -22,10 +27,33 @@
     margin-top: 1rem;
 }
 
-.AircraftCard .custom-button {
-    display: inline-block;
-    width: auto;
-    white-space: nowrap;
-    color: #ede0d4;
-    background-color: #0D1F2D;
+
+.custom-btn {
+    background-color: #546A7B;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #EDE0D4;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.custom-btn:hover {
+    background-color: #3f5366;
+    transform: translateY(-2px);
+
+}
+
+.custom-btn-link {
+    text-decoration: none;
+}
+
+.custom-btn-link:hover {
+    text-decoration: none;
 }

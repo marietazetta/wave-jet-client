@@ -1,10 +1,7 @@
 import './AboutPage.css'
-import '../../../public/assets/ProfileMaria.jpg'
-import '../../../public/assets/DiegoProfile.jpg'
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const AboutPage = () => {
-
     const people = [
         {
             name: 'Maria',
@@ -36,9 +33,7 @@ const AboutPage = () => {
                     </div>
                 ))}
             </div>
-
         </>
-
     )
 }
 

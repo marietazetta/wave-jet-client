@@ -18,7 +18,8 @@
 .flights-table th,
 .flights-table td {
     text-align: center;
-    vertical-align: middle;
+    vertical-align: top;
+    /* Ajustar para alinear el texto al tope */
 }
 
 .flights-table th {
@@ -42,25 +43,18 @@
     margin-right: 15px;
 }
 
-/* Edit Aircraft Icon as Button */
 .edit-aircraft-icon {
     font-size: 1.5rem;
-    /* Size the icon */
     color: #003366;
-    /* Navy blue color */
     cursor: pointer;
-    /* Pointer cursor to indicate clickability */
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .edit-aircraft-icon:hover {
     color: #0056b3;
-    /* Slightly brighter blue on hover */
     transform: scale(1.1);
-    /* Slightly enlarge on hover */
 }
 
-/* Responsive Adjustments */
 @media (max-width: 768px) {
     .actions-column .action-button {
         width: 100%;
