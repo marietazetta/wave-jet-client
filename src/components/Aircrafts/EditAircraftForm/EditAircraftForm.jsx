@@ -125,7 +125,7 @@ const EditAircraftForm = () => {
     }
 
     return (
-        <div className="EditAircraftForm">
+        <div className="form-container EditAircraftForm">
             <Form onSubmit={handleAircraftFormSubmit}>
                 <Form.Group as={Col} className="mb-3" controlId="Availability.Input">
                     <span onClick={handleAvailabilityClick} className="availability-emoji">
@@ -220,7 +220,7 @@ const EditAircraftForm = () => {
                             placeholder={`Place your image here`}
                             onChange={event => handleGalleryUpload(event, idx)} />
                     ))}
-                    <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
+                    <Button size="sm" className="custom-button" variant="dark" onClick={addNewImageField}>Add more</Button>
                 </Form.Group>
                 <Row className="mb-3">
                     <Form.Group as={Col} controlId="range.input">
@@ -288,7 +288,7 @@ const EditAircraftForm = () => {
                         value={aircraftData.description}
                         onChange={handleInputChange} />
                 </Form.Group>
-                <Button variant="dark" type="submit">
+                <Button className="custom-button" variant="dark" type="submit">
                     Submit
                 </Button>
             </Form>

@@ -114,7 +114,7 @@ const NewAircraftForm = () => {
     }
 
     return (
-        <div className="NewAircraftForm font-family">
+        <div className="form-container NewAircraftForm font-family">
 
             <Form onSubmit={handleAircraftFormSubmit}>
 
@@ -218,7 +218,7 @@ const NewAircraftForm = () => {
                             placeholder={`Place your image here`}
                             onChange={event => handleGalleryUpload(event, idx)} />
                     ))}
-                    <Button size="sm" variant="dark" onClick={addNewImageField}>Add more</Button>
+                    <Button size="sm" className="custom-button" variant="dark" onClick={addNewImageField}>Add more</Button>
                 </Form.Group>
 
                 <Row className="mb-3">
@@ -294,7 +294,7 @@ const NewAircraftForm = () => {
                         onChange={handleInputChange} />
                 </Form.Group>
 
-                <Button variant="dark" type="submit">
+                <Button className="custom-button" variant="dark" type="submit">
                     Submit
                 </Button>
             </Form>

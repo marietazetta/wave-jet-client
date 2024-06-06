@@ -1,21 +1,18 @@
 import { useContext, useState } from "react"
 import { Form, Button } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 import authServices from "../../../services/auth.services"
 import { AuthContext } from "../../../contexts/auth.context"
 import './UserLoginForm.css'
 
 const UserLoginForm = () => {
-
     const [loginData, setLoginData] = useState({
         email: '',
         password: ''
     })
 
     const navigate = useNavigate()
-
     const { authenticateUser } = useContext(AuthContext)
-
 
     const handleInputChange = e => {
         const { value, name } = e.target
@@ -38,9 +35,8 @@ const UserLoginForm = () => {
     }
 
     return (
-        <div className="user-login-form-container font-family">
+        <div className="user-login-form-container">
             <Form onSubmit={handleSubmit} className="user-login-form">
-
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" value={loginData.email} onChange={handleInputChange} name="email" />
@@ -54,8 +50,11 @@ const UserLoginForm = () => {
                 <div className="d-grid">
                     <Button className="custom-button" variant="dark" type="submit">Log In</Button>
                 </div>
-
             </Form>
+
+            <Link to="/signup" className="sign-up-link-button">
+                Not a member yet? Sign up here!
+            </Link>
         </div>
     )
 }

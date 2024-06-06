@@ -2,24 +2,49 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 40vh;
+    min-height: 60vh;
+    padding: 20px;
 }
 
 .user-signup-form {
     width: 100%;
-    max-width: 500px;
+    max-width: 400px;
     padding: 20px;
     background-color: #ede0d461;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .custom-button {
     background-color: #0D1F2D;
     border-color: #0D1F2D;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .custom-button:hover {
     background-color: #0A1722;
     border-color: #0A1722;
+}
+
+@media (max-width: 768px) {
+    .user-signup-form {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .custom-button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .user-signup-form {
+        padding: 10px;
+    }
+
+    .custom-button {
+        font-size: 12px;
+        padding: 8px;
+    }
 }

@@ -5,7 +5,6 @@ import authServices from "../../../services/auth.services"
 import "./UserSignUpForm.css"
 
 const UserSignUpForm = () => {
-
     const [signupData, setSignupData] = useState({
         username: '',
         email: '',
@@ -31,7 +30,6 @@ const UserSignUpForm = () => {
     return (
         <div className="user-signup-form-container">
             <Form onSubmit={handleFormSubmit} className="user-signup-form">
-
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
@@ -50,7 +48,6 @@ const UserSignUpForm = () => {
                 <div className="d-grid">
                     <Button className="custom-button" variant="dark" type="submit">Sign Up</Button>
                 </div>
-
             </Form>
         </div>
     )
