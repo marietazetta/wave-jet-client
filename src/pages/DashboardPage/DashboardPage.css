@@ -1,5 +1,4 @@
 div.dashboard-page {
-    background-color: rgba(255, 255, 255, 0.351);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -7,4 +6,7 @@ div.dashboard-page {
     min-height: 100vh;
     padding-top: 5px;
     padding-bottom: 50px;
+    background: linear-gradient(rgba(158, 163, 176, 0.5), transparent, transparent, rgba(158, 163, 176, 0.5));
+    padding-top: 20px;
+    padding-bottom: 20px;
 }

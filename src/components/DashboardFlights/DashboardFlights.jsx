@@ -1,6 +1,7 @@
+import React, { useContext, useState } from "react";
 import { Row, Table, Button, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useContext, useState } from "react";
+import { GiCommercialAirplane } from "react-icons/gi"; // Import the airplane icon
 import DeleteModal from "../DeleteModal/DeleteModal";
 import './DashboardFlights.css';
 import { AuthContext } from "../../contexts/auth.context";
@@ -20,7 +21,7 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
         <Container fluid className="dashboard-flights">
             <Row>
                 <Col>
-                    <h1 style={{ color: 'black' }}>Aircrafts and Flights Overview</h1>
+                    <h1>Aircrafts and Flights Overview</h1>
                 </Col>
             </Row>
             <Row>
@@ -42,7 +43,8 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                                 {aircrafts.map(aircraft => (
                                     <th key={aircraft._id} colSpan="2">
                                         <Link to={`/fleet/edit/${aircraft._id}`}>
-                                            <Button variant="secondary" size="sm" className="action-button">Edit Aircraft</Button>
+                                            {/* Replace the button with the airplane icon */}
+                                            <GiCommercialAirplane className="edit-aircraft-icon" title="Edit Aircraft" />
                                         </Link>
                                     </th>
                                 ))}
