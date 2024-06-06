@@ -2,7 +2,7 @@ import './AircraftsPage.css';
 import AircraftsList from "../../../components/Aircrafts/AircraftsList/AircraftsList";
 import aircraftServices from "../../../services/aircraft.services";
 import { useState, useEffect } from 'react';
-import { Container } from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 
 const AircraftsPage = () => {
     const [aircrafts, setAircrafts] = useState([]);
@@ -19,21 +19,22 @@ const AircraftsPage = () => {
     };
 
     return (
-        <Container className='AircraftsPage'>
+        <div className='AircraftsPage'>
+            <Container className='full-height font-family'>
 
-            <h2>Your private jet fleet.</h2>
+                <h2>Your private jet fleet.</h2>
 
-            <div className='AircraftsPage full-height font-family'>
-
-                {
-                    aircrafts.map(aircraft => (
-                        <p key={aircraft._id}>
-                            <AircraftsList aircraft={aircraft} />
-                        </p>
+                <Row xs={1} md={2} lg={2} className="g-4">
+                    {aircrafts.map((aircraft) => (
+                        <AircraftsList
+                            key={aircraft._id}
+                            aircraft={aircraft}
+                        />
                     ))}
+                </Row>
 
-            </div>
-        </Container>
+            </Container>
+        </div>
     );
 };
 

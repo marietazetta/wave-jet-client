@@ -1,3 +1,12 @@
+.AircraftCard {
+    border: none;
+    background: none;
+}
+
+.AircraftCard .card-body {
+    padding: 1.25rem;
+}
+
 .AircraftCard .equal-aspect-ratio {
     object-fit: cover;
     width: 100%;
@@ -19,6 +28,4 @@
     white-space: nowrap;
     color: #ede0d4;
     background-color: #0D1F2D;
-
-
 }
