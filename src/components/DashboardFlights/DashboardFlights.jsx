@@ -1,10 +1,13 @@
+import './DashboardFlights.css';
 import React, { useContext, useState } from "react";
 import { Row, Table, Button, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { GiCommercialAirplane } from "react-icons/gi"; // Import the airplane icon
 import DeleteModal from "../DeleteModal/DeleteModal";
-import './DashboardFlights.css';
 import { AuthContext } from "../../contexts/auth.context";
+import { FaEdit } from "react-icons/fa";
+import { GiCommercialAirplane } from "react-icons/gi";
+import { MdDeleteForever } from "react-icons/md";
+import { FiPlusSquare } from 'react-icons/fi';
 
 const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
     const [show, setShow] = useState(false);
@@ -30,12 +33,14 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                         <thead>
                             <tr>
                                 <th className="wide-header" rowSpan="2">Route
-                                    {loggedUser && <Link className="btn btn-sm btn-dark" to={'/routes/add'}>New Route</Link>}
+                                    {loggedUser && <Link to={'/routes/add'}>
+                                        <FiPlusSquare className="edit-aircraft-icon" title="Add Route" />
+                                    </Link>}
                                 </th>
-                                <th className="wide-header" rowSpan="2">Range (nm)</th>
+                                <th className="wide-header" rowSpan="2">Range</th>
                                 <th className="wide-header" rowSpan="2">Flight Time</th>
                                 {aircrafts.map(aircraft => (
-                                    <th key={aircraft._id} colSpan="2">{aircraft.model} - {aircraft.tailNumber}</th>
+                                    <th key={aircraft._id} colSpan="2">{aircraft.model}</th>
                                 ))}
                                 <th className="wide-header" rowSpan="2">Actions</th>
                             </tr>
@@ -43,7 +48,6 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                                 {aircrafts.map(aircraft => (
                                     <th key={aircraft._id} colSpan="2">
                                         <Link to={`/fleet/edit/${aircraft._id}`}>
-                                            {/* Replace the button with the airplane icon */}
                                             <GiCommercialAirplane className="edit-aircraft-icon" title="Edit Aircraft" />
                                         </Link>
                                     </th>
@@ -54,7 +58,7 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                             {flights.map(flight => (
                                 <tr key={flight._id}>
                                     <td>{flight.fromDestination} - {flight.toDestination}</td>
-                                    <td>{flight.miles}</td>
+                                    <td>{flight.miles} nm</td>
                                     <td>{flight.flightTime} hs</td>
                                     {aircrafts.map(aircraft => {
                                         if (flight.aircraftId.includes(aircraft._id)) {
@@ -65,9 +69,9 @@ const DashboardFlights = ({ aircrafts, flights, loadFlights }) => {
                                     })}
                                     <td className="actions-column">
                                         <Link to={`/routes/edit/${flight._id}`}>
-                                            <Button variant="secondary" size="sm" className="action-button mr-2">Edit Route</Button>
+                                            <FaEdit className="edit-aircraft-icon" title="Edit Route" />
                                         </Link>
-                                        <Button variant="danger" size="sm" className="action-button" onClick={() => showConfirmModal(flight._id)}>Delete</Button>
+                                        <MdDeleteForever className="edit-aircraft-icon" title="Delete Route" onClick={() => showConfirmModal(flight._id)} />
                                     </td>
                                 </tr>
                             ))}

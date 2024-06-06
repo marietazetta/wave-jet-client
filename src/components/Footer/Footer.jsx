@@ -7,9 +7,7 @@ const Footer = () => {
     return (
         <div className="Footer font-family">
             <Container>
-                <Row className="title-section">
-                    <h5>WAVE JET🛩️</h5>
-                </Row>
+
                 <Row>
                     <Col xs={12} md={4}>
                         <div className="footer-section">
@@ -53,9 +51,11 @@ const Footer = () => {
                         </div>
                     </Col>
                 </Row>
-                <div className="copyright">
-                    <p>&copy; All rights reserved {new Date().getFullYear()}</p>
-                </div>
+                <Row className="copyright">
+                    <Col>
+                        <p>&copy; All rights reserved {new Date().getFullYear()}</p>
+                    </Col>
+                </Row>
             </Container>
         </div>
     );

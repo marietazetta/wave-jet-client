@@ -69,8 +69,6 @@ const DashboardPage = () => {
 
                 }
 
-                <hr />
-
 
             </Container>
         </div>
