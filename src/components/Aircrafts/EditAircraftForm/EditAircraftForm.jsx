@@ -91,7 +91,7 @@ const EditAircraftForm = () => {
 
         aircraftServices
             .editAircraft(aircraftId, updatedData)
-            .then(() => navigate(`/fleet/${aircraftId}`))
+            .then(() => navigate(`/dashboard`))
             .catch(err => console.log(err))
     }
 

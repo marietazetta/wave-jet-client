@@ -4,19 +4,19 @@ import './AircraftCard.css';
 
 const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription }) => {
     return (
-        <Card className="AircraftCard font-family">
+        <Card className="AircraftCard font-family h-100">
             <Card.Img variant="top" src={mainImage} />
-            <Card.Body>
+            <Card.Body className="d-flex flex-column">
                 <Card.Title>{manufacturer}</Card.Title>
-                <Card.Text>{manufacturerDescription}</Card.Text>
-                <Link to={`/fleet/${_id}`} className="custom-btn-link">
+                <Card.Text className="flex-grow-1">{manufacturerDescription}</Card.Text>
+                <Link to={`/fleet/${_id}`} className="custom-btn-link mt-auto">
                     <Button type="submit" size="sm" className="custom-btn">
                         Discover {manufacturer} Jets
                     </Button>
                 </Link>
             </Card.Body>
         </Card>
-    )
+    );
 }
 
 export default AircraftCard;

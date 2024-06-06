@@ -22,7 +22,7 @@ const AircraftsPage = () => {
         <div className='AircraftsPage'>
             <Container className='full-height font-family'>
 
-                <h2>Your private jet fleet.</h2>
+                <h2 className="cool-font">YOUR PRIVATE JET FLEET.</h2>
 
                 <Row xs={1} sm={2} md={2} lg={2} className="g-4">
                     {aircrafts.map((aircraft) => (

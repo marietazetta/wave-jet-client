@@ -4,6 +4,8 @@ import { Row, Col, Card } from "react-bootstrap"
 import { MdOutlineEuro } from "react-icons/md"
 import { LiaPlaneArrivalSolid, LiaPlaneDepartureSolid } from "react-icons/lia"
 import { GrStatusWarning } from "react-icons/gr"
+import { PiAirplaneInFlightLight } from "react-icons/pi"
+
 
 
 const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate, status, aircraftId, flightId }) => {
@@ -25,6 +27,7 @@ const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate
                             <LiaPlaneArrivalSolid className="icon" />
                             <p>Return: {new Date(returnDate).toLocaleDateString()}</p>
                         </Col>
+
                         <Col md={4} className="detail-item">
                             <MdOutlineEuro className="icon" />
                             <span>{aircraftId.hourlyRate * flightId?.flightTime}</span>
@@ -32,6 +35,10 @@ const BookingCard = ({ fromDestination, toDestination, departureDate, returnDate
                         <Col md={4} className="detail-item mt-3">
                             <GrStatusWarning className="icon" />
                             <span>{status}</span>
+                        </Col>
+                        <Col md={4} className="detail-item mt-3">
+                            <PiAirplaneInFlightLight className="icon" />
+                            <span>{aircraftId.model}</span>
                         </Col>
                     </Row>
                 </Card.Body>
