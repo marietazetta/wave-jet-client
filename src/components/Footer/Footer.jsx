@@ -1,17 +1,14 @@
 import './Footer.css';
 import { Container, Row, Col } from 'react-bootstrap';
 import { FaEnvelope, FaGithub, FaLinkedinIn } from 'react-icons/fa';
-
 import { Link } from 'react-router-dom';
 
 const Footer = () => {
     return (
-
-
         <div className="Footer font-family">
             <Container>
-                <Row className='title-section'>
-                    <h5> WAVE JET🛩️ </h5>
+                <Row className="title-section">
+                    <h5>WAVE JET🛩️</h5>
                 </Row>
                 <Row>
                     <Col xs={12} md={4}>
@@ -61,8 +58,7 @@ const Footer = () => {
                 </div>
             </Container>
         </div>
-
-    )
+    );
 }
 
 export default Footer;

@@ -1,57 +1,47 @@
-body {
-    font-family: 'Montserrat', sans-serif;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Montserrat', sans-serif;
+.SearchResultsCard {
+    padding: 0;
 }
 
 .custom-card {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    gap: 24px;
-    padding: 24px;
+    gap: 16px;
+    padding: 16px;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     border: 1px solid #e0e0e0;
     margin-bottom: 24px;
-
+    overflow: hidden;
 }
 
 .custom-card img {
-
-    width: 200px;
-    height: 120%;
-    margin-right: 70px;
-    margin-left: 70px;
-
-
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    margin: 0 auto;
 }
 
 .custom-card .card-content {
     display: flex;
     flex-direction: column;
-    gap: 4px;
+    align-items: center;
+    gap: 8px;
     flex: 1;
+    text-align: center;
 }
 
 .custom-card .card-content h3 {
     font-size: 1.25rem;
     font-weight: 600;
-    margin-left: 30px;
 }
 
 .custom-card .card-details {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 8px;
     color: #6b7280;
 }
 
@@ -62,9 +52,14 @@ h6 {
 }
 
 .separator {
-    width: 1px;
-    height: 16px;
-    background-color: #d1d5db;
+    display: none;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
 }
 
 .button-request-flight {
@@ -80,6 +75,39 @@ h6 {
     text-decoration: none;
     transition: background-color 0.3s ease;
     cursor: pointer;
-    margin-bottom: 30px;
-    margin-left: 100px;
+}
+
+@media (min-width: 768px) {
+    .custom-card {
+        flex-direction: row;
+        gap: 24px;
+    }
+
+    .custom-card img {
+        width: 200px;
+        height: auto;
+        margin: 0;
+    }
+
+    .custom-card .card-content {
+        text-align: left;
+    }
+
+    .custom-card .card-details {
+        flex-direction: row;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .separator {
+        display: inline-block;
+        width: 1px;
+        height: 16px;
+        background-color: #d1d5db;
+    }
+
+    .button-container {
+        flex-direction: row;
+        gap: 16px;
+    }
 }

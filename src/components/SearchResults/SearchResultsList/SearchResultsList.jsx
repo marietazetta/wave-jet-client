@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react';
 import SearchResultsCard from "../SearchResultsCard/SearchResultsCard";
 import { Container } from "react-bootstrap";
 
-
 const SearchResultsList = ({ searchResults, requestBooking }) => {
     const [searchInitiated, setSearchInitiated] = useState(false);
 
     const initiateSearch = () => {
         setSearchInitiated(true);
-    }
+    };
 
     useEffect(() => {
         if (searchResults.length > 0 || searchInitiated) {
@@ -26,7 +25,7 @@ const SearchResultsList = ({ searchResults, requestBooking }) => {
                     ))
             }
         </Container>
-    )
-}
+    );
+};
 
 export default SearchResultsList;
