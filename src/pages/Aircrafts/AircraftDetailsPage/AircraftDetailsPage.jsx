@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Container, Row, Col, Card } from "react-bootstrap";
+import { Container, Row, Col, Image } from "react-bootstrap";
 import aircraftServices from "../../../services/aircraft.services";
 import "./AirCraftDetailsPage.css";
 
@@ -25,84 +25,94 @@ const AircraftDetailsPage = () => {
 
     return (
 
-        <div className="AircraftDetailsPage full-height font-family">
+        <div className="AircraftDetailsPage">
 
-            <Container>
+            <Container className="full-height font-family">
                 <Row className="my-4">
-                    <h1 className="text">{aircraft.model}</h1>
+                    <Col>
+                        <h1 className="text">{aircraft.model}</h1>
+                    </Col>
+
                 </Row>
 
-                <Row className="aircraft-image">
-                    <Card.Img variant="top"
-                        src={aircraft.mainImage}
-                        className="rounded-top equal-aspect-ratio"
-                    />
+                <Row className="aircraft-image mb-4 justify-content-center">
+                    <Col xs={12} className="d-flex justify-content-center">
+
+                        <Image
+                            alt="Aircraft main"
+                            src={aircraft.mainImage}
+                            className="rounded-top img-fluid aircraft-main-image"
+                        />
+
+                    </Col>
                 </Row>
 
                 <Row className="mb-4">
-                    <h5 className="text">{aircraft.description}</h5>
+                    <Col>
+                        <h5 className="text">{aircraft.description}</h5>
+                    </Col>
                 </Row>
 
-                <Row>
-                    <Col>
-                        <h5 className="text-center">Details</h5>
-                        <table className="table table-striped table-custom">
-                            <tbody>
-                                <tr>
-                                    <th className="text-center" scope="row">Manufacturer</th>
-                                    <td className="text-center">{aircraft.manufacturer}</td>
-                                </tr>
-                                <tr>
-                                    <th className="text-center" scope="row">Capacity</th>
-                                    <td className="text-center">{aircraft.capacity}</td>
-                                </tr>
-                                <tr>
-                                    <th className="text-center" scope="row">Range</th>
-                                    <td className="text-center">{aircraft.range}</td>
-                                </tr>
-                                <tr>
-                                    <th className="text-center" scope="row">Cabin Height</th>
-                                    <td className="text-center">{aircraft.cabinHeight}</td>
-                                </tr>
-                                <tr>
-                                    <th className="text-center" scope="row">Cabin Width</th>
-                                    <td className="text-center">{aircraft.cabinWidth}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </Col>
-                    <Col>
-                        <h5 className="text-center">Services</h5>
-                        {services && (
-                            <table className="table table-striped table-custom">
-                                <tbody>
-                                    <tr>
-                                        <td className="text-center"><strong>Wifi</strong></td>
-                                        <td className="text-center">{services.wifi ? "Available" : "Not Available"}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-center"><strong>Catering</strong></td>
-                                        <td className="text-center">{services.catering ? "Available" : "Not Available"}</td>
-                                    </tr>
-                                    <tr>
-                                        <td className="text-center"><strong>Flight Attendant</strong></td>
-                                        <td className="text-center">{services.flightAttendant ? "Available" : "Not Available"}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        )}
-                    </Col>
-                </Row>
                 <Row className="collage-images mb-4">
                     {aircraft.imagesCarousel?.map((eachImage, index) => (
                         <Col key={index} xs={6} md={4} lg={3} className="mb-3">
                             <img
                                 src={eachImage}
                                 alt={`Image ${index}`}
-                                className="fixed-size-image"
+                                className="img-fluid"
                             />
                         </Col>
                     ))}
+                </Row>
+                <Row>
+                    <Col md={6}>
+                        <h5 className="text-center details-title">Details</h5>
+                        <table className="table table-striped table-custom">
+                            <tbody>
+                                <tr>
+                                    <th >Manufacturer</th>
+                                    <td>{aircraft.manufacturer}</td>
+                                </tr>
+                                <tr>
+                                    <th>Capacity</th>
+                                    <td>{aircraft.capacity} pax</td>
+                                </tr>
+                                <tr>
+                                    <th>Range</th>
+                                    <td>{aircraft.range} Nm</td>
+                                </tr>
+                                <tr>
+                                    <th>Cabin Height</th>
+                                    <td>{aircraft.cabinHeight} feet</td>
+                                </tr>
+                                <tr>
+                                    <th>Cabin Width</th>
+                                    <td>{aircraft.cabinWidth} feet</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </Col>
+                    <Col md={6}>
+                        <h5 className="text-center services-title">Services</h5>
+                        {services && (
+                            <table className="table table-striped table-custom">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Wifi</strong></td>
+                                        <td>{services.wifi ? "Available" : "Not Available"}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Catering</strong></td>
+                                        <td>{services.catering ? "Available" : "Not Available"}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Flight Attendant</strong></td>
+                                        <td>{services.flightAttendant ? "Available" : "Not Available"}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        )}
+                    </Col>
                 </Row>
             </Container>
 

@@ -8,13 +8,13 @@ function App() {
 
 
   return (
-    <>
-      <div className='App full-height'>
-        <Navigation />
-        <AppRoutes />
-        <Footer />
-      </div >
-    </>
+
+    <div className='App full-height'>
+      <Navigation />
+      <AppRoutes />
+      <Footer />
+    </div >
+
   )
 }
 
