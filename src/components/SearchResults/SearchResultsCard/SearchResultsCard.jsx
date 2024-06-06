@@ -5,7 +5,7 @@ import { IoPersonSharp } from "react-icons/io5";
 import { MdOutlineEuro } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../../contexts/auth.context';
-import "./SearchResultsCard.css"
+import "./SearchResultsCard.css";
 
 const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
     const { loggedUser } = useContext(AuthContext);
@@ -19,7 +19,7 @@ const SearchResultsCard = ({ aircraftId, flightTime, requestBooking }) => {
         const bookingData = {
             aircraftId
         }
-        requestBooking(bookingData)
+        requestBooking(bookingData);
     }
 
     return (

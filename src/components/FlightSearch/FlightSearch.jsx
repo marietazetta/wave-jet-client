@@ -51,8 +51,6 @@ const FlightSearch = ({ setSearchResults }) => {
             .searchFlight(flightSearchData)
             .then(({ data }) => {
 
-                console.log('ESTO ES UN PUTO FLIGHT', data)
-
                 const fullSearchData = {
                     searchData: flightSearchData,
                     items: data

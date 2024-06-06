@@ -49,9 +49,12 @@ const HomePage = () => {
 
             </div>
 
-            <h1 className='overlay'>WAVE JET</h1>
+            <div className='overlay'>
+                <h1>WAVE JET</h1>
+                <h3>Your Journey Begins Here</h3>
+            </div>
 
-            <div >
+            <div>
                 <Container className='text-container'>
                     <h4>PLAN A FLIGHT</h4>
                     <p>Enter your flight details below and our team will contact you shortly. Private jet charter flight prices are subject to the market rate and start from $5,000 per hour.</p>

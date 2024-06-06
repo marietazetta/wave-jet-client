@@ -12,17 +12,27 @@ video {
     width: 100%;
     height: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     color: white;
     z-index: 1;
+    text-align: center;
+}
 
+.overlay h1 {
+    font-size: 4rem;
+    margin: 0;
+}
+
+.overlay h3 {
+    font-size: 2rem;
+    margin-top: 1rem;
 }
 
 .text-container h4 {
     margin-top: 50px;
 }
-
 
 .text-container p {
     margin-bottom: 50px;
