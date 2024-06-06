@@ -61,12 +61,7 @@ const Footer = () => {
                 </div>
             </Container>
         </div>
-        // <div className="Footer font-family">
-        //     <Container>
-        //         <Link to={'/'} className='footer-link'><h6>WAVE JET 🛩️</h6></Link>
-        //         <p>&copy; All rights reserved</p>
-        //     </Container>
-        // </div>
+
     )
 }
 

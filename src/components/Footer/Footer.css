@@ -1,50 +1,18 @@
-/* .PageContainer {
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
-
-.Content {
-    flex: 1;
-}
-
-.Footer {
-    font-size: .8em;
-    padding: 4px;
-    text-align: center;
-    width: 100%;
-    background-color: #ede0d4;
-    padding-top: 30px;
-    position: relative;
-    left: 0;
-    bottom: 0;
-}
-
-.footer-link {
-    text-decoration: none;
-    color: #0D1F2D;
-} */
-
 .Footer {
     font-size: 0.8em;
     padding: 4px;
-    /* Adjust padding as needed */
     text-align: center;
     width: 100%;
     background-color: #ede0d4;
     display: flex;
     justify-content: center;
-    /* Center content horizontally */
     flex-direction: column;
-    /* Stack sections vertically */
 }
 
 .Footer a {
     color: #0D1F2D;
-    /* Match text color */
     font-size: 1.2em;
     text-decoration: none;
-    /* Remove underline */
 }
 
 .footer-section {
@@ -66,33 +34,25 @@
     justify-content: center;
     gap: 0.9rem;
 
-    /* Center icons horizontally */
-    /* Remove spacing between icons */
 }
 
 .social-icons li {
     list-style: none;
     margin: 0;
-    /* Remove margin between icons */
 }
 
 .social-icons a {
     color: #0D1F2D;
-    /* Match text color */
     font-size: 1.2em;
     text-decoration: none;
-    /* Remove underline */
 }
 
 .social-icons a:hover {
     color: #333;
-    /* Subtle hover effect */
 }
 
 .copyright {
     margin-top: auto;
-    /* Push copyright to the bottom */
     text-align: center;
     padding-top: 10px;
-    /* Add space between content and copyright */
 }

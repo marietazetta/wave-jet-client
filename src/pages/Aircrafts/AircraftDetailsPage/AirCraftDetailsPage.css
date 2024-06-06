@@ -32,7 +32,6 @@
 .fixed-size-image {
     width: 150%;
     height: 300px;
-    /* Ajusta esta altura según tus necesidades */
     object-fit: cover;
 }
 

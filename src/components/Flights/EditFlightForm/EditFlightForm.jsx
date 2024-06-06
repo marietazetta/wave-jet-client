@@ -2,7 +2,6 @@ import "./EditFlightForm.css"
 import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate, useParams } from 'react-router-dom'
-import uploadServices from "../../../services/upload.services"
 import flightServices from "../../../services/flight.services"
 import AircraftServices from "../../../services/aircraft.services"
 
