@@ -2,7 +2,7 @@ import './AircraftsPage.css';
 import AircraftsList from "../../../components/Aircrafts/AircraftsList/AircraftsList";
 import aircraftServices from "../../../services/aircraft.services";
 import { useState, useEffect } from 'react';
-import { Container, Row } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 const AircraftsPage = () => {
     const [aircrafts, setAircrafts] = useState([]);
@@ -24,12 +24,13 @@ const AircraftsPage = () => {
 
                 <h2>Your private jet fleet.</h2>
 
-                <Row xs={1} md={2} lg={2} className="g-4">
+                <Row xs={1} sm={2} md={2} lg={2} className="g-4">
                     {aircrafts.map((aircraft) => (
-                        <AircraftsList
-                            key={aircraft._id}
-                            aircraft={aircraft}
-                        />
+                        <Col key={aircraft._id}>
+                            <AircraftsList
+                                aircraft={aircraft}
+                            />
+                        </Col>
                     ))}
                 </Row>
 

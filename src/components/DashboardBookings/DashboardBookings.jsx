@@ -1,6 +1,7 @@
 import './DashboardBookings.css';
 import React, { useEffect, useState } from 'react';
 import { Row, Table, Col, Container, Button } from "react-bootstrap";
+import { GrStatusGood, GrStatusUnknown, GrStatusCritical } from 'react-icons/gr';
 import bookingServices from "../../services/booking.services";
 import authServices from '../../services/auth.services';
 
@@ -71,7 +72,7 @@ const DashboardBookings = () => {
         <Container className="dashboard-flights">
             <Row>
                 <Col>
-                    <h1 style={{ color: 'black' }}>Bookings Overview</h1>
+                    <h1 className="dashboard-title">Bookings Overview</h1>
                 </Col>
             </Row>
             <Row>
@@ -106,7 +107,7 @@ const DashboardBookings = () => {
                                             onClick={() => handleApprove(booking._id)}
                                             className="me-2"
                                         >
-                                            Approve
+                                            <GrStatusGood />
                                         </Button>
                                         <Button
                                             variant="warning"
@@ -114,14 +115,14 @@ const DashboardBookings = () => {
                                             onClick={() => handlePending(booking._id)}
                                             className="me-2"
                                         >
-                                            Pending
+                                            <GrStatusUnknown />
                                         </Button>
                                         <Button
                                             variant="danger"
                                             size="sm"
                                             onClick={() => handleReject(booking._id)}
                                         >
-                                            Reject
+                                            <GrStatusCritical />
                                         </Button>
                                     </td>
                                 </tr>

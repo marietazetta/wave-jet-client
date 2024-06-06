@@ -69,7 +69,7 @@ const EditFlightForm = () => {
     }
 
     return (
-        <div className="EditFlightForm">
+        <div className="form-container EditFlightForm">
             <Form onSubmit={handleFlightSubmit}>
                 <Row>
                     <Col>
@@ -117,7 +117,7 @@ const EditFlightForm = () => {
                     </Col>
                 </Row>
                 <div className="d-grid">
-                    <Button variant="dark" type="submit">Submit</Button>
+                    <Button className="custom-button" variant="dark" type="submit">Submit</Button>
                 </div>
             </Form>
         </div>

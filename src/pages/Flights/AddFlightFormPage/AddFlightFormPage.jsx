@@ -3,7 +3,6 @@ import { Container } from "react-bootstrap"
 import NewFlightForm from "../../../components/Flights/NewFlightForm/NewFlightForm"
 import { Link } from "react-router-dom"
 
-
 const AddFlightFormPage = () => {
 
     return (

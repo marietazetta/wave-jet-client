@@ -4,13 +4,13 @@ import './AircraftCard.css';
 
 const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription }) => {
     return (
-        <Card className="AircraftCard font-family" style={{ width: '35rem', height: "100%" }}>
+        <Card className="AircraftCard font-family">
             <Card.Img variant="top" src={mainImage} />
             <Card.Body>
                 <Card.Title>{manufacturer}</Card.Title>
                 <Card.Text>{manufacturerDescription}</Card.Text>
-                <Link to={`/fleet/${_id}`}>
-                    <Button variant="light" size="sm" className="custom-button">
+                <Link to={`/fleet/${_id}`} className="custom-btn-link">
+                    <Button type="submit" size="sm" className="custom-btn">
                         Discover {manufacturer} Jets
                     </Button>
                 </Link>

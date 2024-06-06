@@ -1,11 +1,15 @@
 .NewFlightForm {
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #ffead9ac;
-    width: 40%;
+    border-radius: 8px;
+    background-color: #ede0d461;
+    width: 90%;
+    max-width: 600px;
     margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
+
 
 .NewFlightForm .form-label {
     font-weight: bold;
@@ -19,12 +23,45 @@
     border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+
 .NewFlightForm .row {
     margin-bottom: 15px;
 }
 
-.NewFlightForm button {
-    background-color: rgba(13, 31, 45, 0.8);
+.NewFlightForm .custom-button {
+    background-color: #0D1F2D;
     color: #FFEAD9;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: #0D1F2D;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.NewFlightForm .custom-button:hover {
+    background-color: #0A1722;
+    border-color: #0A1722;
+}
+
+
+@media (max-width: 768px) {
+    .NewFlightForm {
+        width: 100%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .NewFlightForm .form-control {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 576px) {
+    .NewFlightForm {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .NewFlightForm .custom-button {
+        font-size: 14px;
+        padding: 10px;
+    }
 }

@@ -3,7 +3,6 @@ import { useState, useEffect } from "react"
 import { Form, Button, Row, Col } from "react-bootstrap"
 import { useNavigate } from 'react-router-dom'
 import FlightServices from "../../../services/flight.services"
-
 import AircraftServices from "../../../services/aircraft.services"
 
 const NewFlightForm = () => {
@@ -50,7 +49,7 @@ const NewFlightForm = () => {
     }
 
     return (
-        <div className="NewFlightForm">
+        <div className="form-container NewFlightForm">
             <Form onSubmit={handleFlightSubmit}>
                 <Row>
                     <Col>
@@ -80,13 +79,11 @@ const NewFlightForm = () => {
                         </Form.Group>
                     </Col>
                 </Row>
-
                 <Row>
                     <Col>
                         <Form.Group className="mb-3" controlId="aircraftSelect">
                             <Form.Label>Aircraft Models</Form.Label>
                             {aircraftOptions.map(aircraft => (
-
                                 <Form.Check
                                     key={aircraft._id}
                                     type="checkbox"
@@ -99,7 +96,7 @@ const NewFlightForm = () => {
                     </Col>
                 </Row>
                 <div className="d-grid">
-                    <Button variant="dark" type="submit">Submit</Button>
+                    <Button className="custom-button" variant="dark" type="submit">Submit</Button>
                 </div>
             </Form>
         </div>

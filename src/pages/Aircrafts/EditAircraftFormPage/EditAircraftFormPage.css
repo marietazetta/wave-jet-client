@@ -1,5 +1,5 @@
 .edit-form-page {
-    background-image: url('/public/assets/pexels-ahmedmuntasir-912050.jpg');
+    background: linear-gradient(rgba(158, 163, 176, 0.5), transparent, transparent, rgba(158, 163, 176, 0.5));
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

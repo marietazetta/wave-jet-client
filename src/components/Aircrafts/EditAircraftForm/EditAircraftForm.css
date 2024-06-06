@@ -1,10 +1,13 @@
 .EditAircraftForm {
     padding: 20px;
     border: 1px solid #ddd;
-    border-radius: 5px;
-    background-color: #ffead9ac;
-    width: 60%;
+    border-radius: 8px;
+    background-color: #ede0d461;
+    width: 90%;
+    max-width: 600px;
     margin: 30px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
 .EditAircraftForm .form-label {
@@ -23,14 +26,52 @@
     margin-bottom: 15px;
 }
 
-.EditAircraftForm button {
-    background-color: rgba(13, 31, 45, 0.8);
+
+.EditAircraftForm .custom-button {
+    background-color: #0D1F2D;
     color: #FFEAD9;
-    border-color: rgba(255, 255, 255, 0.5);
+    border-color: #0D1F2D;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
-.availability-emoji {
+.EditAircraftForm .custom-button:hover {
+    background-color: #0A1722;
+    border-color: #0A1722;
+}
+
+.EditAircraftForm .availability-emoji {
     cursor: pointer;
     font-size: 24px;
     margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .EditAircraftForm {
+        width: 100%;
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .EditAircraftForm .form-control {
+        font-size: 14px;
+    }
+
+    .EditAircraftForm .availability-emoji {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .EditAircraftForm {
+        width: 100%;
+        margin: 10px auto;
+        padding: 10px;
+    }
+
+    .EditAircraftForm .custom-button {
+        font-size: 14px;
+        padding: 10px;
+    }
 }

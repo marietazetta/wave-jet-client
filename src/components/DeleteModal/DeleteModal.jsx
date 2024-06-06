@@ -14,7 +14,7 @@ const DeleteModal = ({ show, handleClose, flightId, loadFlights }) => {
             .then(() => {
                 loadFlights()
                 handleClose()
-                navigate(`/routes`)
+                navigate(`/dashboard`)
             })
             .catch(err => console.log(err))
     }
