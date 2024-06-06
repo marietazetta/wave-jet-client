@@ -3,8 +3,6 @@ import "./Navigation.css";
 import { Nav, Navbar, Container, NavDropdown } from "react-bootstrap";
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from "../../contexts/auth.context";
-import linkedin from "./../../../public/assets/icons/linkedin.svg";
-import twitter from "./../../../public/assets/icons/twitter.svg";
 import navbarlogo from "./../../../public/assets/icons/navbarlogo.svg";
 import { FaLinkedin, FaTiktok } from "react-icons/fa";
 

@@ -2,17 +2,13 @@ import { Card, Button, Row, Col, Container } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import './AircraftCard.css';
 
-const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription, isLeft }) => {
-
-
-    const justifyContent = isLeft ? 'flex-start' : 'flex-end';
-
+const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription }) => {
 
     return (
         <div className="AircraftCard font-family">
 
             <Container fluid className="mt-5">
-                <Row className="d-flex align-items-center" style={{ justifyContent }}>
+                <Row className="d-flex align-items-center">
                     <Col lg={6} md={8}>
                         <h2>{manufacturer}</h2>
                         <p>{manufacturerDescription}</p>
@@ -28,7 +24,6 @@ const AircraftCard = ({ _id, mainImage, manufacturer, manufacturerDescription, i
                         <Link to={`/fleet/${_id}`}>
                             <Card.Img variant="top"
                                 src={mainImage}
-                            // className="rounded-top equal-aspect-ratio"
                             />
                         </Link>
                     </Col>

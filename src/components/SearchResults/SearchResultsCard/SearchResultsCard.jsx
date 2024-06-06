@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Card, Row, Col, Container, Button } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { FaRegClock } from "react-icons/fa";
 import { IoPersonSharp } from "react-icons/io5";
 import { MdOutlineEuro } from "react-icons/md";

@@ -1,5 +1,6 @@
 import './AboutPage.css'
 import '../../../public/assets/ProfileMaria.jpg'
+import '../../../public/assets/DiegoProfile.jpg'
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const AboutPage = () => {
@@ -13,7 +14,7 @@ const AboutPage = () => {
         },
         {
             name: 'Diego',
-            image: 'images/person2.jpg',
+            image: '/assets/DiegoProfile.jpg',
             linkedIn: 'https://www.linkedin.com/in/cerezodiego/',
             github: 'https://github.com/diego-cerezo'
         }

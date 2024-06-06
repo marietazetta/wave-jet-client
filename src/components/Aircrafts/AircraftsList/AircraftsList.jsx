@@ -1,3 +1,4 @@
+import './AircraftsList.css'
 import { Container } from "react-bootstrap";
 import AircraftCard from "../AircraftCard/AircraftCard";
 
@@ -9,7 +10,6 @@ const AircraftsList = ({ aircraft }) => {
                 mainImage={aircraft.mainImage}
                 manufacturer={aircraft.manufacturer}
                 manufacturerDescription={aircraft.manufacturerDescription}
-
             />
         </Container>
     );

@@ -4,13 +4,6 @@ import { Container } from "react-bootstrap";
 
 const SearchResultsList = ({ searchResults, requestBooking }) => {
 
-    // const [searchInitiated, setSearchInitiated] = useState(false);
-
-
-    // const initiateSearch = () => {
-    //     setSearchInitiated(true);
-    // }
-
     return (
 
         <Container className="mt-5 pt-5 pb-5" >
