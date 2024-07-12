@@ -32,6 +32,7 @@ const ProfilePage = () => {
 
         <div className="ProfilePage">
             <Container>
+
                 <Row>
                     <Col>
                         {isLoading ? (
@@ -40,6 +41,20 @@ const ProfilePage = () => {
                             <div className="profile-page full-height font-family">
                                 <h1>Welcome, {loggedUser.username}</h1>
                                 <hr />
+                                <Row>
+                                    <Col>
+                                        <h5>Personal Details</h5>
+                                        <p>Full Name - {loggedUser.username}</p>
+                                        <p>Email Address - {loggedUser.email}</p>
+                                        <p>Mobile - {loggedUser.mobile}</p>
+                                    </Col>
+                                    <Col>
+                                        <p>una columna</p>
+                                    </Col>
+                                </Row>
+
+                                <hr />
+                                <h3>My Bookings</h3>
                                 <BookingList bookings={bookings} />
                             </div>
                         )}
