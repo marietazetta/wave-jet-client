@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import { AuthProviderWrapper } from './contexts/auth.context.jsx'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
+
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Router>
     <React.StrictMode>
