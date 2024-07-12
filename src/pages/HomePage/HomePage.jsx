@@ -24,7 +24,7 @@ const HomePage = () => {
 
         BookingServices
             .saveBooking(fullBookingData)
-            .then(() => navigate('/bookings'))
+            .then(() => navigate('/profile'))
             .catch(err => console.log(err));
     };
 

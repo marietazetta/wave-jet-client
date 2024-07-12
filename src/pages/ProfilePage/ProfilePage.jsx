@@ -4,9 +4,9 @@ import bookingServices from "../../services/booking.services"
 import Loader from "../../components/Loader/Loader"
 import BookingList from "../../components/Bookings/BookingList/BookingList"
 import { Container, Row, Col } from "react-bootstrap"
-import "./BookingsPage.css"
+import "./ProfilePage.css"
 
-const BookingsPage = () => {
+const ProfilePage = () => {
     const { loggedUser } = useContext(AuthContext)
     const [bookings, setBookings] = useState([])
     const [isLoading, setIsLoading] = useState(true)
@@ -30,7 +30,7 @@ const BookingsPage = () => {
 
     return (
 
-        <div className="BookingsPage">
+        <div className="ProfilePage">
             <Container>
                 <Row>
                     <Col>
@@ -52,4 +52,4 @@ const BookingsPage = () => {
     )
 }
 
-export default BookingsPage
+export default ProfilePage

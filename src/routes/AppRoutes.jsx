@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom"
 import HomePage from "../pages/HomePage/HomePage"
 import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage"
 import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
@@ -12,8 +13,7 @@ import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
 import LoginPage from "../pages/Users/LoginPage/LoginPage"
 import PrivateRoute from "./PrivateRoute"
 import UsersPage from "../pages/Users/UsersPage/UsersPage"
-import { Route, Routes } from "react-router-dom"
-import BookingsPage from "../pages/BookingsPage/BookingsPage"
+import ProfilePage from "../pages/ProfilePage/ProfilePage"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
 
 
@@ -38,7 +38,7 @@ const Approutes = () => {
 
             <Route element={<PrivateRoute onlyAdmin={false} />}>
 
-                <Route path={'/bookings'} element={<BookingsPage />} />
+                <Route path={'/profile'} element={<ProfilePage />} />
 
             </Route>
 

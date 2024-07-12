@@ -68,6 +68,10 @@ const DashboardBookings = () => {
         updateBookingStatus(bookingId, 'Rejected');
     };
 
+    // const handlePayment = (bookingId) => {
+    //     updateBookingStatus(bookingId, 'Pay💳');
+    // };
+
     return (
         <Container className="dashboard-flights">
             <Row>
@@ -112,7 +116,7 @@ const DashboardBookings = () => {
                                         <Button
                                             variant="warning"
                                             size="sm"
-                                            onClick={() => handlePending(booking._id)}
+                                            onClick={() => handle(booking._id)}
                                             className="me-2"
                                         >
                                             <GrStatusUnknown />
@@ -124,6 +128,13 @@ const DashboardBookings = () => {
                                         >
                                             <GrStatusCritical />
                                         </Button>
+
+                                        {/* <Button
+                                            size='md'
+                                            onClick={() => handlePayment()}
+
+                                        >
+                                        </Button> */}
                                     </td>
                                 </tr>
                             ))}

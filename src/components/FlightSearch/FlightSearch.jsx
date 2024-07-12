@@ -131,6 +131,7 @@ const FlightSearch = ({ setSearchResults }) => {
                                 value={flightSearchData.travellers}
                                 onChange={handleInputChange}
                                 min="1"
+                                max="16"
                                 className="custom-number"
                             />
                         </InputGroup>

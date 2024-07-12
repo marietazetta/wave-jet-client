@@ -30,14 +30,15 @@ const UserSignUpForm = () => {
     return (
         <div className="user-signup-form-container">
             <Form onSubmit={handleFormSubmit} className="user-signup-form">
+
+                <Form.Group className="mb-3" controlId="username">
+                    <Form.Label>Full Name</Form.Label>
+                    <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
+                </Form.Group>
+
                 <Form.Group className="mb-3" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control type="email" value={signupData.email} onChange={handleInputChange} name="email" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="username">
-                    <Form.Label>User Name</Form.Label>
-                    <Form.Control type="text" value={signupData.username} onChange={handleInputChange} name="username" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="password">
