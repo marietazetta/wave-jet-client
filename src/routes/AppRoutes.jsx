@@ -38,8 +38,9 @@ const Approutes = () => {
 
             <Route element={<PrivateRoute onlyAdmin={false} />}>
 
-                <Route path={'/profile'} element={<ProfilePage />} />
+                {/* <Route path={'/profile'} element={<ProfilePage />} /> */}
 
+                <Route path={'/profile/:profileId'} element={<ProfilePage />} />
             </Route>
 
             {/* ADMIN RIGHTS */}
