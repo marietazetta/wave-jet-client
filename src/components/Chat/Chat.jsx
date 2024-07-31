@@ -1,33 +1,94 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import { Container, Row, Col, DropdownButton, Dropdown } from "react-bootstrap";
 import messageServices from "../../services/message.services";
 import { AuthContext } from "../../contexts/auth.context";
+import ChatBox from "../../components/ChatBox/ChatBox";
 import "./Chat.css";
 
 const Chat = () => {
     const { loggedUser, isLoading } = useContext(AuthContext);
     const [messages, setMessages] = useState([]);
     const [newMessage, setNewMessage] = useState("");
+    const [groupedMessages, setGroupedMessages] = useState({});
+    const [selectedUser, setSelectedUser] = useState(null);
 
     useEffect(() => {
         if (!isLoading) {
-            messageServices.getAllMessages()
-                .then(response => setMessages(response.data))
-                .catch(error => console.error("Error fetching messages:", error));
+            if (loggedUser.role === 'Admin') {
+                messageServices.getAllMessages()
+                    .then(response => {
+                        setMessages(response.data);
+                    })
+                    .catch(error => console.error("Error fetching messages:", error));
+            } else if (loggedUser.role === 'User') {
+                messageServices.getAllMessages(loggedUser._id)
+                    .then(response => {
+                        setMessages(response.data);
+                    })
+                    .catch(error => console.error("Error fetching messages:", error));
+            }
         }
-    }, [isLoading]);
+    }, [isLoading, loggedUser]);
 
-    const handleSendMessage = async (e) => {
+    useEffect(() => {
+        if (loggedUser?.role === 'Admin') {
+            const grouped = messages.reduce((acc, msg) => {
+                const userId = msg.owner?._id === loggedUser._id ? msg.recipient?._id : msg.owner?._id;
+                if (userId) {
+                    if (!acc[userId]) acc[userId] = [];
+                    acc[userId].push(msg);
+                }
+                return acc;
+            }, {});
+            setGroupedMessages(grouped);
+        } else if (loggedUser?.role === 'User') {
+            const filteredMessages = messages.filter(
+                msg => msg.owner?._id === loggedUser._id || msg.recipient?._id === loggedUser._id
+            );
+            setGroupedMessages({ [loggedUser._id]: filteredMessages });
+        }
+    }, [messages, loggedUser]);
+
+    const handleSendMessage = (e, recipientId) => {
         e.preventDefault();
         if (!loggedUser) return;
 
-        messageServices.saveMessage({
+        const newMsg = {
             message: newMessage,
-            owner: loggedUser._id,
-            ownerModel: loggedUser.role
-        })
+            owner: {
+                _id: loggedUser._id,
+                username: loggedUser.username
+            },
+            ownerModel: loggedUser.role,
+            recipient: recipientId
+        };
+
+        messageServices.saveMessage(newMsg)
             .then(response => {
-                setMessages([...messages, response.data]);
+                const addedMessage = response.data;
+                console.log("New message added:", addedMessage);
+                setMessages(prevMessages => [...prevMessages, addedMessage]);
+
+                if (loggedUser.role === 'Admin') {
+                    setGroupedMessages(prevGroupedMessages => {
+                        const updatedGroupedMessages = { ...prevGroupedMessages };
+                        if (!updatedGroupedMessages[recipientId]) {
+                            updatedGroupedMessages[recipientId] = [];
+                        }
+                        updatedGroupedMessages[recipientId].push(addedMessage);
+                        return updatedGroupedMessages;
+                    });
+                } else if (loggedUser.role === 'User') {
+                    setGroupedMessages(prevGroupedMessages => {
+                        const updatedGroupedMessages = { ...prevGroupedMessages };
+                        if (!updatedGroupedMessages[loggedUser._id]) {
+                            updatedGroupedMessages[loggedUser._id] = [];
+                        }
+                        updatedGroupedMessages[loggedUser._id].push(addedMessage);
+                        return updatedGroupedMessages;
+                    });
+                }
+
                 setNewMessage("");
             })
             .catch(error => console.error("Error sending message:", error));
@@ -39,30 +100,34 @@ const Chat = () => {
         <Container className="chat-container">
             <Row>
                 <Col>
-                    <div className="chat-box">
-                        {messages.map((msg) => (
-                            <div key={msg._id} className={`chat-message ${msg.ownerModel?.toLowerCase() || 'unknown'}`}>
-                                <div className="message-owner">{msg.owner.username}</div>
-                                <div className="message-text">{msg.message}</div>
-                                <div className="message-time">{new Date(msg.createdAt).toLocaleTimeString()}</div>
-                            </div>
-                        ))}
-                    </div>
-                </Col>
-            </Row>
-            <Row>
-                <Col>
-                    <Form onSubmit={handleSendMessage} className="chat-form">
-                        <Form.Group controlId="messageInput">
-                            <Form.Control
-                                type="text"
-                                placeholder="Type your message..."
-                                value={newMessage}
-                                onChange={(e) => setNewMessage(e.target.value)}
-                            />
-                        </Form.Group>
-                        <Button type="submit" variant="primary">Send</Button>
-                    </Form>
+                    {loggedUser.role === 'Admin' ? (
+                        <>
+                            <DropdownButton id="dropdown-basic-button" title="Select User">
+                                {Object.keys(groupedMessages).map(userId => (
+                                    <Dropdown.Item key={userId} onClick={() => setSelectedUser(userId)}>
+                                        {groupedMessages[userId][0]?.owner?.username || groupedMessages[userId][0]?.recipient?.username || "Unknown User"}
+                                    </Dropdown.Item>
+                                ))}
+                            </DropdownButton>
+                            {selectedUser && (
+                                <ChatBox
+                                    messages={groupedMessages[selectedUser] || []}
+                                    onSendMessage={handleSendMessage}
+                                    newMessage={newMessage}
+                                    setNewMessage={setNewMessage}
+                                    selectedUser={selectedUser}
+                                />
+                            )}
+                        </>
+                    ) : (
+                        <ChatBox
+                            messages={groupedMessages[loggedUser._id] || []}
+                            onSendMessage={handleSendMessage}
+                            newMessage={newMessage}
+                            setNewMessage={setNewMessage}
+                            selectedUser={loggedUser._id}
+                        />
+                    )}
                 </Col>
             </Row>
         </Container>

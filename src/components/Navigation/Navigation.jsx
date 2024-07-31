@@ -44,6 +44,7 @@ const Navigation = () => {
                             <NavDropdown title={`Welcome, ${loggedUser.username}`} id="navbarScrollingDropdown">
                                 {loggedUser.role === "Admin" ? (
                                     <>
+                                        <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to="/dashboard">Dashboard</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to="/fleet/add">Add Aircraft</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to="/routes/add">Add New Route</NavDropdown.Item>

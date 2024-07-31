@@ -5,6 +5,7 @@ import Loader from "../../components/Loader/Loader"
 import BookingList from "../../components/Bookings/BookingList/BookingList"
 import { Container, Row, Col } from "react-bootstrap"
 import "./ProfilePage.css"
+import Chat from "../../components/Chat/Chat"
 
 const ProfilePage = () => {
     const { loggedUser } = useContext(AuthContext)
@@ -59,6 +60,11 @@ const ProfilePage = () => {
                             </div>
                         )}
                     </Col>
+
+                    <Col>
+                        <Chat />
+                    </Col>
+
 
                 </Row>
 

@@ -19,6 +19,10 @@ class MessageServices {
         return this.axiosApp.get('/');
     }
 
+    getUserMessages(userId) {
+        return this.axiosApp.get(`/user/${userId}`);
+    }
+
     saveMessage(messageData) {
         return this.axiosApp.post('/', messageData);
     }

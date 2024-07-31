@@ -1,22 +1,20 @@
-/* Chat.css */
-
-.chat-container {
-    max-width: 100%;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+/* ChatBox.css */
 
 .chat-box {
-    height: 400px;
-    overflow-y: scroll;
-    margin-bottom: 20px;
-    padding: 10px;
-    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 80%;
     border: 1px solid #ddd;
     border-radius: 8px;
+    background-color: #fff;
+    padding: 20px;
+}
+
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    margin-bottom: 20px;
 }
 
 .chat-message {
@@ -36,11 +34,6 @@
     text-align: right;
 }
 
-.chat-message.unknown {
-    background-color: #f8d7da;
-    text-align: left;
-}
-
 .message-owner {
     font-weight: bold;
 }
@@ -55,22 +48,25 @@
 }
 
 .chat-form {
-    display: flex;
-    gap: 10px;
+    gap: 20px;
 }
 
 .chat-form .form-control {
-    flex: 1;
+    flex: -6;
+    /* 80% width */
+}
+
+.chat-form button {
+    width: 100px;
+    margin-top: 10px;
+    /* 20% width */
 }
 
 /* Responsive Styles */
 @media (max-width: 768px) {
-    .chat-container {
-        padding: 10px;
-    }
-
     .chat-box {
-        height: 300px;
+        height: auto;
+        width: 100%;
     }
 
     .chat-message {
@@ -106,7 +102,8 @@
 
 @media (max-width: 480px) {
     .chat-box {
-        height: 200px;
+        height: auto;
+        width: 100%;
     }
 
     .chat-message {
@@ -124,5 +121,18 @@
 
     .message-time {
         font-size: 0.6em;
+    }
+
+    .chat-form {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .chat-form .form-control {
+        width: 100%;
+    }
+
+    .chat-form button {
+        width: 100%;
     }
 }
