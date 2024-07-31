@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Nav, Navbar, Container, NavDropdown } from 'react-bootstrap';
 import { AuthContext } from '../../contexts/auth.context';
 import navbarlogo from './../../../public/assets/icons/navbarlogo.svg';
@@ -9,6 +9,7 @@ import './Navigation.css';
 const Navigation = () => {
     const { loggedUser, logout } = useContext(AuthContext);
     const [scrolled, setScrolled] = useState(false);
+    const { profileId } = useParams()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,7 +53,7 @@ const Navigation = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <NavDropdown.Item as={Link} to="/profile">My Profile</NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to={`/profile/${profileId}`}>My Profile</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                     </>
                                 )}
