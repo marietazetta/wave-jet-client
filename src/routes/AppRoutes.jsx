@@ -1,30 +1,23 @@
-import { Route, Routes } from "react-router-dom"
-import HomePage from "../pages/HomePage/HomePage"
-import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage"
-import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
-import DashboardPage from "../pages/DashboardPage/DashboardPage"
-import FlightDetailsPage from "../pages/Flights/FlightDetailsPage/FlightDetailsPage"
-import AddFlightFormPage from "../pages/Flights/AddFlightFormPage/AddFlightFormPage"
-import EditAircraftFormPage from "../pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage"
-import AddAircraftFormPage from "../pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
-import EditFlightFormPage from "../pages/Flights/EditFlightFormPage/EditFlightFormPage"
-import AboutPage from "../pages/AboutPage/AboutPage"
-import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
-import LoginPage from "../pages/Users/LoginPage/LoginPage"
-import PrivateRoute from "./PrivateRoute"
-import UsersPage from "../pages/Users/UsersPage/UsersPage"
-import ProfilePage from "../pages/ProfilePage/ProfilePage"
-import ErrorPage from "../pages/ErrorPage/ErrorPage"
-
-
-
+import { Route, Routes } from "react-router-dom";
+import HomePage from "../pages/HomePage/HomePage";
+import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage";
+import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage";
+import DashboardPage from "../pages/DashboardPage/DashboardPage";
+import FlightDetailsPage from "../pages/Flights/FlightDetailsPage/FlightDetailsPage";
+import AddFlightFormPage from "../pages/Flights/AddFlightFormPage/AddFlightFormPage";
+import EditAircraftFormPage from "../pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage";
+import AddAircraftFormPage from "../pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage";
+import EditFlightFormPage from "../pages/Flights/EditFlightFormPage/EditFlightFormPage";
+import AboutPage from "../pages/AboutPage/AboutPage";
+import SignupPage from "../pages/Users/SignUpPage/SignUpPage";
+import LoginPage from "../pages/Users/LoginPage/LoginPage";
+import PrivateRoute from "./PrivateRoute";
+import UsersPage from "../pages/Users/UsersPage/UsersPage";
+import ProfilePage from "../pages/ProfilePage/ProfilePage";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const Approutes = () => {
-
-
-
     return (
-
         <Routes>
             <Route path={'/about'} element={<AboutPage />} />
             <Route path={'/signup'} element={<SignupPage />} />
@@ -33,20 +26,13 @@ const Approutes = () => {
             <Route path={'/fleet'} element={<AircraftsPage />} />
             <Route path={'/fleet/:aircraftId'} element={<AircraftDetailsPage />} />
 
-
             {/* USER RIGHTS */}
-
             <Route element={<PrivateRoute onlyAdmin={false} />}>
-
-                {/* <Route path={'/profile'} element={<ProfilePage />} /> */}
-
                 <Route path={'/profile/:profileId'} element={<ProfilePage />} />
             </Route>
 
             {/* ADMIN RIGHTS */}
-
             <Route element={<PrivateRoute onlyAdmin={true} />}>
-
                 <Route path={'/users'} element={<UsersPage />} />
                 <Route path={'/dashboard'} element={<DashboardPage />} />
                 <Route path={'/routes/:flightId'} element={<FlightDetailsPage />} />
@@ -56,10 +42,9 @@ const Approutes = () => {
                 <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
             </Route>
 
-
             <Route path={'*'} element={<ErrorPage />} />
         </Routes>
-    )
+    );
+};
 
-}
-export default Approutes
+export default Approutes;
