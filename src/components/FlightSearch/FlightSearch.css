@@ -15,7 +15,9 @@
     margin-top: 1rem;
     justify-content: center;
     align-items: center;
+
 }
+
 
 .form__group {
     display: flex;
@@ -23,12 +25,14 @@
     align-items: flex-start;
     gap: 0.5rem;
     width: 100%;
+
 }
 
 .label-text {
     font-size: 0.85rem;
     color: #6c757d;
     margin-bottom: 0.25rem;
+
 }
 
 .input-group-text {
@@ -38,6 +42,8 @@
     background-color: #ffffff;
     border-radius: 0.5rem 0 0 0.5rem;
     border-right: 0;
+    width: 50px;
+
 }
 
 .form-control {
@@ -48,6 +54,7 @@
     border-radius: 0 0.5rem 0.5rem 0;
     color: #495057;
     background-color: #ffffff;
+    width: calc(130%);
 }
 
 .custom-select,
@@ -55,11 +62,13 @@
 .custom-number {
     border-left: 0;
     height: calc(2.75rem + 2px);
+    width: calc(130%);
+    text-align: center;
 }
 
 .form-control:focus {
     border-color: #80bdff;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(113, 251, 203, 0.288);
 }
 
 .text-muted {
@@ -116,4 +125,18 @@
     .text-end {
         justify-content: flex-end;
     }
+
+    .form-control {
+        width: calc(130%);
+        text-align: left;
+    }
+
+    .custom-select,
+    .custom-date,
+    .custom-number {
+        width: calc(130%);
+        text-align: left;
+    }
+
+
 }

@@ -33,6 +33,27 @@ const FlightSearch = ({ setSearchResults }) => {
             .catch(err => console.log(err));
     }, []);
 
+    useEffect(() => {
+        const today = new Date().toISOString().split("T")[0];
+        const maxDepartureDate = new Date();
+        maxDepartureDate.setDate(maxDepartureDate.getDate() + 30);
+        const maxDeparture = maxDepartureDate.toISOString().split("T")[0];
+
+        document.getElementsByName("departureDate")[0].setAttribute("min", today);
+        document.getElementsByName("departureDate")[0].setAttribute("max", maxDeparture);
+
+        if (flightSearchData.departureDate) {
+            const selectedDepartureDate = new Date(flightSearchData.departureDate);
+            const minReturnDate = selectedDepartureDate.toISOString().split("T")[0];
+            const maxReturnDate = new Date(selectedDepartureDate);
+            maxReturnDate.setDate(maxReturnDate.getDate() + 60);
+            const maxReturn = maxReturnDate.toISOString().split("T")[0];
+
+            document.getElementsByName("returnDate")[0].setAttribute("min", minReturnDate);
+            document.getElementsByName("returnDate")[0].setAttribute("max", maxReturn);
+        }
+    }, [flightSearchData.departureDate]);
+
     const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFlightData({
