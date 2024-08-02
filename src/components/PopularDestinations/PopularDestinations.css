@@ -1,8 +1,8 @@
 .popular-destinations {
     padding: 2rem 1rem;
-    background-color: #f0f4f8;
+    background-color: #ede0d49f;
     border-radius: 1rem;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: #ede0d4
 }
 
 .popular-destinations h2 {
@@ -17,13 +17,13 @@
     border: none;
     border-radius: 0.75rem;
     overflow: hidden;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: #ede0d4;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .destination-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: #ede0d4
 }
 
 .destination-image {

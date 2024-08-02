@@ -15,14 +15,16 @@ const ChatBox = ({ messages, onSendMessage, newMessage, setNewMessage, selectedU
 
     return (
         <div className="chat-box">
-            {messages.map((msg) => (
-                <div key={msg._id} className={`chat-message ${msg.ownerModel?.toLowerCase() || 'unknown'}`}>
-                    <div className="message-owner">{msg.owner?.username || msg.recipient?.username || "Unknown User"}</div>
-                    <div className="message-text">{msg.message}</div>
-                    <div className="message-time">{new Date(msg.createdAt).toLocaleTimeString()}</div>
-                </div>
-            ))}
-            <div ref={messagesEndRef} />
+            <div className="messages-container">
+                {messages.map((msg) => (
+                    <div key={msg._id} className={`chat-message ${msg.ownerModel?.toLowerCase() || 'unknown'}`}>
+                        <div className="message-owner">{msg.owner?.username || msg.recipient?.username || "Unknown User"}</div>
+                        <div className="message-text">{msg.message}</div>
+                        <div className="message-time">{new Date(msg.createdAt).toLocaleTimeString()}</div>
+                    </div>
+                ))}
+                <div ref={messagesEndRef} />
+            </div>
             <Form onSubmit={(e) => onSendMessage(e, selectedUser)} className="chat-form">
                 <Form.Group controlId="messageInput">
                     <Form.Control

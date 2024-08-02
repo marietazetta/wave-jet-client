@@ -5,7 +5,7 @@ class BookingServices {
     constructor() {
 
         this.axiosApp = axios.create({
-            baseURL: `${import.meta.env.VITE_API_URL}/profile`
+            baseURL: `${import.meta.env.VITE_API_URL}/bookings`
         })
 
         this.axiosApp.interceptors.request.use(config => {
