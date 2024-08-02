@@ -2,6 +2,7 @@ import './DashboardBookings.css';
 import React, { useEffect, useState } from 'react';
 import { Row, Table, Col, Container, Button } from "react-bootstrap";
 import { GrStatusGood, GrStatusUnknown, GrStatusCritical } from 'react-icons/gr';
+import { MdOutlinePaid } from "react-icons/md";
 import bookingServices from "../../services/booking.services";
 import authServices from '../../services/auth.services';
 
@@ -68,9 +69,9 @@ const DashboardBookings = () => {
         updateBookingStatus(bookingId, 'Rejected');
     };
 
-    // const handlePayment = (bookingId) => {
-    //     updateBookingStatus(bookingId, 'Pay💳');
-    // };
+    const handlePayment = (bookingId) => {
+        updateBookingStatus(bookingId, 'Paid💳');
+    };
 
     return (
         <Container className="dashboard-flights">
@@ -116,7 +117,7 @@ const DashboardBookings = () => {
                                         <Button
                                             variant="warning"
                                             size="sm"
-                                            onClick={() => handle(booking._id)}
+                                            onClick={() => handlePending(booking._id)}
                                             className="me-2"
                                         >
                                             <GrStatusUnknown />
@@ -125,16 +126,21 @@ const DashboardBookings = () => {
                                             variant="danger"
                                             size="sm"
                                             onClick={() => handleReject(booking._id)}
+                                            className="me-2"
                                         >
                                             <GrStatusCritical />
                                         </Button>
 
-                                        {/* <Button
-                                            size='md'
-                                            onClick={() => handlePayment()}
+                                        <Button
+                                            variant="primary"
+                                            size='sm'
+                                            onClick={() => handlePayment(booking._id)}
+                                            className="me-2"
 
                                         >
-                                        </Button> */}
+                                            <MdOutlinePaid />
+
+                                        </Button>
                                     </td>
                                 </tr>
                             ))}
