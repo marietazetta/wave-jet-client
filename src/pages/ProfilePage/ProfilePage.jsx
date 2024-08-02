@@ -55,26 +55,6 @@ const ProfilePage = () => {
             .getBookingsByOwner(loggedUser._id)
             .then(({ data }) => {
                 setBookings(data);
-<<<<<<< HEAD
-                setIsLoadingBookings(false);
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoadingBookings(false);
-            });
-    };
-
-    const loadProfile = () => {
-        profileServices
-            .getProfileByOwner(loggedUser._id)
-            .then(({ data }) => {
-                setProfile(data);
-                setIsLoadingProfile(false);
-            })
-            .catch(err => {
-                console.log(err);
-                setIsLoadingProfile(false);
-=======
                 setIsLoading(false);
             })
             .catch(err => {
@@ -101,7 +81,6 @@ const ProfilePage = () => {
             .catch(err => {
                 console.error("Error loading profiles:", err.response ? err.response.data : err);
                 setIsLoading(false);
->>>>>>> diego
             });
     };
 
@@ -117,7 +96,7 @@ const ProfilePage = () => {
 <<<<<<< HEAD
                                 <h1>Welcome, {loggedUser.username}</h1>
                                 <hr />
-                                {profile && <ProfileList profile={profile} />}
+    { profile && <ProfileList profile={profile} /> }
 =======
                                 <Row>
                                     <Col>
@@ -132,15 +111,15 @@ const ProfilePage = () => {
                                 <hr />
                                 <h3>My Bookings</h3>
                                 <BookingList bookings={bookings} />
-                            </div>
+                            </div >
                         )}
-                    </Col>
-                    <Col>
-                        <Chat />
-                    </Col>
-                </Row>
-            </Container>
-        </div>
+                    </Col >
+    <Col>
+        <Chat />
+    </Col>
+                </Row >
+            </Container >
+        </div >
     );
 };
 
