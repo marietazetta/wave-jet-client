@@ -1,25 +1,12 @@
-.chat-container {
-    height: 100vh;
-    /* Full height of the viewport */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
 .chat-box {
     display: flex;
     flex-direction: column;
-    height: 85vh;
-    /* 85% of the viewport height */
-    width: 95%;
-    /* 95% of the viewport width */
+    height: 45vh;
+    width: 100%;
     max-width: 430px;
-    /* Maximum width for larger screens */
-    border: 1px solid #ddd;
+    border: 1px solid #EDE0D4;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #ffffff2f;
     padding: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
@@ -37,9 +24,7 @@
     border-radius: 8px;
     background-color: #f1f1f1;
     word-wrap: break-word;
-    /* Ensures long words break and wrap within the message box */
     overflow-wrap: break-word;
-    /* Ensures long words break and wrap within the message box */
 }
 
 .chat-message.admin {
@@ -79,10 +64,9 @@
     width: 100px;
 }
 
-/* Responsive Styles */
 @media (max-width: 768px) {
     .chat-box {
-        height: 85vh;
+        height: 45vh;
         width: 95%;
     }
 
@@ -119,7 +103,7 @@
 
 @media (max-width: 480px) {
     .chat-box {
-        height: 85vh;
+        height: 45vh;
         width: 95%;
     }
 

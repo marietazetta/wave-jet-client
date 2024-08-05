@@ -40,7 +40,7 @@ const Navigation = () => {
                         <Link to="/fleet" className="nav-link">Fleet</Link>
                         <Link to="/about" className="nav-link">Meet the team</Link>
                     </Nav>
-                    <Nav className="ms-auto nav-actions">
+                    <Nav className="nav-link">
                         {loggedUser ? (
                             <NavDropdown title={`Welcome, ${loggedUser.username}`} id="navbarScrollingDropdown">
                                 {loggedUser.role === "Admin" ? (

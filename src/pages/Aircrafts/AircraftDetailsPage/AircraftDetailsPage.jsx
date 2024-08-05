@@ -24,26 +24,21 @@ const AircraftDetailsPage = () => {
     };
 
     return (
-
         <div className="AircraftDetailsPage">
-
             <Container className="full-height font-family">
                 <Row className="my-4">
                     <Col>
                         <h1 className="text">{aircraft.model}</h1>
                     </Col>
-
                 </Row>
 
                 <Row className="aircraft-image mb-4 justify-content-center">
                     <Col xs={12} className="d-flex justify-content-center">
-
                         <Image
                             alt="Aircraft main"
                             src={aircraft.mainImage}
                             className="rounded-top img-fluid aircraft-main-image"
                         />
-
                     </Col>
                 </Row>
 
@@ -56,11 +51,13 @@ const AircraftDetailsPage = () => {
                 <Row className="collage-images mb-4">
                     {aircraft.imagesCarousel?.map((eachImage, index) => (
                         <Col key={index} xs={6} md={4} lg={3} className="mb-3">
-                            <img
-                                src={eachImage}
-                                alt={`Image ${index}`}
-                                className="img-fluid"
-                            />
+                            <div className="img-screen">
+                                <img
+                                    src={eachImage}
+                                    alt={`Image ${index}`}
+                                    className="img-fluid"
+                                />
+                            </div>
                         </Col>
                     ))}
                 </Row>
@@ -70,7 +67,7 @@ const AircraftDetailsPage = () => {
                         <table className="table table-striped table-custom">
                             <tbody>
                                 <tr>
-                                    <th >Manufacturer</th>
+                                    <th>Manufacturer</th>
                                     <td>{aircraft.manufacturer}</td>
                                 </tr>
                                 <tr>
@@ -115,7 +112,6 @@ const AircraftDetailsPage = () => {
                     </Col>
                 </Row>
             </Container>
-
         </div>
     );
 };

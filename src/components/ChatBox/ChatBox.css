@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    /* Full height */
     border: 1px solid #ddd;
     border-radius: 8px;
     background-color: #fff;
@@ -58,9 +57,19 @@
 
 .chat-form button {
     width: 100px;
+    background-color: #ede0d4;
+    color: #666;
+    border-color: #ede0d4;
 }
 
-/* Responsive Styles */
+.chat-form button:hover {
+    background-color: #666;
+    /* Change this to the desired hover color */
+    border-color: #666;
+    /* Ensure the border color changes too */
+}
+
+
 @media (max-width: 768px) {
     .chat-box {
         height: 100%;

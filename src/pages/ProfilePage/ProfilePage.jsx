@@ -93,33 +93,33 @@ const ProfilePage = () => {
                             <Loader />
                         ) : (
                             <div className="profile-page full-height font-family">
-<<<<<<< HEAD
-                                <h1>Welcome, {loggedUser.username}</h1>
-                                <hr />
-    { profile && <ProfileList profile={profile} /> }
-=======
                                 <Row>
                                     <Col>
                                         <ProfileList profiles={profiles} />
                                         <p>Email Address - {loggedUser.email}</p>
                                     </Col>
-                                    <Col>
-                                        {/* Additional user details or actions */}
-                                    </Col>
+
                                 </Row>
->>>>>>> diego
                                 <hr />
-                                <h3>My Bookings</h3>
-                                <BookingList bookings={bookings} />
-                            </div >
+                                <Row>
+                                    <Col>
+                                        <h3>My Bookings</h3>
+                                        <BookingList bookings={bookings} />
+                                    </Col>
+                                    <Col>
+                                        <h3>Chat with us</h3>
+                                        <Chat />
+                                    </Col>
+
+                                </Row>
+                            </div>
                         )}
-                    </Col >
-    <Col>
-        <Chat />
-    </Col>
-                </Row >
-            </Container >
-        </div >
+                    </Col>
+                </Row>
+
+
+            </Container>
+        </div>
     );
 };
 

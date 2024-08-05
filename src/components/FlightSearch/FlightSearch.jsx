@@ -8,8 +8,8 @@ import { FaPlaneDeparture } from "react-icons/fa";
 const FlightSearch = ({ setSearchResults }) => {
 
     const [flightSearchData, setFlightData] = useState({
-        fromDestination: '',
-        toDestination: '',
+        fromDestination: 'Madrid',
+        toDestination: 'Berlin',
         departureDate: '',
         returnDate: '',
         travellers: 1
@@ -81,7 +81,7 @@ const FlightSearch = ({ setSearchResults }) => {
     return (
         <section className="section__container booking__container">
             <Form onSubmit={handleSearch}>
-                <Row className="g-2 flex-wrap align-items-end justify-content-center"> {/* Single row with wrapping */}
+                <Row className="g-2 flex-wrap align-items-end justify-content-center">
                     <Col xs={12} md={2} className="form__group">
                         <Form.Label className="label-text">From</Form.Label>
                         <InputGroup>
