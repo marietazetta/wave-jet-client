@@ -87,7 +87,6 @@
 
 
 
-/* Hide video controls on mobile devices */
 @media only screen and (max-width: 767px) {
     .background-video::-webkit-media-controls {
         display: none !important;

@@ -34,7 +34,7 @@ const ChatBox = ({ messages, onSendMessage, newMessage, setNewMessage, selectedU
                         onChange={(e) => setNewMessage(e.target.value)}
                     />
                 </Form.Group>
-                <Button type="submit" variant="primary">Send</Button>
+                <Button className="send-button" type="submit" variant="primary">Send</Button>
             </Form>
         </div>
     );
