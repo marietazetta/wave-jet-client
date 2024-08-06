@@ -5,6 +5,7 @@ import { AuthContext } from "../../contexts/auth.context";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import "./Chat.css";
 import authServices from "../../services/auth.services";
+import { io } from 'socket.io-client';
 
 const Chat = () => {
     const { loggedUser, isLoading } = useContext(AuthContext);
@@ -13,6 +14,24 @@ const Chat = () => {
     const [groupedMessages, setGroupedMessages] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
     const [allUsers, setAllUsers] = useState([]);
+    const socket = io('http://localhost:5005');
+
+    useEffect(() => {
+        socket.on('connect', () => {
+            socket.emit('registered-user', {
+                userSocket: socket.id,
+                userId: loggedUser._id
+            });
+        });
+
+        socket.on('receive-message', (message) => {
+            setMessages(prevMessages => [...prevMessages, message]);
+        });
+
+        return () => {
+            socket.disconnect();
+        };
+    }, [loggedUser, socket]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -77,6 +96,8 @@ const Chat = () => {
                 console.log("New message added:", addedMessage);
                 setMessages(prevMessages => [...prevMessages, addedMessage]);
 
+                socket.emit('send-message', addedMessage);
+
                 if (loggedUser.role === 'Admin') {
                     setGroupedMessages(prevGroupedMessages => {
                         const updatedGroupedMessages = { ...prevGroupedMessages };
@@ -120,7 +141,7 @@ const Chat = () => {
                             {selectedUser && (
                                 <ChatBox
                                     messages={groupedMessages[selectedUser] || []}
-                                    onSendMessage={handleSendMessage}
+                                    onSendMessage={(e) => handleSendMessage(e, selectedUser)}
                                     newMessage={newMessage}
                                     setNewMessage={setNewMessage}
                                     selectedUser={selectedUser}
@@ -130,7 +151,7 @@ const Chat = () => {
                     ) : (
                         <ChatBox
                             messages={groupedMessages[loggedUser._id] || []}
-                            onSendMessage={handleSendMessage}
+                            onSendMessage={(e) => handleSendMessage(e, loggedUser._id)}
                             newMessage={newMessage}
                             setNewMessage={setNewMessage}
                             selectedUser={loggedUser._id}
