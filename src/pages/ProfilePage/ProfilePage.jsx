@@ -65,25 +65,42 @@ const ProfilePage = () => {
                             <Loader />
                         ) : (
                             <div className="profile-page full-height font-family">
+
                                 <Row>
                                     <Col>
                                         <ProfileList profiles={profiles} />
-                                        <p>Email Address - {loggedUser.email}</p>
+                                        <p>{loggedUser.role === 'User' ? `Email address: ${loggedUser.email}` : <></>}</p>
                                     </Col>
 
                                 </Row>
-                                <hr />
-                                <Row>
-                                    <Col>
-                                        <h3>My Bookings</h3>
-                                        <BookingList bookings={bookings} />
-                                    </Col>
-                                    <Col>
-                                        <h3>Chat with us</h3>
-                                        <Chat />
-                                    </Col>
+                                {loggedUser.role === "User" ? (
 
-                                </Row>
+                                    <Row>
+
+                                        <Col>
+                                            <h3>My Bookings</h3>
+                                            <BookingList bookings={bookings} />
+                                        </Col>
+
+
+                                        <Col>
+                                            <h3>Chat with us</h3>
+                                            <Chat />
+                                        </Col>
+
+                                    </Row>
+
+                                ) :
+                                    <Row>
+                                        <Col>
+                                            <h3>Check your inbox</h3>
+                                            <Chat />
+                                        </Col>
+
+                                    </Row>
+
+
+                                }
                             </div>
                         )}
                     </Col>
