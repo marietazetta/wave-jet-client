@@ -51,7 +51,7 @@ const HomePage = () => {
             </Container>
 
             <Container className="text-container py-4">
-                <h4>PLAN A FLIGHT</h4>
+                <h4 className="flight-title">PLAN A FLIGHT</h4>
                 <p className="justified-text">
                     Enter your flight details below and our team will contact you shortly. Private jet charter flight prices are subject to the market rate and start from $5,000 per hour.
                 </p>

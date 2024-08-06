@@ -4,6 +4,7 @@ import messageServices from "../../services/message.services";
 import { AuthContext } from "../../contexts/auth.context";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import "./Chat.css";
+import authServices from "../../services/auth.services";
 
 const Chat = () => {
     const { loggedUser, isLoading } = useContext(AuthContext);
@@ -11,6 +12,7 @@ const Chat = () => {
     const [newMessage, setNewMessage] = useState("");
     const [groupedMessages, setGroupedMessages] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
+    const [allUsers, setAllUsers] = useState([]);
 
     useEffect(() => {
         if (!isLoading) {
@@ -20,6 +22,12 @@ const Chat = () => {
                         setMessages(response.data);
                     })
                     .catch(error => console.error("Error fetching messages:", error));
+
+                authServices.getAllUsers()
+                    .then(response => {
+                        setAllUsers(response.data);
+                    })
+                    .catch(error => console.error("Error fetching users:", error));
             } else if (loggedUser.role === 'User') {
                 messageServices.getAllMessages(loggedUser._id)
                     .then(response => {
@@ -103,9 +111,9 @@ const Chat = () => {
                     {loggedUser.role === 'Admin' ? (
                         <>
                             <DropdownButton id="dropdown-basic-button" title="Select User">
-                                {Object.keys(groupedMessages).map(userId => (
-                                    <Dropdown.Item key={userId} onClick={() => setSelectedUser(userId)}>
-                                        {groupedMessages[userId][0]?.owner?.username || groupedMessages[userId][0]?.recipient?.username || "Unknown User"}
+                                {allUsers.map(user => (
+                                    <Dropdown.Item key={user._id} onClick={() => setSelectedUser(user._id)}>
+                                        {user.username}
                                     </Dropdown.Item>
                                 ))}
                             </DropdownButton>

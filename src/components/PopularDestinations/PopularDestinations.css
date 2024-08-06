@@ -1,12 +1,13 @@
 .popular-destinations {
     padding: 2rem 1rem;
-    background-color: #ede0d49f;
+    background-color: #ede0d448;
     border-radius: 1rem;
-    box-shadow: #ede0d4
+    box-shadow: #ede0d4;
+    width: 100%;
 }
 
 .popular-destinations h2 {
-    font-size: 2rem;
+    font-size: 2.3rem;
     color: #333;
     margin-bottom: 1rem;
     text-transform: uppercase;
@@ -36,14 +37,14 @@
 }
 
 .destination-card .card-title {
-    font-size: 1.5rem;
+    font-size: 2rem;
     color: #003366;
     margin-bottom: 0.75rem;
     text-align: center;
 }
 
 .destination-card .card-text {
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: #666;
     text-align: justify;
 }

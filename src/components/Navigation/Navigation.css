@@ -18,18 +18,18 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 2.3rem;
 }
 
 .navbar-logo {
     width: 30px;
-    margin-right: 10px;
+
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    gap: 0.75rem;
+    font-size: 1.2rem;
 }
 
 .nav-actions {
@@ -39,13 +39,12 @@
 }
 
 .nav-link {
-    margin-right: 0.75rem;
-    font-size: 0.9rem;
+    font-size: 1.2em;
     align-items: center;
 }
 
 .social-icon {
-    font-size: 1.2rem;
+    font-size: 1.8rem;
     color: #0D1F2D;
     align-items: center;
 }
@@ -56,7 +55,7 @@
     }
 
     .nav-link {
-        font-size: 0.95rem;
+        font-size: 1.3rem;
         align-items: center;
 
     }

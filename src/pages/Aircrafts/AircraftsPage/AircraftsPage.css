@@ -6,3 +6,7 @@
 .AircraftsPage {
     background: linear-gradient(rgba(158, 163, 176, 0.5), transparent, transparent, rgba(158, 163, 176, 0.5));
 }
+
+.cool-font {
+    font-size: 2.5rem;
+}
