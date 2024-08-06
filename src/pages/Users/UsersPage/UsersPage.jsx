@@ -31,7 +31,8 @@ const UsersPage = () => {
 
 
                 {
-                    isLoading ? <Loader /> : <UsersList users={users} />
+                    isLoading ? <Loader /> : <UsersList users={users}
+                    />
                 }
 
                 <hr />
