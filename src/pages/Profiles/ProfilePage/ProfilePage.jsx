@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from '../../contexts/auth.context';
-import bookingServices from "../../services/booking.services";
-import profileServices from "../../services/profile.services";
-import Loader from "../../components/Loader/Loader";
-import BookingList from "../../components/Bookings/BookingList/BookingList";
-import ProfileList from "../../components/Profiles/ProfileList/ProfileList";
+import { AuthContext } from '../../../contexts/auth.context';
+import bookingServices from "../../../services/booking.services";
+import profileServices from "../../../services/profile.services";
+import Loader from "../../../components/Loader/Loader";
+import BookingList from "../../../components/Bookings/BookingList/BookingList";
+import ProfileList from "../../../components/Profiles/ProfileList/ProfileList";
 import { Container, Row, Col } from "react-bootstrap";
 import "./ProfilePage.css";
-import Chat from "../../components/Chat/Chat";
+import Chat from "../../../components/Chat/Chat";
 
 const ProfilePage = () => {
     const { loggedUser } = useContext(AuthContext);

@@ -13,7 +13,7 @@ import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
 import LoginPage from "../pages/Users/LoginPage/LoginPage"
 import PrivateRoute from "./PrivateRoute"
 import UsersPage from "../pages/Users/UsersPage/UsersPage"
-import ProfilePage from "../pages/ProfilePage/ProfilePage"
+import ProfilePage from "../pages/Profiles/ProfilePage/ProfilePage"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
 
 
