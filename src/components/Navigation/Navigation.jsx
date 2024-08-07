@@ -47,8 +47,7 @@ const Navigation = () => {
                                     <>
                                         <NavDropdown.Item as={Link} to="/profile">Inbox</NavDropdown.Item>
                                         <NavDropdown.Item as={Link} to="/dashboard">Dashboard</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to="/fleet/add">Add Aircraft</NavDropdown.Item>
-                                        <NavDropdown.Item as={Link} to="/routes/add">Add New Route</NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to="/users">Check Users</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                     </>
                                 ) : (

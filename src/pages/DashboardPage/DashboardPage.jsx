@@ -54,6 +54,7 @@ const DashboardPage = () => {
             .catch(err => console.log(err))
     }
 
+
     return (
         <>        <div className="dashboard-page full-height font-family">
             <Container>
@@ -65,6 +66,7 @@ const DashboardPage = () => {
                             <DashboardBookings bookings={bookings} />
 
                             <DashboardFlights aircrafts={aircrafts} flights={flights} />
+
                         </>
 
                 }

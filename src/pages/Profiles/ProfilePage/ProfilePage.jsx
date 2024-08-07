@@ -1,44 +1,17 @@
 import { useContext, useEffect, useState } from "react";
-import { AuthContext } from '../../contexts/auth.context';
-import bookingServices from "../../services/booking.services";
-import profileServices from "../../services/profile.services";
-import Loader from "../../components/Loader/Loader";
-import BookingList from "../../components/Bookings/BookingList/BookingList";
-<<<<<<< HEAD
+import { AuthContext } from '../../../contexts/auth.context';
+import bookingServices from "../../../services/booking.services";
+import profileServices from "../../../services/profile.services";
+import Loader from "../../../components/Loader/Loader";
+import BookingList from "../../../components/Bookings/BookingList/BookingList";
+import ProfileList from "../../../components/Profiles/ProfileList/ProfileList";
 import { Container, Row, Col } from "react-bootstrap";
 import "./ProfilePage.css";
-import Chat from "../../components/Chat/Chat";
-import ProfileList from "../../components/Profile/ProfileList/ProfileList";
-import { useParams } from "react-router-dom";
-=======
-import ProfileList from "../../components/Profiles/ProfileList/ProfileList";
-import { Container, Row, Col } from "react-bootstrap";
-import "./ProfilePage.css";
-import Chat from "../../components/Chat/Chat";
->>>>>>> diego
+import Chat from "../../../components/Chat/Chat";
 
 const ProfilePage = () => {
     const { loggedUser } = useContext(AuthContext);
     const [bookings, setBookings] = useState([]);
-<<<<<<< HEAD
-    const [profile, setProfile] = useState(null);
-    const [isLoadingBookings, setIsLoadingBookings] = useState(true);
-    const [isLoadingProfile, setIsLoadingProfile] = useState(true);
-    const { profileId } = useParams();
-
-    useEffect(() => {
-        loadBookings();
-    }, []);
-
-    useEffect(() => {
-        if (profileId) {
-            console.log("profileId:", profileId);  // Debug log to check profileId
-            loadProfile();
-        } else {
-            setIsLoadingProfile(false);
-        }
-    }, [profileId]);
-=======
     const [profiles, setProfiles] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
@@ -48,7 +21,6 @@ const ProfilePage = () => {
             loadProfiles();
         }
     }, [loggedUser]);
->>>>>>> diego
 
     const loadBookings = () => {
         bookingServices
@@ -89,7 +61,7 @@ const ProfilePage = () => {
             <Container>
                 <Row>
                     <Col>
-                        {(isLoadingProfile || isLoadingBookings) ? (
+                        {isLoading ? (
                             <Loader />
                         ) : (
                             <div className="profile-page full-height font-family">

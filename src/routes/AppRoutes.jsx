@@ -1,20 +1,23 @@
-import { Route, Routes } from "react-router-dom";
-import HomePage from "../pages/HomePage/HomePage";
-import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage";
-import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage";
-import DashboardPage from "../pages/DashboardPage/DashboardPage";
-import FlightDetailsPage from "../pages/Flights/FlightDetailsPage/FlightDetailsPage";
-import AddFlightFormPage from "../pages/Flights/AddFlightFormPage/AddFlightFormPage";
-import EditAircraftFormPage from "../pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage";
-import AddAircraftFormPage from "../pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage";
-import EditFlightFormPage from "../pages/Flights/EditFlightFormPage/EditFlightFormPage";
-import AboutPage from "../pages/AboutPage/AboutPage";
-import SignupPage from "../pages/Users/SignUpPage/SignUpPage";
-import LoginPage from "../pages/Users/LoginPage/LoginPage";
-import PrivateRoute from "./PrivateRoute";
-import UsersPage from "../pages/Users/UsersPage/UsersPage";
-import ProfilePage from "../pages/ProfilePage/ProfilePage";
-import ErrorPage from "../pages/ErrorPage/ErrorPage";
+import { Route, Routes } from "react-router-dom"
+import HomePage from "../pages/HomePage/HomePage"
+import AircraftsPage from "../pages/Aircrafts/AircraftsPage/AircraftsPage"
+import AircraftDetailsPage from "../pages/Aircrafts/AircraftDetailsPage/AircraftDetailsPage"
+import DashboardPage from "../pages/DashboardPage/DashboardPage"
+import FlightDetailsPage from "../pages/Flights/FlightDetailsPage/FlightDetailsPage"
+import AddFlightFormPage from "../pages/Flights/AddFlightFormPage/AddFlightFormPage"
+import EditAircraftFormPage from "../pages/Aircrafts/EditAircraftFormPage/EditAircraftFormPage"
+import AddAircraftFormPage from "../pages/Aircrafts/AddAircraftFormPage/AddAircraftFormPage"
+import EditFlightFormPage from "../pages/Flights/EditFlightFormPage/EditFlightFormPage"
+import AboutPage from "../pages/AboutPage/AboutPage"
+import SignupPage from "../pages/Users/SignUpPage/SignUpPage"
+import LoginPage from "../pages/Users/LoginPage/LoginPage"
+import PrivateRoute from "./PrivateRoute"
+import UsersPage from "../pages/Users/UsersPage/UsersPage"
+import ProfilePage from "../pages/Profiles/ProfilePage/ProfilePage"
+import ErrorPage from "../pages/ErrorPage/ErrorPage"
+
+
+
 
 const Approutes = () => {
     return (
