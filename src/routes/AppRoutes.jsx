@@ -31,7 +31,7 @@ const Approutes = () => {
 
             {/* USER RIGHTS */}
             <Route element={<PrivateRoute onlyAdmin={false} />}>
-                <Route path={'/profile/:profileId'} element={<ProfilePage />} />
+                <Route path={'/profile'} element={<ProfilePage />} />
             </Route>
 
             {/* ADMIN RIGHTS */}

@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/auth.context";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import "./Chat.css";
 import authServices from "../../services/auth.services";
-import { io } from 'socket.io-client';
+import socket from '../../services/socket'; // Singleton socket instance
 
 const Chat = () => {
     const { loggedUser, isLoading } = useContext(AuthContext);
@@ -14,69 +14,67 @@ const Chat = () => {
     const [groupedMessages, setGroupedMessages] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
     const [allUsers, setAllUsers] = useState([]);
-    const socket = io('http://localhost:5005');
 
     useEffect(() => {
-        socket.on('connect', () => {
-            socket.emit('registered-user', {
-                userSocket: socket.id,
-                userId: loggedUser._id
-            });
-        });
-
-        socket.on('receive-message', (message) => {
+        // Event handler for receiving messages
+        const handleReceiveMessage = (message) => {
+            console.log('Message received:', message); // Debugging line
             setMessages(prevMessages => [...prevMessages, message]);
-        });
-
-        return () => {
-            socket.disconnect();
         };
-    }, [loggedUser, socket]);
+
+        // Register socket event listeners
+        socket.on('receive-message', handleReceiveMessage);
+
+        // Clean up on component unmount
+        return () => {
+            socket.off('receive-message', handleReceiveMessage); // Cleanup
+        };
+    }, []); // Empty dependency array to run only once
 
     useEffect(() => {
-        if (!isLoading) {
-            if (loggedUser.role === 'Admin') {
-                messageServices.getAllMessages()
-                    .then(response => {
-                        setMessages(response.data);
-                    })
-                    .catch(error => console.error("Error fetching messages:", error));
-
-                authServices.getAllUsers()
-                    .then(response => {
-                        setAllUsers(response.data);
-                    })
-                    .catch(error => console.error("Error fetching users:", error));
-            } else if (loggedUser.role === 'User') {
-                messageServices.getAllMessages(loggedUser._id)
-                    .then(response => {
-                        setMessages(response.data);
-                    })
-                    .catch(error => console.error("Error fetching messages:", error));
+        const fetchData = async () => {
+            if (!isLoading) {
+                try {
+                    if (loggedUser.role === 'Admin') {
+                        const messageResponse = await messageServices.getAllMessages();
+                        setMessages(messageResponse.data);
+                        const userResponse = await authServices.getAllUsers();
+                        setAllUsers(userResponse.data);
+                    } else if (loggedUser.role === 'User') {
+                        const messageResponse = await messageServices.getAllMessages(loggedUser._id);
+                        setMessages(messageResponse.data);
+                    }
+                } catch (error) {
+                    console.error("Error fetching data:", error);
+                }
             }
-        }
+        };
+        fetchData();
     }, [isLoading, loggedUser]);
 
     useEffect(() => {
-        if (loggedUser?.role === 'Admin') {
-            const grouped = messages.reduce((acc, msg) => {
-                const userId = msg.owner?._id === loggedUser._id ? msg.recipient?._id : msg.owner?._id;
-                if (userId) {
-                    if (!acc[userId]) acc[userId] = [];
-                    acc[userId].push(msg);
-                }
-                return acc;
-            }, {});
-            setGroupedMessages(grouped);
-        } else if (loggedUser?.role === 'User') {
-            const filteredMessages = messages.filter(
-                msg => msg.owner?._id === loggedUser._id || msg.recipient?._id === loggedUser._id
-            );
-            setGroupedMessages({ [loggedUser._id]: filteredMessages });
-        }
+        const updateGroupedMessages = () => {
+            if (loggedUser?.role === 'Admin') {
+                const grouped = messages.reduce((acc, msg) => {
+                    const userId = msg.owner?._id === loggedUser._id ? msg.recipient?._id : msg.owner?._id;
+                    if (userId) {
+                        if (!acc[userId]) acc[userId] = [];
+                        acc[userId].push(msg);
+                    }
+                    return acc;
+                }, {});
+                setGroupedMessages(grouped);
+            } else if (loggedUser?.role === 'User') {
+                const filteredMessages = messages.filter(
+                    msg => msg.owner?._id === loggedUser._id || msg.recipient?._id === loggedUser._id
+                );
+                setGroupedMessages({ [loggedUser._id]: filteredMessages });
+            }
+        };
+        updateGroupedMessages();
     }, [messages, loggedUser]);
 
-    const handleSendMessage = (e, recipientId) => {
+    const handleSendMessage = async (e, recipientId) => {
         e.preventDefault();
         if (!loggedUser) return;
 
@@ -90,37 +88,31 @@ const Chat = () => {
             recipient: recipientId
         };
 
-        messageServices.saveMessage(newMsg)
-            .then(response => {
-                const addedMessage = response.data;
-                console.log("New message added:", addedMessage);
-                setMessages(prevMessages => [...prevMessages, addedMessage]);
-
-                socket.emit('send-message', addedMessage);
-
+        try {
+            const response = await messageServices.saveMessage(newMsg);
+            const addedMessage = response.data;
+            console.log("Message sent:", addedMessage); // Debugging line
+            socket.emit('send-message', addedMessage);
+            setMessages(prevMessages => [...prevMessages, addedMessage]);
+            setGroupedMessages(prevGroupedMessages => {
+                const updatedGroupedMessages = { ...prevGroupedMessages };
                 if (loggedUser.role === 'Admin') {
-                    setGroupedMessages(prevGroupedMessages => {
-                        const updatedGroupedMessages = { ...prevGroupedMessages };
-                        if (!updatedGroupedMessages[recipientId]) {
-                            updatedGroupedMessages[recipientId] = [];
-                        }
-                        updatedGroupedMessages[recipientId].push(addedMessage);
-                        return updatedGroupedMessages;
-                    });
+                    if (!updatedGroupedMessages[recipientId]) {
+                        updatedGroupedMessages[recipientId] = [];
+                    }
+                    updatedGroupedMessages[recipientId].push(addedMessage);
                 } else if (loggedUser.role === 'User') {
-                    setGroupedMessages(prevGroupedMessages => {
-                        const updatedGroupedMessages = { ...prevGroupedMessages };
-                        if (!updatedGroupedMessages[loggedUser._id]) {
-                            updatedGroupedMessages[loggedUser._id] = [];
-                        }
-                        updatedGroupedMessages[loggedUser._id].push(addedMessage);
-                        return updatedGroupedMessages;
-                    });
+                    if (!updatedGroupedMessages[loggedUser._id]) {
+                        updatedGroupedMessages[loggedUser._id] = [];
+                    }
+                    updatedGroupedMessages[loggedUser._id].push(addedMessage);
                 }
-
-                setNewMessage("");
-            })
-            .catch(error => console.error("Error sending message:", error));
+                return updatedGroupedMessages;
+            });
+            setNewMessage(""); // Clear input field after sending
+        } catch (error) {
+            console.error("Error sending message:", error);
+        }
     };
 
     if (isLoading) return <div>Loading...</div>;

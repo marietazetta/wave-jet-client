@@ -9,7 +9,7 @@ import './Navigation.css';
 const Navigation = () => {
     const { loggedUser, logout } = useContext(AuthContext);
     const [scrolled, setScrolled] = useState(false);
-    const { profileId } = useParams()
+    //const { ownerId } = useParams()
 
     useEffect(() => {
         const handleScroll = () => {
@@ -52,7 +52,7 @@ const Navigation = () => {
                                     </>
                                 ) : (
                                     <>
-                                        <NavDropdown.Item as={Link} to={`/profile/${profileId}`}>My Profile</NavDropdown.Item>
+                                        <NavDropdown.Item as={Link} to={`/profile`}>My Profile</NavDropdown.Item>
                                         <NavDropdown.Divider />
                                     </>
                                 )}
