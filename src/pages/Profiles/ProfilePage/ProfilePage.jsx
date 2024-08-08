@@ -5,6 +5,7 @@ import profileServices from "../../../services/profile.services";
 import Loader from "../../../components/Loader/Loader";
 import BookingList from "../../../components/Bookings/BookingList/BookingList";
 import ProfileList from "../../../components/Profiles/ProfileList/ProfileList";
+import PopularDestinations from "../../../components/PopularDestinations/PopularDestinations";
 import { Container, Row, Col } from "react-bootstrap";
 import "./ProfilePage.css";
 import Chat from "../../../components/Chat/Chat";
@@ -59,54 +60,56 @@ const ProfilePage = () => {
     return (
         <div className="ProfilePage">
             <Container>
-                <Row>
-                    <Col>
-                        {isLoading ? (
-                            <Loader />
-                        ) : (
-                            <div className="profile-page full-height font-family">
-
-                                <Row>
-                                    <Col>
+                <Row className="full-height font-family">
+                    {loggedUser.role === "Admin" ? (
+                        <>
+                            <Col md={4}>
+                                <h3>Chat with users</h3>
+                                <Chat />
+                            </Col>
+                            <Col md={8}>
+                                {isLoading ? (
+                                    <Loader />
+                                ) : (
+                                    <>
                                         <ProfileList profiles={profiles} />
-                                        <p>{loggedUser.role === 'User' ? `Email address: ${loggedUser.email}` : <></>}</p>
-                                    </Col>
-
-                                </Row>
-                                {loggedUser.role === "User" ? (
-
-                                    <Row>
-
-                                        <Col>
-                                            <h3>My Bookings</h3>
-                                            <BookingList bookings={bookings} />
-                                        </Col>
-
-
-                                        <Col>
-                                            <h3>Chat with us</h3>
-                                            <Chat />
-                                        </Col>
-
-                                    </Row>
-
-                                ) :
-                                    <Row>
-                                        <Col>
-                                            <h3>Check your inbox</h3>
-                                            <Chat />
-                                        </Col>
-
-                                    </Row>
-
-
-                                }
-                            </div>
-                        )}
-                    </Col>
+                                        <p>{loggedUser.role === 'User' ? `Email address: ${loggedUser.email}` : null}</p>
+                                        {loggedUser.role === "User" && (
+                                            <>
+                                                <h3>My Bookings</h3>
+                                                <BookingList bookings={bookings} />
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </Col>
+                        </>
+                    ) : (
+                        <>
+                            <Col md={8}>
+                                {isLoading ? (
+                                    <Loader />
+                                ) : (
+                                    <>
+                                        <ProfileList profiles={profiles} />
+                                        <p>{loggedUser.role === 'User' ? `Email address: ${loggedUser.email}` : null}</p>
+                                        {loggedUser.role === "User" && (
+                                            <>
+                                                <h3>My Bookings</h3>
+                                                <BookingList bookings={bookings} />
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                            </Col>
+                            <Col md={4}>
+                                <h3>{loggedUser.role === "User" ? "Chat with us" : "Check your inbox"}</h3>
+                                <Chat />
+                            </Col>
+                        </>
+                    )}
+                    <PopularDestinations />
                 </Row>
-
-
             </Container>
         </div>
     );

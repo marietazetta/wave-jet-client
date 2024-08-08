@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import UsersList from "../../../components/Users/UsersList/UsersList";
-import { Container } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 import Loader from "../../../components/Loader/Loader";
 import authServices from "../../../services/auth.services";
 import profileServices from "../../../services/profile.services";
+import "./UsersPage.css"
 
 const UsersPage = () => {
     const [users, setUsers] = useState([]);
@@ -38,8 +39,10 @@ const UsersPage = () => {
         <>
             <div className="users-page full-height font-family">
                 <Container>
-                    {isLoading ? <Loader /> : <UsersList users={users} profiles={profiles} />}
-                    <hr />
+                    <Row>                    {isLoading ? <Loader /> : <UsersList users={users} profiles={profiles} />}
+                        <hr />
+                    </Row>
+
                 </Container>
             </div>
 

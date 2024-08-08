@@ -6,7 +6,7 @@ const ChatBox = ({ messages, onSendMessage, newMessage, setNewMessage, selectedU
     const messagesEndRef = useRef(null);
 
     const scrollToBottom = () => {
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
     };
 
     useEffect(() => {
@@ -26,7 +26,7 @@ const ChatBox = ({ messages, onSendMessage, newMessage, setNewMessage, selectedU
                 <div ref={messagesEndRef} />
             </div>
             <Form onSubmit={(e) => onSendMessage(e, selectedUser)} className="chat-form">
-                <Form.Group controlId="messageInput">
+                <Form.Group controlId="messageInput" className="input-group">
                     <Form.Control
                         type="text"
                         placeholder="Type your message..."
