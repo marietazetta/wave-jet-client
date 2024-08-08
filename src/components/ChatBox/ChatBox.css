@@ -53,6 +53,7 @@
 
 .chat-form .form-control {
     flex: 1;
+    height: 60px;
 }
 
 .chat-form button {
@@ -64,11 +65,8 @@
 
 .chat-form button:hover {
     background-color: #666;
-    /* Change this to the desired hover color */
     border-color: #666;
-    /* Ensure the border color changes too */
 }
-
 
 @media (max-width: 768px) {
     .chat-box {
@@ -94,6 +92,7 @@
 
     .chat-form {
         flex-direction: column;
+        width: 100%;
         gap: 5px;
     }
 

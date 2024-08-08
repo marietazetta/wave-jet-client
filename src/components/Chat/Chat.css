@@ -12,6 +12,32 @@
     box-sizing: border-box;
 }
 
+.btn-primary {
+    color: #373535;
+    background-color: #EDE0D4;
+    border-color: #EDE0D4;
+}
+
+.btn-primary {
+    color: #373535;
+    background-color: #EDE0D4;
+    border-color: #EDE0D4;
+}
+
+.btn-primary:hover {
+    color: #000000;
+    background-color: #EDE0D4;
+    border-color: #EDE0D4;
+}
+
+.btn-primary:active,
+.btn-primary:focus {
+    color: #373535 !important;
+    background-color: #EDE0D4 !important;
+    border-color: #EDE0D4 !important;
+    box-shadow: none !important;
+}
+
 .messages-container {
     flex: 1;
     overflow-y: auto;
@@ -58,6 +84,7 @@
 
 .chat-form .form-control {
     flex: 1;
+    height: 60px;
 }
 
 .chat-form button {
