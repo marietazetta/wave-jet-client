@@ -27,6 +27,7 @@ const Navigation = () => {
     }, []);
 
     return (
+
         <Navbar className={`Navbar font-family ${scrolled ? 'navbar-scrolled' : ''}`} expand="lg" sticky="top">
             <Container fluid>
                 <Navbar.Brand className="navbar-brand mx-3" as={Link} to="/">

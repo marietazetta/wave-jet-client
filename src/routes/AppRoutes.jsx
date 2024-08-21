@@ -15,6 +15,8 @@ import PrivateRoute from "./PrivateRoute"
 import UsersPage from "../pages/Users/UsersPage/UsersPage"
 import ProfilePage from "../pages/Profiles/ProfilePage/ProfilePage"
 import ErrorPage from "../pages/ErrorPage/ErrorPage"
+import SuccessPaymentsPage from "../pages/SuccessPaymentPage/SuccessPaymentPage"
+import CancelPaymentsPage from "../pages/CancelPaymentPage/CancelPaymentsPage"
 
 
 
@@ -53,6 +55,8 @@ const Approutes = () => {
                 <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
                 <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
                 <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
+                <Route path={'/success'} element={<SuccessPaymentsPage />} />
+                <Route path={'/cancelled'} element={<CancelPaymentsPage />} />
             </Route>
 
 
