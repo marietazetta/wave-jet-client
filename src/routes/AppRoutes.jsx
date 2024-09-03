@@ -41,6 +41,8 @@ const Approutes = () => {
             <Route element={<PrivateRoute onlyAdmin={false} />}>
 
                 <Route path={'/profile'} element={<ProfilePage />} />
+                <Route path={'/success'} element={<SuccessPaymentsPage />} />
+                <Route path={'/cancel'} element={<CancelPaymentsPage />} />
 
             </Route>
 
@@ -55,8 +57,6 @@ const Approutes = () => {
                 <Route path={'/routes/edit/:flightId'} element={<EditFlightFormPage />} />
                 <Route path={'/fleet/edit/:aircraftId'} element={<EditAircraftFormPage />} />
                 <Route path={'/fleet/add'} element={<AddAircraftFormPage />} />
-                <Route path={'/success'} element={<SuccessPaymentsPage />} />
-                <Route path={'/cancelled'} element={<CancelPaymentsPage />} />
             </Route>
 
 
