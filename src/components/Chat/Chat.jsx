@@ -5,11 +5,7 @@ import { AuthContext } from "../../contexts/auth.context";
 import ChatBox from "../../components/ChatBox/ChatBox";
 import "./Chat.css";
 import authServices from "../../services/auth.services";
-<<<<<<< HEAD
-import socket from '../../services/socket'; // Singleton socket instance
-=======
 import { io } from "socket.io-client";
->>>>>>> diego
 
 const Chat = () => {
     const { loggedUser, isLoading } = useContext(AuthContext);
@@ -18,41 +14,6 @@ const Chat = () => {
     const [groupedMessages, setGroupedMessages] = useState({});
     const [selectedUser, setSelectedUser] = useState(null);
     const [allUsers, setAllUsers] = useState([]);
-<<<<<<< HEAD
-
-    useEffect(() => {
-        // Event handler for receiving messages
-        const handleReceiveMessage = (message) => {
-            console.log('Message received:', message); // Debugging line
-            setMessages(prevMessages => [...prevMessages, message]);
-        };
-
-        // Register socket event listeners
-        socket.on('receive-message', handleReceiveMessage);
-
-        // Clean up on component unmount
-        return () => {
-            socket.off('receive-message', handleReceiveMessage); // Cleanup
-        };
-    }, []); // Empty dependency array to run only once
-
-    useEffect(() => {
-        const fetchData = async () => {
-            if (!isLoading) {
-                try {
-                    if (loggedUser.role === 'Admin') {
-                        const messageResponse = await messageServices.getAllMessages();
-                        setMessages(messageResponse.data);
-                        const userResponse = await authServices.getAllUsers();
-                        setAllUsers(userResponse.data);
-                    } else if (loggedUser.role === 'User') {
-                        const messageResponse = await messageServices.getAllMessages(loggedUser._id);
-                        setMessages(messageResponse.data);
-                    }
-                } catch (error) {
-                    console.error("Error fetching data:", error);
-                }
-=======
     const socket = useRef(null);
 
     useEffect(() => {
@@ -101,10 +62,8 @@ const Chat = () => {
                         setMessages(response.data);
                     })
                     .catch((error) => console.error("Error fetching messages:", error));
->>>>>>> diego
             }
-        };
-        fetchData();
+        }
     }, [isLoading, loggedUser]);
 
     useEffect(() => {
@@ -128,7 +87,7 @@ const Chat = () => {
         }
     }, [messages, loggedUser]);
 
-    const handleSendMessage = async (e, recipientId) => {
+    const handleSendMessage = (e, recipientId) => {
         e.preventDefault();
         if (!loggedUser) return;
 
@@ -192,4 +151,4 @@ const Chat = () => {
     );
 };
 
-export default Chat;
+export default Chat
