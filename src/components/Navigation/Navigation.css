@@ -2,13 +2,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.5rem 1rem;
+    padding: 3rem 2.5rem;
     background-color: #ede0d4;
     backdrop-filter: blur(10px);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s ease;
     width: 100%;
     margin-bottom: 0px;
+    height: 90px;
 }
 
 .navbar-scrolled {
@@ -18,18 +19,20 @@
 .navbar-brand {
     display: flex;
     align-items: center;
-    font-size: 2.3rem;
+    font-size: 3.5rem;
 }
 
 .navbar-logo {
-    width: 30px;
+    width: 40px;
+    height: auto;
+    margin-right: 0.5rem;
 
 }
 
 .nav-links {
     display: flex;
     align-items: center;
-    font-size: 1.2rem;
+    font-size: 2rem;
 }
 
 .nav-actions {
@@ -41,12 +44,15 @@
 .nav-link {
     font-size: 1.2em;
     align-items: center;
+    margin-left: 2rem;
 }
 
 .social-icon {
-    font-size: 1.8rem;
+    font-size: 2.2rem;
     color: #0D1F2D;
     align-items: center;
+    margin-left: 2rem;
+
 }
 
 @media (min-width: 768px) {
@@ -55,9 +61,8 @@
     }
 
     .nav-link {
-        font-size: 1.3rem;
+        font-size: 2.0rem;
         align-items: center;
-
     }
 
     .navbar-brand {

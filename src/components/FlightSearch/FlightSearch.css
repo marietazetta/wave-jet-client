@@ -13,3 +13,8 @@
 .custom-number {
     font-size: larger;
 }
+
+.align-items-end {
+    align-items: flex-end !important;
+    padding-top: 50px;
+}

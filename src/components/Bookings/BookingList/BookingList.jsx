@@ -13,7 +13,7 @@ const BookingList = ({ bookings, loadBookings }) => {
                 {
                     bookings.map(elm => {
                         return (
-                            <Col lg={{ span: 6 }} md={{ span: 6 }} key={elm._id}>
+                            <Col lg={{ span: 10 }} md={{ span: 10 }} key={elm._id}>
                                 <BookingCard {...elm} loadBookings={loadBookings} />
                             </Col>
                         )

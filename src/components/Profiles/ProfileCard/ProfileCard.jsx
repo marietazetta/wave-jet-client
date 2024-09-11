@@ -1,5 +1,6 @@
 import React from "react";
 import { FaMobileAlt, FaPlaneDeparture, FaLeaf, FaUserTag } from "react-icons/fa";
+import "./ProfileCard.css";
 
 const ProfileCard = ({ mobile, fullName, favAirport, specialDiet, owner }) => {
     return (

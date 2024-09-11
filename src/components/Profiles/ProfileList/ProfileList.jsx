@@ -5,7 +5,7 @@ const ProfileList = ({ profiles, loadProfiles }) => {
     return (
         <Row>
             {profiles.map(profile => (
-                <Col lg={{ span: 6 }} md={{ span: 6 }} key={profile._id}>
+                <Col lg={{ span: 8 }} md={{ span: 8 }} key={profile._id}>
                     <ProfileCard {...profile} loadProfiles={loadProfiles} />
                 </Col>
             ))}

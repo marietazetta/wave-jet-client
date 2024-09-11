@@ -21,6 +21,7 @@
     max-width: 200px;
     height: auto;
     margin: 0 auto;
+    align-items: center;
 }
 
 .custom-card .card-content {
@@ -33,7 +34,7 @@
 }
 
 .custom-card .card-content h3 {
-    font-size: 1.25rem;
+    font-size: 2rem;
     font-weight: 600;
 }
 
@@ -46,9 +47,9 @@
 }
 
 .custom-card .card-details .detail-item {
-    display: flex;
-    align-items: center;
-    gap: 4px;
+    font-size: 1.5rem;
+    gap: 8px;
+
 }
 
 .separator {
@@ -80,7 +81,7 @@
 @media (min-width: 768px) {
     .custom-card {
         flex-direction: row;
-        gap: 24px;
+
     }
 
     .custom-card img {

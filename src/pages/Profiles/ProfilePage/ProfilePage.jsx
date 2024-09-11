@@ -63,11 +63,11 @@ const ProfilePage = () => {
                 <Row className="full-height font-family">
                     {loggedUser.role === "Admin" ? (
                         <>
-                            <Col md={4}>
+                            <Col md={12}>
                                 <h3>Chat with users</h3>
                                 <Chat />
                             </Col>
-                            <Col md={8}>
+                            <Col md={12}>
                                 {isLoading ? (
                                     <Loader />
                                 ) : (

@@ -1,34 +1,99 @@
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: 'Montserrat', sans-serif;
-}
-
 .BookingCard {
     font-family: 'Montserrat', sans-serif;
-}
-
-.custom-card {
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
     background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid #EDE0D4;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    max-width: 100%;
+    width: 100%;
+    text-align: left;
 }
 
-.card-details {
-    margin-top: 20px;
+.BookingCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.BookingCard h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #373535;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #fafafa;
+}
+
+.table thead th {
+    background-color: #f5f5f5;
+    color: #373535;
+    border-bottom: 2px solid #EDE0D4;
+}
+
+.table td {
+    border: none;
+    padding: 15px;
+    vertical-align: middle;
 }
 
 .detail-item {
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .icon {
     margin-right: 10px;
+    color: #546A7B;
+    font-size: 1.3rem;
+}
+
+.icon.md {
     font-size: 1.5rem;
+    color: #EDE0D4;
+}
+
+button {
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 12px 24px;
+    background-color: #EDE0D4;
+    color: #373535;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+}
+
+button:hover {
+    background-color: #EDE0D4;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+button:focus {
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .BookingCard {
+        max-width: 100%;
+    }
+
+    .BookingCard h3 {
+        font-size: 1.3rem;
+    }
+
+    .icon {
+        font-size: 1.2rem;
+    }
+
+    button {
+        width: 100%;
+        font-size: 0.9rem;
+    }
 }

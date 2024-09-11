@@ -14,7 +14,7 @@ const CancelPaymentsPage = () => {
                     <FaPlaneArrival className="plane-icon" />
 
                     <Link
-                        to={`/`}
+                        to={`/profile`}
                         className="back-link"
                     >
                         Back to Hangar
